@@ -24,3 +24,5 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 
 - Lottie
 - More to come...!
+
+## GIFS/Images
