@@ -19,6 +19,7 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 - Scene Kit
 - Core Motion
 - Firebase
+- AR Kit
 
 ### For MVP
 
