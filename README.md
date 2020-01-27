@@ -28,8 +28,10 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 
 ## GIFS/Images
 
+<img src="images/realtorProfile.png" width="100" height="150">
+
 ![ListTV](images/ListViewToMapView.gif)
 
-![RealtorProfile](images/realtorProfile.png=150x150)
+![RealtorProfile](images/realtorProfile.png)
 
 ![SavedSearches](images/saved.png)
