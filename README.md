@@ -27,3 +27,5 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 - More to come...!
 
 ## GIFS/Images
+
+[RealtorProfile](https://github.com/NormanLiana/TruView/blob/master/RealtorProfileImage.png?raw=true)
