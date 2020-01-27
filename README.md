@@ -28,4 +28,4 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 
 ## GIFS/Images
 
-![ListTV](images/filename%20ListViewToMapView.gif)
+![ListTV](images/ListViewToMapView.gif)
