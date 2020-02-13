@@ -35,6 +35,13 @@
 		A5603F2A23F5C56C0090E90E /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2923F5C56C0090E90E /* FBAuthService.swift */; };
 		A5603F2C23F5C5850090E90E /* FBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2B23F5C5850090E90E /* FBService.swift */; };
 		A5603F2E23F5C5990090E90E /* FBStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2D23F5C5990090E90E /* FBStorageService.swift */; };
+		A5603F3023F5C5F30090E90E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2F23F5C5F30090E90E /* Enums.swift */; };
+		A5603F3223F5C6070090E90E /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3123F5C6070090E90E /* CellIdentifiers.swift */; };
+		A5603F3423F5C6190090E90E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3323F5C6190090E90E /* Extensions.swift */; };
+		A5603F3623F5C6290090E90E /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3523F5C6290090E90E /* Validations.swift */; };
+		A5603F3823F5C64C0090E90E /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3723F5C64C0090E90E /* UIStyleGuide.swift */; };
+		A5603F3A23F5C65C0090E90E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3923F5C65C0090E90E /* Toast.swift */; };
+		A5603F3C23F5C6690090E90E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3B23F5C6690090E90E /* AppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +87,13 @@
 		A5603F2923F5C56C0090E90E /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
 		A5603F2B23F5C5850090E90E /* FBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBService.swift; sourceTree = "<group>"; };
 		A5603F2D23F5C5990090E90E /* FBStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageService.swift; sourceTree = "<group>"; };
+		A5603F2F23F5C5F30090E90E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		A5603F3123F5C6070090E90E /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
+		A5603F3323F5C6190090E90E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A5603F3523F5C6290090E90E /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
+		A5603F3723F5C64C0090E90E /* UIStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleGuide.swift; sourceTree = "<group>"; };
+		A5603F3923F5C65C0090E90E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		A5603F3B23F5C6690090E90E /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +211,13 @@
 		A5603F0023F5BF2A0090E90E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A5603F2F23F5C5F30090E90E /* Enums.swift */,
+				A5603F3123F5C6070090E90E /* CellIdentifiers.swift */,
+				A5603F3323F5C6190090E90E /* Extensions.swift */,
+				A5603F3523F5C6290090E90E /* Validations.swift */,
+				A5603F3723F5C64C0090E90E /* UIStyleGuide.swift */,
+				A5603F3923F5C65C0090E90E /* Toast.swift */,
+				A5603F3B23F5C6690090E90E /* AppError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -324,10 +345,12 @@
 				A5603F2223F5C4750090E90E /* TourEditorVC.swift in Sources */,
 				A5603F0E23F5C23D0090E90E /* CreateListingView.swift in Sources */,
 				A5603F0423F5C06D0090E90E /* AppUser.swift in Sources */,
+				A5603F3823F5C64C0090E90E /* UIStyleGuide.swift in Sources */,
 				A5603F1823F5C3F20090E90E /* SavedVC.swift in Sources */,
 				A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */,
 				A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */,
 				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
+				A5603F3A23F5C65C0090E90E /* Toast.swift in Sources */,
 				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
 				A5603F2C23F5C5850090E90E /* FBService.swift in Sources */,
 				A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */,
@@ -336,13 +359,18 @@
 				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
 				A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */,
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
+				A5603F3C23F5C6690090E90E /* AppError.swift in Sources */,
 				A5603F0623F5C07E0090E90E /* Room.swift in Sources */,
 				A5603F1223F5C2810090E90E /* PanoView.swift in Sources */,
+				A5603F3023F5C5F30090E90E /* Enums.swift in Sources */,
+				A5603F3223F5C6070090E90E /* CellIdentifiers.swift in Sources */,
 				A5603F2A23F5C56C0090E90E /* FBAuthService.swift in Sources */,
 				A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */,
 				A5603F1C23F5C41E0090E90E /* EditProfileVC.swift in Sources */,
 				A5603F2E23F5C5990090E90E /* FBStorageService.swift in Sources */,
 				A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */,
+				A5603F3623F5C6290090E90E /* Validations.swift in Sources */,
+				A5603F3423F5C6190090E90E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
