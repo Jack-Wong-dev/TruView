@@ -29,7 +29,7 @@ class ListingsVC: UIViewController {
         let items = ["Map View", "List View"]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
-//        sc.addTarget(self, action: #selector(segControlValueChanged(_:)), for: .valueChanged)
+        sc.addTarget(self, action: #selector(segControlValueChanged(_:)), for: .valueChanged)
         return sc
     }()
     
@@ -64,9 +64,22 @@ class ListingsVC: UIViewController {
         setUpInitialVCViews()
     }
     
+    // MARK: - Objc Methods
+    @objc func segControlValueChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            showMapView()
+        case 1:
+            showListView()
+        default:
+            break
+        }
+    }
+    
     // MARK: - Private Methods
     private func setUpInitialVCViews() {
         view.backgroundColor = .white
+        showMapView()
     }
     
     private func addSubViews() {
@@ -85,6 +98,19 @@ class ListingsVC: UIViewController {
         constrainMapView()
         constrainListingView()
         constrainSlideCardView()
+        constrainSlideCardView()
+    }
+    
+    private func showMapView() {
+        mapView.isHidden = false
+        slideCardView.isHidden = false
+        listingView.isHidden = true
+    }
+    
+    private func showListView() {
+        listingView.isHidden = false
+        slideCardView.isHidden = true
+        mapView.isHidden = true
     }
     
     // MARK: - Constraint Methods
