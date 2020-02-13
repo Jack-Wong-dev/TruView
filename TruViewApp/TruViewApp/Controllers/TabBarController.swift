@@ -12,19 +12,17 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tabBar.barTintColor = .white
+        tabBar.tintColor = .systemBlue
+        tabBar.unselectedItemTintColor = .orange
+        let listingsVC = ListingsVC()
+        let savedVC = SavedVC()
+        let profileVC = ProfileVC()
+      
+      listingsVC.tabBarItem = UITabBarItem(title: "Listings", image: UIImage(systemName: "house"), tag: 0)
+      savedVC.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "bookmark"), tag: 1)
+      profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 2)
+      self.viewControllers = [listingsVC, savedVC, profileVC]
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
