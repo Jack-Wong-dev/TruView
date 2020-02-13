@@ -75,6 +75,7 @@ class ListingsVC: UIViewController {
         view.addSubview(mapListViewSegController)
         view.addSubview(mapView)
         view.addSubview(listingView)
+        view.addSubview(slideCardView)
     }
     
     private func addConstraints() {
@@ -83,6 +84,7 @@ class ListingsVC: UIViewController {
         constrainSegmentedController()
         constrainMapView()
         constrainListingView()
+        constrainSlideCardView()
     }
     
     // MARK: - Constraint Methods
@@ -114,6 +116,43 @@ class ListingsVC: UIViewController {
         listingView.translatesAutoresizingMaskIntoConstraints = false
         
         [listingView.topAnchor.constraint(equalTo: mapListViewSegController.bottomAnchor), listingView.leadingAnchor.constraint(equalTo: view.leadingAnchor), listingView.trailingAnchor.constraint(equalTo: view.trailingAnchor), listingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainSlideCardView() {
+        slideCardView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [slideCardView.leadingAnchor.constraint(equalTo: view.leadingAnchor), slideCardView.trailingAnchor.constraint(equalTo: view.trailingAnchor), slideCardView.heightAnchor.constraint(equalToConstant: slideCardHeight)].forEach({$0.isActive = true})
+        createSlideCardViewConstraints()
+    }
+    
+    // MARK: - Constraint Methods to change Slide Card View
+    private func createSlideCardViewConstraints() {
+        collapsedslideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight + 400)
+        collapsedslideCardViewTopConstraint?.isActive = false
+
+        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -65)
+        halfOpenSlideCardViewTopConstraint?.isActive = true
+
+        fullScreenSlideCardTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30)
+        fullScreenSlideCardTopConstraint?.isActive = false
+    }
+    
+    private func activateFullOpenSliderViewConstraints() {
+        fullScreenSlideCardTopConstraint?.isActive = true
+        collapsedslideCardViewTopConstraint?.isActive = false
+        halfOpenSlideCardViewTopConstraint?.isActive = false
+    }
+    
+    private func activateHalfOpenSliderViewConstraints() {
+        fullScreenSlideCardTopConstraint?.isActive = false
+        collapsedslideCardViewTopConstraint?.isActive = true
+        halfOpenSlideCardViewTopConstraint?.isActive = false
+    }
+    
+    private func activateClosedSliderViewConstraints() {
+        fullScreenSlideCardTopConstraint?.isActive = false
+        collapsedslideCardViewTopConstraint?.isActive = false
+        halfOpenSlideCardViewTopConstraint?.isActive = true
     }
 
 
