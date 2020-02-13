@@ -22,6 +22,16 @@
 		A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0F23F5C25D0090E90E /* EditorView.swift */; };
 		A5603F1223F5C2810090E90E /* PanoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1123F5C2810090E90E /* PanoView.swift */; };
 		A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1323F5C3270090E90E /* ListingCVCell.swift */; };
+		A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1523F5C3E10090E90E /* ListingsVC.swift */; };
+		A5603F1823F5C3F20090E90E /* SavedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1723F5C3F20090E90E /* SavedVC.swift */; };
+		A5603F1A23F5C4070090E90E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1923F5C4070090E90E /* ProfileVC.swift */; };
+		A5603F1C23F5C41E0090E90E /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1B23F5C41E0090E90E /* EditProfileVC.swift */; };
+		A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1D23F5C4370090E90E /* PanoVC.swift */; };
+		A5603F2023F5C44E0090E90E /* CreateListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1F23F5C44E0090E90E /* CreateListingVC.swift */; };
+		A5603F2223F5C4750090E90E /* TourEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2123F5C4750090E90E /* TourEditorVC.swift */; };
+		A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2323F5C4BF0090E90E /* TabBarController.swift */; };
+		A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2523F5C4E20090E90E /* SignUpVC.swift */; };
+		A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2723F5C4F50090E90E /* LogInVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +64,16 @@
 		A5603F0F23F5C25D0090E90E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		A5603F1123F5C2810090E90E /* PanoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoView.swift; sourceTree = "<group>"; };
 		A5603F1323F5C3270090E90E /* ListingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCVCell.swift; sourceTree = "<group>"; };
+		A5603F1523F5C3E10090E90E /* ListingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsVC.swift; sourceTree = "<group>"; };
+		A5603F1723F5C3F20090E90E /* SavedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedVC.swift; sourceTree = "<group>"; };
+		A5603F1923F5C4070090E90E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		A5603F1B23F5C41E0090E90E /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		A5603F1D23F5C4370090E90E /* PanoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoVC.swift; sourceTree = "<group>"; };
+		A5603F1F23F5C44E0090E90E /* CreateListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingVC.swift; sourceTree = "<group>"; };
+		A5603F2123F5C4750090E90E /* TourEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourEditorVC.swift; sourceTree = "<group>"; };
+		A5603F2323F5C4BF0090E90E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A5603F2523F5C4E20090E90E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		A5603F2723F5C4F50090E90E /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +161,16 @@
 		A5603EFE23F5BEF20090E90E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5603F1523F5C3E10090E90E /* ListingsVC.swift */,
+				A5603F1723F5C3F20090E90E /* SavedVC.swift */,
+				A5603F1923F5C4070090E90E /* ProfileVC.swift */,
+				A5603F1B23F5C41E0090E90E /* EditProfileVC.swift */,
+				A5603F1D23F5C4370090E90E /* PanoVC.swift */,
+				A5603F1F23F5C44E0090E90E /* CreateListingVC.swift */,
+				A5603F2123F5C4750090E90E /* TourEditorVC.swift */,
+				A5603F2323F5C4BF0090E90E /* TabBarController.swift */,
+				A5603F2523F5C4E20090E90E /* SignUpVC.swift */,
+				A5603F2723F5C4F50090E90E /* LogInVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,17 +309,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5603F1A23F5C4070090E90E /* ProfileVC.swift in Sources */,
 				A5603F0823F5C08D0090E90E /* Graph.swift in Sources */,
 				A5603F0A23F5C1E60090E90E /* ListingCVView.swift in Sources */,
+				A5603F2223F5C4750090E90E /* TourEditorVC.swift in Sources */,
 				A5603F0E23F5C23D0090E90E /* CreateListingView.swift in Sources */,
 				A5603F0423F5C06D0090E90E /* AppUser.swift in Sources */,
+				A5603F1823F5C3F20090E90E /* SavedVC.swift in Sources */,
+				A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */,
+				A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */,
 				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
 				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
 				A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */,
+				A5603F2023F5C44E0090E90E /* CreateListingVC.swift in Sources */,
+				A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */,
 				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
+				A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */,
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
 				A5603F0623F5C07E0090E90E /* Room.swift in Sources */,
 				A5603F1223F5C2810090E90E /* PanoView.swift in Sources */,
+				A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */,
+				A5603F1C23F5C41E0090E90E /* EditProfileVC.swift in Sources */,
 				A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
