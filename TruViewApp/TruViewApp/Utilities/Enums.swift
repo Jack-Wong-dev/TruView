@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+enum SlideCardState {
+    case collapsed, halfOpen, fullOpen
+}
