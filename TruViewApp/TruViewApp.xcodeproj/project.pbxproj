@@ -16,6 +16,12 @@
 		A5603F0423F5C06D0090E90E /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0323F5C06D0090E90E /* AppUser.swift */; };
 		A5603F0623F5C07E0090E90E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0523F5C07E0090E90E /* Room.swift */; };
 		A5603F0823F5C08D0090E90E /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0723F5C08D0090E90E /* Graph.swift */; };
+		A5603F0A23F5C1E60090E90E /* ListingCVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0923F5C1E60090E90E /* ListingCVView.swift */; };
+		A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0B23F5C2070090E90E /* SlideCardView.swift */; };
+		A5603F0E23F5C23D0090E90E /* CreateListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0D23F5C23D0090E90E /* CreateListingView.swift */; };
+		A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0F23F5C25D0090E90E /* EditorView.swift */; };
+		A5603F1223F5C2810090E90E /* PanoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1123F5C2810090E90E /* PanoView.swift */; };
+		A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1323F5C3270090E90E /* ListingCVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,12 @@
 		A5603F0323F5C06D0090E90E /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		A5603F0523F5C07E0090E90E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		A5603F0723F5C08D0090E90E /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		A5603F0923F5C1E60090E90E /* ListingCVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCVView.swift; sourceTree = "<group>"; };
+		A5603F0B23F5C2070090E90E /* SlideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCardView.swift; sourceTree = "<group>"; };
+		A5603F0D23F5C23D0090E90E /* CreateListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingView.swift; sourceTree = "<group>"; };
+		A5603F0F23F5C25D0090E90E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		A5603F1123F5C2810090E90E /* PanoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoView.swift; sourceTree = "<group>"; };
+		A5603F1323F5C3270090E90E /* ListingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +148,12 @@
 		A5603EFF23F5BF1F0090E90E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A5603F0923F5C1E60090E90E /* ListingCVView.swift */,
+				A5603F0B23F5C2070090E90E /* SlideCardView.swift */,
+				A5603F0D23F5C23D0090E90E /* CreateListingView.swift */,
+				A5603F0F23F5C25D0090E90E /* EditorView.swift */,
+				A5603F1123F5C2810090E90E /* PanoView.swift */,
+				A5603F1323F5C3270090E90E /* ListingCVCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -262,11 +280,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5603F0823F5C08D0090E90E /* Graph.swift in Sources */,
+				A5603F0A23F5C1E60090E90E /* ListingCVView.swift in Sources */,
+				A5603F0E23F5C23D0090E90E /* CreateListingView.swift in Sources */,
 				A5603F0423F5C06D0090E90E /* AppUser.swift in Sources */,
 				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
+				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
+				A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */,
 				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
 				A5603F0623F5C07E0090E90E /* Room.swift in Sources */,
+				A5603F1223F5C2810090E90E /* PanoView.swift in Sources */,
+				A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
