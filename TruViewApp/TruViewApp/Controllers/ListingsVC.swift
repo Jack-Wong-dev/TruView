@@ -52,8 +52,8 @@ class ListingsVC: UIViewController {
     let slideCardHeight: CGFloat = 900
     var slideCardState: SlideCardState = .collapsed
     
-    var collapsedslideCardViewTopConstraint: NSLayoutConstraint?
     var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
+    var collapsedSlideCardViewTopConstraint: NSLayoutConstraint?
     var fullScreenSlideCardTopConstraint: NSLayoutConstraint?
     
     // MARK: - Lifecycle Methods
@@ -63,6 +63,7 @@ class ListingsVC: UIViewController {
         addConstraints()
         setUpInitialVCViews()
         delegation()
+        loadGestures()
     }
     
     // MARK: - Objc Methods
@@ -149,7 +150,6 @@ class ListingsVC: UIViewController {
         constrainMapView()
         constrainListingView()
         constrainSlideCardView()
-        constrainSlideCardView()
     }
     
     private func delegation() {
@@ -219,11 +219,11 @@ class ListingsVC: UIViewController {
     
     // MARK: - Constraint Methods to change Slide Card View
     private func createSlideCardViewConstraints() {
-        collapsedslideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight + 400)
-        collapsedslideCardViewTopConstraint?.isActive = false
+        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight + 400)
+        halfOpenSlideCardViewTopConstraint?.isActive = false
 
-        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -65)
-        halfOpenSlideCardViewTopConstraint?.isActive = true
+        collapsedSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -125)
+        collapsedSlideCardViewTopConstraint?.isActive = true
 
         fullScreenSlideCardTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30)
         fullScreenSlideCardTopConstraint?.isActive = false
@@ -231,20 +231,20 @@ class ListingsVC: UIViewController {
     
     private func activateFullOpenSliderViewConstraints() {
         fullScreenSlideCardTopConstraint?.isActive = true
-        collapsedslideCardViewTopConstraint?.isActive = false
         halfOpenSlideCardViewTopConstraint?.isActive = false
+        collapsedSlideCardViewTopConstraint?.isActive = false
     }
     
     private func activateHalfOpenSliderViewConstraints() {
         fullScreenSlideCardTopConstraint?.isActive = false
-        collapsedslideCardViewTopConstraint?.isActive = true
-        halfOpenSlideCardViewTopConstraint?.isActive = false
+        halfOpenSlideCardViewTopConstraint?.isActive = true
+        collapsedSlideCardViewTopConstraint?.isActive = false
     }
     
     private func activateClosedSliderViewConstraints() {
         fullScreenSlideCardTopConstraint?.isActive = false
-        collapsedslideCardViewTopConstraint?.isActive = false
-        halfOpenSlideCardViewTopConstraint?.isActive = true
+        halfOpenSlideCardViewTopConstraint?.isActive = false
+        collapsedSlideCardViewTopConstraint?.isActive = true
     }
 }
 
