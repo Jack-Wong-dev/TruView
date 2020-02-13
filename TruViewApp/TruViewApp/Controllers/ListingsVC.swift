@@ -38,6 +38,14 @@ class ListingsVC: UIViewController {
         return mv
     }()
     
+    // MARK: - Properties
+    let slideCardHeight: CGFloat = 900
+    var slideCardState: SlideCardState = .collapsed
+    
+    var collapsedslideCardViewTopConstraint: NSLayoutConstraint?
+    var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
+    var fullScreenSlideCardTopConstraint: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
