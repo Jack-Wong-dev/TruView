@@ -38,6 +38,16 @@ class ListingsVC: UIViewController {
         return mv
     }()
     
+    lazy var listingView: ListingCVView = {
+        let lv = ListingCVView()
+        return lv
+    }()
+    
+    lazy var slideCardView: SlideCardView = {
+        let scv = SlideCardView()
+        return scv
+    }()
+    
     // MARK: - Properties
     let slideCardHeight: CGFloat = 900
     var slideCardState: SlideCardState = .collapsed
