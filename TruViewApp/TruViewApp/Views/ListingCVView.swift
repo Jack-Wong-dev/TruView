@@ -23,9 +23,26 @@ class ListingCVView: UIView {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubViews()
+        constrainCV()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private Methods
+    private func addSubViews() {
+        addSubview(collectionView)
+    }
+    
+    private func addConstraints() {
+        constrainCV()
+    }
+    
+    private func constrainCV() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [collectionView.topAnchor.constraint(equalTo: topAnchor), collectionView.leadingAnchor.constraint(equalTo: leadingAnchor), collectionView.trailingAnchor.constraint(equalTo: trailingAnchor), collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach({$0.isActive = true})
     }
 }
