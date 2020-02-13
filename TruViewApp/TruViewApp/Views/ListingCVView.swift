@@ -10,6 +10,16 @@ import UIKit
 
 class ListingCVView: UIView {
 
+    // MARK: - UI Objects
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .white
+//        cv.register(ListViewCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue)
+        return cv
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
