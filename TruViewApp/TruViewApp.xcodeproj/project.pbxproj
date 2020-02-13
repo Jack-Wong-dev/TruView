@@ -77,6 +77,12 @@
 		A5603ED623F5BCAF0090E90E /* TruViewApp */ = {
 			isa = PBXGroup;
 			children = (
+				A5603EFD23F5BE3C0090E90E /* Models */,
+				A5603F0223F5BF940090E90E /* ViewModels */,
+				A5603EFF23F5BF1F0090E90E /* Views */,
+				A5603EFE23F5BEF20090E90E /* Controllers */,
+				A5603F0123F5BF350090E90E /* Firebase */,
+				A5603F0023F5BF2A0090E90E /* Utilities */,
 				A5603EFC23F5BDC60090E90E /* Supporting Files */,
 				A5603EE823F5BCB30090E90E /* Info.plist */,
 				A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */,
@@ -102,6 +108,48 @@
 				A5603EE323F5BCB30090E90E /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5603EFD23F5BE3C0090E90E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5603EFE23F5BEF20090E90E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A5603EFF23F5BF1F0090E90E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A5603F0023F5BF2A0090E90E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A5603F0123F5BF350090E90E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		A5603F0223F5BF940090E90E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
