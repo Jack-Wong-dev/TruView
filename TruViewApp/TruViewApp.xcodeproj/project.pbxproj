@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED723F5BCAF0090E90E /* AppDelegate.swift */; };
 		A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */; };
-		A5603EDC23F5BCAF0090E90E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603EDB23F5BCAF0090E90E /* ViewController.swift */; };
-		A5603EDF23F5BCAF0090E90E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5603EDD23F5BCAF0090E90E /* Main.storyboard */; };
 		A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */; };
 		A5603EE423F5BCB30090E90E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5603EE323F5BCB30090E90E /* Assets.xcassets */; };
 		A5603EE723F5BCB30090E90E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5603EE523F5BCB30090E90E /* LaunchScreen.storyboard */; };
@@ -31,8 +29,6 @@
 		A5603ED423F5BCAF0090E90E /* TruViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5603ED723F5BCAF0090E90E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A5603EDB23F5BCAF0090E90E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A5603EDE23F5BCAF0090E90E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5603EE123F5BCAF0090E90E /* TruViewApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TruViewApp.xcdatamodel; sourceTree = "<group>"; };
 		A5603EE323F5BCB30090E90E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5603EE623F5BCB30090E90E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,8 +79,6 @@
 			children = (
 				A5603ED723F5BCAF0090E90E /* AppDelegate.swift */,
 				A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */,
-				A5603EDB23F5BCAF0090E90E /* ViewController.swift */,
-				A5603EDD23F5BCAF0090E90E /* Main.storyboard */,
 				A5603EE323F5BCB30090E90E /* Assets.xcassets */,
 				A5603EE523F5BCB30090E90E /* LaunchScreen.storyboard */,
 				A5603EE823F5BCB30090E90E /* Info.plist */,
@@ -185,7 +179,6 @@
 			files = (
 				A5603EE723F5BCB30090E90E /* LaunchScreen.storyboard in Resources */,
 				A5603EE423F5BCB30090E90E /* Assets.xcassets in Resources */,
-				A5603EDF23F5BCAF0090E90E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +196,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5603EDC23F5BCAF0090E90E /* ViewController.swift in Sources */,
 				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
 				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
@@ -229,14 +221,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A5603EDD23F5BCAF0090E90E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A5603EDE23F5BCAF0090E90E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A5603EE523F5BCB30090E90E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
