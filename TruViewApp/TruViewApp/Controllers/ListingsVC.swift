@@ -74,6 +74,7 @@ class ListingsVC: UIViewController {
         view.addSubview(filterMenuButton)
         view.addSubview(mapListViewSegController)
         view.addSubview(mapView)
+        view.addSubview(listingView)
     }
     
     private func addConstraints() {
@@ -81,6 +82,7 @@ class ListingsVC: UIViewController {
         constrainFilterMenuButton()
         constrainSegmentedController()
         constrainMapView()
+        constrainListingView()
     }
     
     // MARK: - Constraint Methods
@@ -106,6 +108,12 @@ class ListingsVC: UIViewController {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         
         [mapView.topAnchor.constraint(equalTo: mapListViewSegController.bottomAnchor), mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor), mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor), mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainListingView() {
+        listingView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [listingView.topAnchor.constraint(equalTo: mapListViewSegController.bottomAnchor), listingView.leadingAnchor.constraint(equalTo: view.leadingAnchor), listingView.trailingAnchor.constraint(equalTo: view.trailingAnchor), listingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
     }
 
 
