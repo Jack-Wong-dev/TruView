@@ -62,9 +62,60 @@ class ListingsVC: UIViewController {
         addSubViews()
         addConstraints()
         setUpInitialVCViews()
+        delegation()
     }
     
     // MARK: - Objc Methods
+    @objc func respondToSwipeGesture(gesture: UISwipeGestureRecognizer?) {
+        if let swipeGesture = gesture {
+            switch swipeGesture.direction {
+            case .down:
+                switch slideCardState {
+                case .fullOpen:
+                    activateHalfOpenSliderViewConstraints()
+                    slideCardState = .halfOpen
+                case .halfOpen:
+                    activateClosedSliderViewConstraints()
+                    slideCardState = .collapsed
+                case .collapsed:
+                    print("Its closed already")
+                }
+                
+                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.80, initialSpringVelocity: 0, options: .curveEaseInOut, animations: { [weak self] in
+                
+                self?.view.layoutIfNeeded()
+                
+                    if self?.slideCardState == .collapsed {
+                    self?.slideCardView.alpha = 0.5
+                }
+                
+                }, completion: nil)
+            case .up:
+                switch slideCardState {
+                case .fullOpen:
+                    print("Its already fully open")
+                case .halfOpen:
+                    activateFullOpenSliderViewConstraints()
+                    slideCardState = .fullOpen
+                case .collapsed:
+                    activateHalfOpenSliderViewConstraints()
+                    slideCardState = .halfOpen
+                }
+                
+                UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.80, initialSpringVelocity: 0, options: .curveEaseInOut, animations: { [weak self] in
+                
+                self?.view.layoutIfNeeded()
+                
+                self?.slideCardView.alpha = 1.0
+                }, completion: nil)
+                
+            default:
+                break
+                
+            }
+        }
+    }
+    
     @objc func segControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -99,6 +150,21 @@ class ListingsVC: UIViewController {
         constrainListingView()
         constrainSlideCardView()
         constrainSlideCardView()
+    }
+    
+    private func delegation() {
+        listingView.collectionView.delegate = self
+        listingView.collectionView.dataSource = self
+    }
+    
+    private func loadGestures() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+        swipeDown.direction = .down
+        self.slideCardView.addGestureRecognizer(swipeDown)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
+        swipeUp.direction = .up
+        self.slideCardView.addGestureRecognizer(swipeUp)
     }
     
     private func showMapView() {
@@ -180,6 +246,28 @@ class ListingsVC: UIViewController {
         collapsedslideCardViewTopConstraint?.isActive = false
         halfOpenSlideCardViewTopConstraint?.isActive = true
     }
-
-
 }
+
+extension ListingsVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = listingView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
+            cell.aptThumbnail.image = UIImage(systemName: "bed.double")
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    
+}
+
+extension ListingsVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 175, height: 175)
+    }
+}
+
+extension ListingsVC: UICollectionViewDelegate {}
