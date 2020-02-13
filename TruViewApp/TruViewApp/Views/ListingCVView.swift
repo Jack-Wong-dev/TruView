@@ -16,7 +16,7 @@ class ListingCVView: UIView {
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
-//        cv.register(ListViewCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue)
+        cv.register(ListingCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue)
         return cv
     }()
     
