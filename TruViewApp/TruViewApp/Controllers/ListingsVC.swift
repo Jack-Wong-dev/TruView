@@ -64,6 +64,17 @@ class ListingsVC: UIViewController {
         setUpInitialVCViews()
         delegation()
         loadGestures()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(thumbnailTapped))
+        slideCardView.aptThumbnail.isUserInteractionEnabled = true
+        slideCardView.aptThumbnail.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func thumbnailTapped() {
+        let panoVC = PanoVC()
+        panoVC.modalPresentationStyle = .fullScreen
+        
+        present(panoVC, animated: true, completion: nil)
     }
     
     // MARK: - Objc Methods
