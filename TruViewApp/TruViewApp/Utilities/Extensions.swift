@@ -1,7 +1,7 @@
 
 import Foundation
 import UIKit
-
+import SceneKit
 
 extension CALayer{
     func setCustomLayer(radius:CGFloat){
@@ -170,4 +170,30 @@ extension String {
         let predicate = NSPredicate(format:"SELF MATCHES %@", validAddress)
         return predicate.evaluate(with: self)
   }
+}
+
+extension UIImage {
+    
+    func resize(image: UIImage) -> UIImage{
+        if image.size.width <= 8192 {
+            return image
+        }else{
+            UIGraphicsBeginImageContext(CGSize(width: 8192, height: 4096))
+                   image.draw(in: CGRect(x: 0, y: 0, width: 8192, height: 4096))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+                   UIGraphicsEndImageContext()
+            return newImage!
+        }
+    }
+}
+
+extension SCNMaterial {
+    convenience init(color: UIColor) {
+        self.init()
+        diffuse.contents = color
+    }
+    convenience init(image: UIImage) {
+        self.init()
+        diffuse.contents = image
+    }
 }
