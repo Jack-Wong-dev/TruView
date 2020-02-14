@@ -1,0 +1,645 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED723F5BCAF0090E90E /* AppDelegate.swift */; };
+		A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */; };
+		A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */; };
+		A5603EE423F5BCB30090E90E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5603EE323F5BCB30090E90E /* Assets.xcassets */; };
+		A5603EE723F5BCB30090E90E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5603EE523F5BCB30090E90E /* LaunchScreen.storyboard */; };
+		A5603EF223F5BCB30090E90E /* TruViewAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603EF123F5BCB30090E90E /* TruViewAppTests.swift */; };
+		A5603F0423F5C06D0090E90E /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0323F5C06D0090E90E /* AppUser.swift */; };
+		A5603F0623F5C07E0090E90E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0523F5C07E0090E90E /* Room.swift */; };
+		A5603F0823F5C08D0090E90E /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0723F5C08D0090E90E /* Graph.swift */; };
+		A5603F0A23F5C1E60090E90E /* ListingCVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0923F5C1E60090E90E /* ListingCVView.swift */; };
+		A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0B23F5C2070090E90E /* SlideCardView.swift */; };
+		A5603F0E23F5C23D0090E90E /* CreateListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0D23F5C23D0090E90E /* CreateListingView.swift */; };
+		A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F0F23F5C25D0090E90E /* EditorView.swift */; };
+		A5603F1223F5C2810090E90E /* PanoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1123F5C2810090E90E /* PanoView.swift */; };
+		A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1323F5C3270090E90E /* ListingCVCell.swift */; };
+		A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1523F5C3E10090E90E /* ListingsVC.swift */; };
+		A5603F1823F5C3F20090E90E /* SavedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1723F5C3F20090E90E /* SavedVC.swift */; };
+		A5603F1A23F5C4070090E90E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1923F5C4070090E90E /* ProfileVC.swift */; };
+		A5603F1C23F5C41E0090E90E /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1B23F5C41E0090E90E /* EditProfileVC.swift */; };
+		A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1D23F5C4370090E90E /* PanoVC.swift */; };
+		A5603F2023F5C44E0090E90E /* CreateListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F1F23F5C44E0090E90E /* CreateListingVC.swift */; };
+		A5603F2223F5C4750090E90E /* TourEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2123F5C4750090E90E /* TourEditorVC.swift */; };
+		A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2323F5C4BF0090E90E /* TabBarController.swift */; };
+		A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2523F5C4E20090E90E /* SignUpVC.swift */; };
+		A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2723F5C4F50090E90E /* LogInVC.swift */; };
+		A5603F2A23F5C56C0090E90E /* FBAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2923F5C56C0090E90E /* FBAuthService.swift */; };
+		A5603F2C23F5C5850090E90E /* FBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2B23F5C5850090E90E /* FBService.swift */; };
+		A5603F2E23F5C5990090E90E /* FBStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2D23F5C5990090E90E /* FBStorageService.swift */; };
+		A5603F3023F5C5F30090E90E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F2F23F5C5F30090E90E /* Enums.swift */; };
+		A5603F3223F5C6070090E90E /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3123F5C6070090E90E /* CellIdentifiers.swift */; };
+		A5603F3423F5C6190090E90E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3323F5C6190090E90E /* Extensions.swift */; };
+		A5603F3623F5C6290090E90E /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3523F5C6290090E90E /* Validations.swift */; };
+		A5603F3823F5C64C0090E90E /* UIStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3723F5C64C0090E90E /* UIStyleGuide.swift */; };
+		A5603F3A23F5C65C0090E90E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3923F5C65C0090E90E /* Toast.swift */; };
+		A5603F3C23F5C6690090E90E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3B23F5C6690090E90E /* AppError.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5603EEE23F5BCB30090E90E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5603ECC23F5BCAF0090E90E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5603ED323F5BCAF0090E90E;
+			remoteInfo = TruViewApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5603ED423F5BCAF0090E90E /* TruViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5603ED723F5BCAF0090E90E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A5603EE123F5BCAF0090E90E /* TruViewApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TruViewApp.xcdatamodel; sourceTree = "<group>"; };
+		A5603EE323F5BCB30090E90E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5603EE623F5BCB30090E90E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5603EE823F5BCB30090E90E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5603EED23F5BCB30090E90E /* TruViewAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TruViewAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5603EF123F5BCB30090E90E /* TruViewAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruViewAppTests.swift; sourceTree = "<group>"; };
+		A5603EF323F5BCB30090E90E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5603F0323F5C06D0090E90E /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		A5603F0523F5C07E0090E90E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		A5603F0723F5C08D0090E90E /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		A5603F0923F5C1E60090E90E /* ListingCVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCVView.swift; sourceTree = "<group>"; };
+		A5603F0B23F5C2070090E90E /* SlideCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCardView.swift; sourceTree = "<group>"; };
+		A5603F0D23F5C23D0090E90E /* CreateListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingView.swift; sourceTree = "<group>"; };
+		A5603F0F23F5C25D0090E90E /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		A5603F1123F5C2810090E90E /* PanoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoView.swift; sourceTree = "<group>"; };
+		A5603F1323F5C3270090E90E /* ListingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCVCell.swift; sourceTree = "<group>"; };
+		A5603F1523F5C3E10090E90E /* ListingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsVC.swift; sourceTree = "<group>"; };
+		A5603F1723F5C3F20090E90E /* SavedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedVC.swift; sourceTree = "<group>"; };
+		A5603F1923F5C4070090E90E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		A5603F1B23F5C41E0090E90E /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		A5603F1D23F5C4370090E90E /* PanoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoVC.swift; sourceTree = "<group>"; };
+		A5603F1F23F5C44E0090E90E /* CreateListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingVC.swift; sourceTree = "<group>"; };
+		A5603F2123F5C4750090E90E /* TourEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourEditorVC.swift; sourceTree = "<group>"; };
+		A5603F2323F5C4BF0090E90E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A5603F2523F5C4E20090E90E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		A5603F2723F5C4F50090E90E /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
+		A5603F2923F5C56C0090E90E /* FBAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuthService.swift; sourceTree = "<group>"; };
+		A5603F2B23F5C5850090E90E /* FBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBService.swift; sourceTree = "<group>"; };
+		A5603F2D23F5C5990090E90E /* FBStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorageService.swift; sourceTree = "<group>"; };
+		A5603F2F23F5C5F30090E90E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		A5603F3123F5C6070090E90E /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
+		A5603F3323F5C6190090E90E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A5603F3523F5C6290090E90E /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
+		A5603F3723F5C64C0090E90E /* UIStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleGuide.swift; sourceTree = "<group>"; };
+		A5603F3923F5C65C0090E90E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		A5603F3B23F5C6690090E90E /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5603ED123F5BCAF0090E90E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5603EEA23F5BCB30090E90E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5603ECB23F5BCAF0090E90E = {
+			isa = PBXGroup;
+			children = (
+				A5603ED623F5BCAF0090E90E /* TruViewApp */,
+				A5603EF023F5BCB30090E90E /* TruViewAppTests */,
+				A5603ED523F5BCAF0090E90E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5603ED523F5BCAF0090E90E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5603ED423F5BCAF0090E90E /* TruViewApp.app */,
+				A5603EED23F5BCB30090E90E /* TruViewAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5603ED623F5BCAF0090E90E /* TruViewApp */ = {
+			isa = PBXGroup;
+			children = (
+				A5603EFD23F5BE3C0090E90E /* Models */,
+				A5603F0223F5BF940090E90E /* ViewModels */,
+				A5603EFF23F5BF1F0090E90E /* Views */,
+				A5603EFE23F5BEF20090E90E /* Controllers */,
+				A5603F0123F5BF350090E90E /* Firebase */,
+				A5603F0023F5BF2A0090E90E /* Utilities */,
+				A5603EFC23F5BDC60090E90E /* Supporting Files */,
+				A5603EE823F5BCB30090E90E /* Info.plist */,
+				A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */,
+			);
+			path = TruViewApp;
+			sourceTree = "<group>";
+		};
+		A5603EF023F5BCB30090E90E /* TruViewAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5603EF123F5BCB30090E90E /* TruViewAppTests.swift */,
+				A5603EF323F5BCB30090E90E /* Info.plist */,
+			);
+			path = TruViewAppTests;
+			sourceTree = "<group>";
+		};
+		A5603EFC23F5BDC60090E90E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5603ED723F5BCAF0090E90E /* AppDelegate.swift */,
+				A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */,
+				A5603EE523F5BCB30090E90E /* LaunchScreen.storyboard */,
+				A5603EE323F5BCB30090E90E /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5603EFD23F5BE3C0090E90E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5603F0323F5C06D0090E90E /* AppUser.swift */,
+				A5603F0523F5C07E0090E90E /* Room.swift */,
+				A5603F0723F5C08D0090E90E /* Graph.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5603EFE23F5BEF20090E90E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5603F1523F5C3E10090E90E /* ListingsVC.swift */,
+				A5603F1723F5C3F20090E90E /* SavedVC.swift */,
+				A5603F1923F5C4070090E90E /* ProfileVC.swift */,
+				A5603F1B23F5C41E0090E90E /* EditProfileVC.swift */,
+				A5603F1D23F5C4370090E90E /* PanoVC.swift */,
+				A5603F1F23F5C44E0090E90E /* CreateListingVC.swift */,
+				A5603F2123F5C4750090E90E /* TourEditorVC.swift */,
+				A5603F2323F5C4BF0090E90E /* TabBarController.swift */,
+				A5603F2523F5C4E20090E90E /* SignUpVC.swift */,
+				A5603F2723F5C4F50090E90E /* LogInVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A5603EFF23F5BF1F0090E90E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A5603F0923F5C1E60090E90E /* ListingCVView.swift */,
+				A5603F0B23F5C2070090E90E /* SlideCardView.swift */,
+				A5603F0D23F5C23D0090E90E /* CreateListingView.swift */,
+				A5603F0F23F5C25D0090E90E /* EditorView.swift */,
+				A5603F1123F5C2810090E90E /* PanoView.swift */,
+				A5603F1323F5C3270090E90E /* ListingCVCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A5603F0023F5BF2A0090E90E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A5603F2F23F5C5F30090E90E /* Enums.swift */,
+				A5603F3123F5C6070090E90E /* CellIdentifiers.swift */,
+				A5603F3323F5C6190090E90E /* Extensions.swift */,
+				A5603F3523F5C6290090E90E /* Validations.swift */,
+				A5603F3723F5C64C0090E90E /* UIStyleGuide.swift */,
+				A5603F3923F5C65C0090E90E /* Toast.swift */,
+				A5603F3B23F5C6690090E90E /* AppError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A5603F0123F5BF350090E90E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				A5603F2923F5C56C0090E90E /* FBAuthService.swift */,
+				A5603F2B23F5C5850090E90E /* FBService.swift */,
+				A5603F2D23F5C5990090E90E /* FBStorageService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		A5603F0223F5BF940090E90E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5603ED323F5BCAF0090E90E /* TruViewApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5603EF623F5BCB30090E90E /* Build configuration list for PBXNativeTarget "TruViewApp" */;
+			buildPhases = (
+				A5603ED023F5BCAF0090E90E /* Sources */,
+				A5603ED123F5BCAF0090E90E /* Frameworks */,
+				A5603ED223F5BCAF0090E90E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TruViewApp;
+			productName = TruViewApp;
+			productReference = A5603ED423F5BCAF0090E90E /* TruViewApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5603EEC23F5BCB30090E90E /* TruViewAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5603EF923F5BCB30090E90E /* Build configuration list for PBXNativeTarget "TruViewAppTests" */;
+			buildPhases = (
+				A5603EE923F5BCB30090E90E /* Sources */,
+				A5603EEA23F5BCB30090E90E /* Frameworks */,
+				A5603EEB23F5BCB30090E90E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5603EEF23F5BCB30090E90E /* PBXTargetDependency */,
+			);
+			name = TruViewAppTests;
+			productName = TruViewAppTests;
+			productReference = A5603EED23F5BCB30090E90E /* TruViewAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5603ECC23F5BCAF0090E90E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Liana Norman";
+				TargetAttributes = {
+					A5603ED323F5BCAF0090E90E = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					A5603EEC23F5BCB30090E90E = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = A5603ED323F5BCAF0090E90E;
+					};
+				};
+			};
+			buildConfigurationList = A5603ECF23F5BCAF0090E90E /* Build configuration list for PBXProject "TruViewApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5603ECB23F5BCAF0090E90E;
+			productRefGroup = A5603ED523F5BCAF0090E90E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5603ED323F5BCAF0090E90E /* TruViewApp */,
+				A5603EEC23F5BCB30090E90E /* TruViewAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5603ED223F5BCAF0090E90E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5603EE723F5BCB30090E90E /* LaunchScreen.storyboard in Resources */,
+				A5603EE423F5BCB30090E90E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5603EEB23F5BCB30090E90E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5603ED023F5BCAF0090E90E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5603F1A23F5C4070090E90E /* ProfileVC.swift in Sources */,
+				A5603F0823F5C08D0090E90E /* Graph.swift in Sources */,
+				A5603F0A23F5C1E60090E90E /* ListingCVView.swift in Sources */,
+				A5603F2223F5C4750090E90E /* TourEditorVC.swift in Sources */,
+				A5603F0E23F5C23D0090E90E /* CreateListingView.swift in Sources */,
+				A5603F0423F5C06D0090E90E /* AppUser.swift in Sources */,
+				A5603F3823F5C64C0090E90E /* UIStyleGuide.swift in Sources */,
+				A5603F1823F5C3F20090E90E /* SavedVC.swift in Sources */,
+				A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */,
+				A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */,
+				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
+				A5603F3A23F5C65C0090E90E /* Toast.swift in Sources */,
+				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
+				A5603F2C23F5C5850090E90E /* FBService.swift in Sources */,
+				A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */,
+				A5603F2023F5C44E0090E90E /* CreateListingVC.swift in Sources */,
+				A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */,
+				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
+				A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */,
+				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
+				A5603F3C23F5C6690090E90E /* AppError.swift in Sources */,
+				A5603F0623F5C07E0090E90E /* Room.swift in Sources */,
+				A5603F1223F5C2810090E90E /* PanoView.swift in Sources */,
+				A5603F3023F5C5F30090E90E /* Enums.swift in Sources */,
+				A5603F3223F5C6070090E90E /* CellIdentifiers.swift in Sources */,
+				A5603F2A23F5C56C0090E90E /* FBAuthService.swift in Sources */,
+				A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */,
+				A5603F1C23F5C41E0090E90E /* EditProfileVC.swift in Sources */,
+				A5603F2E23F5C5990090E90E /* FBStorageService.swift in Sources */,
+				A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */,
+				A5603F3623F5C6290090E90E /* Validations.swift in Sources */,
+				A5603F3423F5C6190090E90E /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5603EE923F5BCB30090E90E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5603EF223F5BCB30090E90E /* TruViewAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5603EEF23F5BCB30090E90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5603ED323F5BCAF0090E90E /* TruViewApp */;
+			targetProxy = A5603EEE23F5BCB30090E90E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5603EE523F5BCB30090E90E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5603EE623F5BCB30090E90E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5603EF423F5BCB30090E90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A5603EF523F5BCB30090E90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5603EF723F5BCB30090E90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QS5639B4T5;
+				INFOPLIST_FILE = TruViewApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Pursuit-Projects.TruViewApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5603EF823F5BCB30090E90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QS5639B4T5;
+				INFOPLIST_FILE = TruViewApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Pursuit-Projects.TruViewApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A5603EFA23F5BCB30090E90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TruViewAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Pursuit-Projects.TruViewAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TruViewApp.app/TruViewApp";
+			};
+			name = Debug;
+		};
+		A5603EFB23F5BCB30090E90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TruViewAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Pursuit-Projects.TruViewAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TruViewApp.app/TruViewApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5603ECF23F5BCAF0090E90E /* Build configuration list for PBXProject "TruViewApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5603EF423F5BCB30090E90E /* Debug */,
+				A5603EF523F5BCB30090E90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5603EF623F5BCB30090E90E /* Build configuration list for PBXNativeTarget "TruViewApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5603EF723F5BCB30090E90E /* Debug */,
+				A5603EF823F5BCB30090E90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5603EF923F5BCB30090E90E /* Build configuration list for PBXNativeTarget "TruViewAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5603EFA23F5BCB30090E90E /* Debug */,
+				A5603EFB23F5BCB30090E90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5603EE123F5BCAF0090E90E /* TruViewApp.xcdatamodel */,
+			);
+			currentVersion = A5603EE123F5BCAF0090E90E /* TruViewApp.xcdatamodel */;
+			path = TruViewApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A5603ECC23F5BCAF0090E90E /* Project object */;
+}
