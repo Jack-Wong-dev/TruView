@@ -42,7 +42,8 @@
       
       lazy var userImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .green
+        image.image = UIImage(named: "bioPic")
+//        image.backgroundColor = .green
         image.layer.cornerRadius = 75
         image.layer.masksToBounds = true
         return image
@@ -65,6 +66,7 @@
       lazy var nameTextField: UITextField = {
         let tf = UITextField()
         Utilities.styleTextField(tf)
+        tf.text = "   Rene Rodriguez"
         tf.delegate = self
         return tf
       }()
@@ -78,6 +80,7 @@
       lazy var emailTextField: UITextField = {
         let tf = UITextField()
         Utilities.styleTextField(tf)
+        tf.text = "   rrodriguez@cabotresidential.com"
         tf.delegate = self
         return tf
       }()
@@ -91,6 +94,8 @@
       lazy var phoneTextField: UITextField = {
         let tf = UITextField()
         Utilities.styleTextField(tf)
+        tf.text = "   (212) 369-8900"
+
         tf.delegate = self
         return tf
       }()
@@ -104,6 +109,7 @@
       lazy var agencyTextField: UITextField = {
         let tf = UITextField()
         Utilities.styleTextField(tf)
+        tf.text = "   Cabot Residential"
         tf.delegate = self
         return tf
       }()
@@ -117,6 +123,7 @@
       lazy var realtorLicenseTextField: UITextField = {
         let tf = UITextField()
         Utilities.styleTextField(tf)
+        tf.text = "   NYS-334258ACH"
         tf.delegate = self
         return tf
       }()
@@ -129,7 +136,7 @@
       
       lazy var bioTextView: UITextView = {
         let tv = UITextView()
-        tv.text = ""
+        tv.text = "Rene Rodriguez is one of New York's most trusted and top-selling brokers, counting among his clients numerous distinguished business and community leaders. A member of the Cabot Residential team since 1996, Rene works with individuals, investors, and developers interested in the city’s most coveted properties—with a particular focus on the Back Bay, Beacon Hill, and South End neighborhoods"
         tv.backgroundColor = .clear
         tv.isUserInteractionEnabled = false
         return tv
@@ -410,7 +417,7 @@
           bioTextView.topAnchor.constraint(equalTo: bioLabel.bottomAnchor),
           bioTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
           bioTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-          bioTextView.heightAnchor.constraint(equalToConstant: 25)
+          bioTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
       }
       
