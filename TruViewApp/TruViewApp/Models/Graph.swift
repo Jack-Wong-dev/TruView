@@ -107,6 +107,8 @@ class GraphData{
         
         let television = newGraph.addRoom(name: "tv", imageURL: "bioshock")
         
+        let outside = newGraph.addRoom(name: "outside", imageURL: "PursuitOutside")
+        
         //Creating Hotspots
         newGraph.addHotspot(source: flexSpace, destination: classroom2, coordinates: (-9.892502, -0.8068286, -1.216294))
         
@@ -116,6 +118,10 @@ class GraphData{
         newGraph.addHotspot(source: flexSpace, destination: television, coordinates: (-2.0663686, -0.24952725, -9.780738))
         
         newGraph.updatePosition(source: television, destination: flexSpace, newPosition: (4.5396996, 0.098314874,  -8.908977))
+        
+        newGraph.addHotspot(source: classroom2, destination: outside, coordinates: (2.5361452, -2.2858243, -9.398544))
+        
+        newGraph.updatePosition(source: outside, destination: classroom2, newPosition: (-8.680619, 4.911766, -0.72091013))
         
         newGraph.firstRoomID = "flexspace"
         
