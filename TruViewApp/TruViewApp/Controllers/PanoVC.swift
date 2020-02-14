@@ -30,7 +30,7 @@ class PanoVC: UIViewController, UIToolbarDelegate {
     }()
     
     lazy private var closeButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: nil)
+        let button = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissVC))
         return button
     }()
     
@@ -84,6 +84,9 @@ class PanoVC: UIViewController, UIToolbarDelegate {
 
 //MARK:- Panoramic Methods
 extension PanoVC{
+    @objc private func dismissVC() {
+        dismiss(animated: true, completion: nil)
+    }
     
     @objc private func motionTypeTapped(){
         if panoView.controlMethod == .touch{
