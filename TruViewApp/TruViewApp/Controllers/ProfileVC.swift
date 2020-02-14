@@ -24,7 +24,8 @@ class ProfileVC: UIViewController {
   
   lazy var userImage: UIImageView = {
     let image = UIImageView()
-    image.backgroundColor = .green
+    image.image = UIImage(named: "bioPic")
+//    image.backgroundColor = .green
     image.layer.cornerRadius = 75
     image.layer.masksToBounds = true
     return image
@@ -32,19 +33,21 @@ class ProfileVC: UIViewController {
   
   lazy var nameLabel: UILabel = {
     let label = UILabel()
-    label.text = "Jane Monopoly"
+    label.text = "Rene Rodriguez"
+    label.font = label.font.withSize(25)
     return label
   }()
   
   lazy var agencyLabel: UILabel = {
     let label = UILabel()
-    label.text = "Monopoly Realty"
+    label.text = "Cabot Residential"
     return label
   }()
   
   lazy var bioTextView: UITextView = {
     let tv = UITextView()
-    tv.text = "Realtor Bio: "
+    tv.text = "BIO: Rene Rodriguez is one of New York's most trusted and top-selling brokers, counting among his clients numerous distinguished business and community leaders. A member of the Cabot Residential team since 1996, Rene works with individuals, investors, and developers interested in the city’s most coveted properties—with a particular focus on the Back Bay, Beacon Hill, and South End neighborhoods"
+    tv.font = tv.font!.withSize(15)
     tv.backgroundColor = .clear
     tv.isUserInteractionEnabled = false
     return tv
@@ -52,13 +55,13 @@ class ProfileVC: UIViewController {
   
   lazy var memberSinceLabel: UILabel = {
      let label = UILabel()
-    label.text = "Member Since: Jan 2020"
+    label.text = "TruView Member Since:  Jan 2020"
      return label
    }()
   
   lazy var realtorLicenseLabel: UILabel = {
      let label = UILabel()
-    label.text = "Realtor License: ABC123"
+    label.text = "Realtor License:  NYS-334258ACH"
      return label
    }()
   
@@ -78,7 +81,7 @@ class ProfileVC: UIViewController {
     layout.minimumLineSpacing = 5
     cv.dataSource = self
     cv.delegate = self
-    cv.register(ListingCVCell.self, forCellWithReuseIdentifier: "listingCell")
+    cv.register(ListingCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue)
     return cv
   }()
   
@@ -208,7 +211,7 @@ class ProfileVC: UIViewController {
        NSLayoutConstraint.activate([
          realtorLicenseLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
          realtorLicenseLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-         realtorLicenseLabel.bottomAnchor.constraint(equalTo: viewAllListingsButton.topAnchor, constant: -20),
+         realtorLicenseLabel.bottomAnchor.constraint(equalTo: viewAllListingsButton.topAnchor, constant: -40),
         realtorLicenseLabel.heightAnchor.constraint(equalToConstant: 25)
        ])
      }
@@ -219,7 +222,7 @@ class ProfileVC: UIViewController {
              NSLayoutConstraint.activate([
                viewAllListingsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
                viewAllListingsButton.widthAnchor.constraint(equalToConstant: 150),
-               viewAllListingsButton.bottomAnchor.constraint(equalTo: listingsCollectionView.topAnchor),
+               viewAllListingsButton.bottomAnchor.constraint(equalTo: listingsCollectionView.topAnchor, constant: 50),
               viewAllListingsButton.heightAnchor.constraint(equalToConstant: 25)
              ])
            }
@@ -230,7 +233,7 @@ class ProfileVC: UIViewController {
           NSLayoutConstraint.activate([
             listingsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             listingsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            listingsCollectionView.heightAnchor.constraint(equalToConstant: 200),
+            listingsCollectionView.heightAnchor.constraint(equalToConstant: 350),
             listingsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
           ])
         }
@@ -241,12 +244,15 @@ class ProfileVC: UIViewController {
 
 extension ProfileVC: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return 15
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listingCell", for: indexPath) as! ListingCVCell
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
+    cell.aptThumbnail.image = UIImage(systemName: "bed.double")
         return cell
+    }
+    return UICollectionViewCell()
   }
 }
 
