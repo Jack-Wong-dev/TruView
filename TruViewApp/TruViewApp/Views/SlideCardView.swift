@@ -98,7 +98,7 @@ class SlideCardView: UIView {
     private func constrainAptThumbnailImage() {
         aptThumbnail.translatesAutoresizingMaskIntoConstraints = false
         
-        [aptThumbnail.topAnchor.constraint(equalTo: upArrowIndicator.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7)].forEach({$0.isActive = true})
+        [aptThumbnail.topAnchor.constraint(equalTo: upArrowIndicator.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
     }
     
     private func constrainBedAndBathlabel() {
