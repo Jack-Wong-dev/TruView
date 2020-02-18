@@ -48,6 +48,7 @@ class SlideCardView: UIView {
         let txtView = UITextView()
         txtView.text = "This home is conveniently located near the L Line and is surrounded by plenty of great eateries. Note that offer is available for a limited time for qualified applicants. Please inquire for additional details. Includes The residence features furnished common areas, kitchen essentials, and a private terrace. It also includes a washer/dryer, high-speed Wi-Fi, monthly professional cleaning services, and AC. About the Neighborhood Located in the center of Williamsburg, this home is only a 7-minute walk to the L line and a 10-minute walk to the J, M, Z and G lines."
         txtView.font = UIFont(name: "Arial", size: 16)
+        txtView.backgroundColor = .gray
         return txtView
     }()
     
