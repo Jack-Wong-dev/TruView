@@ -121,7 +121,7 @@ class SlideCardView: UIView {
     private func constrainAptTextView() {
         aptDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        [aptDescriptionTextView.topAnchor.constraint(equalTo: centerYAnchor), aptDescriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), aptDescriptionTextView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85), aptDescriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach({$0.isActive = true})
+        [aptDescriptionTextView.topAnchor.constraint(equalTo: sqFootageLabel.bottomAnchor), aptDescriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), aptDescriptionTextView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85), aptDescriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach({$0.isActive = true})
     }
 
 }
