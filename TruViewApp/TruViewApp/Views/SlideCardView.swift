@@ -98,13 +98,13 @@ class SlideCardView: UIView {
     private func constrainAptThumbnailImage() {
         aptThumbnail.translatesAutoresizingMaskIntoConstraints = false
         
-        [aptThumbnail.topAnchor.constraint(equalTo: upArrowIndicator.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
+        [aptThumbnail.topAnchor.constraint(equalTo: upArrowIndicator.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
     }
     
     private func constrainBedAndBathlabel() {
         bedAndBathLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [bedAndBathLabel.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), bedAndBathLabel.leadingAnchor.constraint(equalTo: leadingAnchor), bedAndBathLabel.trailingAnchor.constraint(equalTo: centerXAnchor), bedAndBathLabel.heightAnchor.constraint(equalTo: aptThumbnail.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
+        [bedAndBathLabel.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), bedAndBathLabel.leadingAnchor.constraint(equalTo: leadingAnchor), bedAndBathLabel.trailingAnchor.constraint(equalTo: centerXAnchor), bedAndBathLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.03)].forEach({$0.isActive = true})
     }
     
     private func constrainSqFootagelabel() {
@@ -122,7 +122,7 @@ class SlideCardView: UIView {
     private func constrainAptTextView() {
         aptDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        [aptDescriptionTextView.topAnchor.constraint(equalTo: sqFootageLabel.bottomAnchor), aptDescriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), aptDescriptionTextView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85), aptDescriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach({$0.isActive = true})
+        [aptDescriptionTextView.topAnchor.constraint(equalTo: centerYAnchor), aptDescriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), aptDescriptionTextView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85), aptDescriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach({$0.isActive = true})
     }
 
 }
