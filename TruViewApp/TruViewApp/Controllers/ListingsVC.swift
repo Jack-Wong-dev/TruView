@@ -49,7 +49,7 @@ class ListingsVC: UIViewController {
     }()
     
     // MARK: - Properties
-    let slideCardHeight: CGFloat = 900
+    lazy var slideCardHeight: CGFloat = view.frame.height
     var slideCardState: SlideCardState = .collapsed
     
     var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
@@ -230,13 +230,13 @@ class ListingsVC: UIViewController {
     
     // MARK: - Constraint Methods to change Slide Card View
     private func createSlideCardViewConstraints() {
-        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight + 400)
+        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight / 2)
         halfOpenSlideCardViewTopConstraint?.isActive = false
 
-        collapsedSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -125)
+        collapsedSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -slideCardHeight / 30)
         collapsedSlideCardViewTopConstraint?.isActive = true
 
-        fullScreenSlideCardTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30)
+        fullScreenSlideCardTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         fullScreenSlideCardTopConstraint?.isActive = false
     }
     
