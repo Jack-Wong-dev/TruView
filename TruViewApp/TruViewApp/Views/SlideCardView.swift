@@ -48,6 +48,7 @@ class SlideCardView: UIView {
         let txtView = UITextView()
         txtView.text = "This home is conveniently located near the L Line and is surrounded by plenty of great eateries. Note that offer is available for a limited time for qualified applicants. Please inquire for additional details. Includes The residence features furnished common areas, kitchen essentials, and a private terrace. It also includes a washer/dryer, high-speed Wi-Fi, monthly professional cleaning services, and AC. About the Neighborhood Located in the center of Williamsburg, this home is only a 7-minute walk to the L line and a 10-minute walk to the J, M, Z and G lines."
         txtView.font = UIFont(name: "Arial", size: 16)
+        txtView.backgroundColor = .gray
         return txtView
     }()
     
@@ -97,13 +98,13 @@ class SlideCardView: UIView {
     private func constrainAptThumbnailImage() {
         aptThumbnail.translatesAutoresizingMaskIntoConstraints = false
         
-        [aptThumbnail.topAnchor.constraint(equalTo: upArrowIndicator.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7)].forEach({$0.isActive = true})
+        [aptThumbnail.topAnchor.constraint(equalTo: upArrowIndicator.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
     }
     
     private func constrainBedAndBathlabel() {
         bedAndBathLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [bedAndBathLabel.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), bedAndBathLabel.leadingAnchor.constraint(equalTo: leadingAnchor), bedAndBathLabel.trailingAnchor.constraint(equalTo: centerXAnchor), bedAndBathLabel.heightAnchor.constraint(equalTo: aptThumbnail.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
+        [bedAndBathLabel.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), bedAndBathLabel.leadingAnchor.constraint(equalTo: leadingAnchor), bedAndBathLabel.trailingAnchor.constraint(equalTo: centerXAnchor), bedAndBathLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.03)].forEach({$0.isActive = true})
     }
     
     private func constrainSqFootagelabel() {
