@@ -18,6 +18,20 @@ class CreateListingView: UIView {
         return sc
     }()
     
+    lazy var numOfBedroomsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Number of Bedrooms"
+        label.textColor = .gray
+        return label
+    }()
+    
+    lazy var numOfBedroomsSegController: UISegmentedControl = {
+        let items = ["Studio", "1+", "2+", "3+", "4+", "5+"]
+        let sc = UISegmentedControl(items: items)
+        sc.selectedSegmentIndex = 0
+        return sc
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,10 +47,14 @@ class CreateListingView: UIView {
     // MARK: - Private Methods
     private func addSubViews() {
         addSubview(purchaseTypeSegController)
+        addSubview(numOfBedroomsLabel)
+        addSubview(numOfBedroomsSegController)
     }
     
     private func addConstraints() {
         constrainPurchaseTypeSegControl()
+        constrainNumOfBedroomsLabel()
+        constrainNumOfBedSegControl()
     }
     
     private func setUpViewUI() {
@@ -48,6 +66,18 @@ class CreateListingView: UIView {
         purchaseTypeSegController.translatesAutoresizingMaskIntoConstraints = false
         
         [purchaseTypeSegController.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), purchaseTypeSegController.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainNumOfBedroomsLabel() {
+        numOfBedroomsLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [numOfBedroomsLabel.topAnchor.constraint(equalTo: purchaseTypeSegController.bottomAnchor), numOfBedroomsLabel.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBedroomsLabel.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBedroomsLabel.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainNumOfBedSegControl() {
+        numOfBedroomsSegController.translatesAutoresizingMaskIntoConstraints = false
+        
+        [numOfBedroomsSegController.topAnchor.constraint(equalTo: numOfBedroomsLabel.bottomAnchor), numOfBedroomsSegController.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBedroomsSegController.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBedroomsSegController.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
     }
     
 }
