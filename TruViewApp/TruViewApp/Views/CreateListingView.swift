@@ -10,12 +10,21 @@ import UIKit
 
 class CreateListingView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    // MARK: - UI objects
+    lazy var purchaseTypeSegController: UISegmentedControl = {
+        let items = ["For Sale", "For Rent", "Room Shares"]
+        let sc = UISegmentedControl(items: items)
+        sc.selectedSegmentIndex = 0
+        return sc
+    }()
+    
+    // MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
