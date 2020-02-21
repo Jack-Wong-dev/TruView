@@ -46,6 +46,14 @@ class CreateListingView: UIView {
         return sc
     }()
     
+    lazy var sqFootageTextField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = .gray
+        tf.attributedPlaceholder = NSAttributedString(string: "Enter Square Footage",
+                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        return tf
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,6 +73,7 @@ class CreateListingView: UIView {
         addSubview(numOfBedroomsSegController)
         addSubview(numOfBathsLabel)
         addSubview(numOfBathsSegController)
+        addSubview(sqFootageTextField)
     }
     
     private func addConstraints() {
@@ -73,6 +82,7 @@ class CreateListingView: UIView {
         constrainNumOfBedSegControl()
         constrainNumOfBathsLabel()
         constrainNumOfBathsSegControl()
+        constrainSqFootageTextField()
     }
     
     private func setUpViewUI() {
@@ -108,6 +118,12 @@ class CreateListingView: UIView {
         numOfBathsSegController.translatesAutoresizingMaskIntoConstraints = false
         
         [numOfBathsSegController.topAnchor.constraint(equalTo: numOfBathsLabel.bottomAnchor), numOfBathsSegController.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBathsSegController.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsSegController.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainSqFootageTextField() {
+        sqFootageTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        [sqFootageTextField.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor), sqFootageTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
     }
     
 }
