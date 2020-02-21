@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CDCF9DA2400715900CFE44B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9D92400715900CFE44B /* ProfileView.swift */; };
 		A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED723F5BCAF0090E90E /* AppDelegate.swift */; };
 		A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */; };
 		A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CDCF9D92400715900CFE44B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A5603ED423F5BCAF0090E90E /* TruViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5603ED723F5BCAF0090E90E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				A5603F0F23F5C25D0090E90E /* EditorView.swift */,
 				A5603F1123F5C2810090E90E /* PanoView.swift */,
 				A5603F1323F5C3270090E90E /* ListingCVCell.swift */,
+				3CDCF9D92400715900CFE44B /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				A5603F2E23F5C5990090E90E /* FBStorageService.swift in Sources */,
 				A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */,
 				A5603F3623F5C6290090E90E /* Validations.swift in Sources */,
+				3CDCF9DA2400715900CFE44B /* ProfileView.swift in Sources */,
 				A5603F3423F5C6190090E90E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
