@@ -54,6 +54,14 @@ class CreateListingView: UIView {
         return tf
     }()
     
+    lazy var priceTextField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = .gray
+        tf.attributedPlaceholder = NSAttributedString(string: "Enter Price",
+                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        return tf
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,6 +82,7 @@ class CreateListingView: UIView {
         addSubview(numOfBathsLabel)
         addSubview(numOfBathsSegController)
         addSubview(sqFootageTextField)
+        addSubview(priceTextField)
     }
     
     private func addConstraints() {
@@ -83,6 +92,7 @@ class CreateListingView: UIView {
         constrainNumOfBathsLabel()
         constrainNumOfBathsSegControl()
         constrainSqFootageTextField()
+        constrainPriceTextField()
     }
     
     private func setUpViewUI() {
@@ -124,6 +134,12 @@ class CreateListingView: UIView {
         sqFootageTextField.translatesAutoresizingMaskIntoConstraints = false
         
         [sqFootageTextField.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor), sqFootageTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainPriceTextField() {
+        priceTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        [priceTextField.topAnchor.constraint(equalTo: sqFootageTextField.bottomAnchor), priceTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
     }
     
 }
