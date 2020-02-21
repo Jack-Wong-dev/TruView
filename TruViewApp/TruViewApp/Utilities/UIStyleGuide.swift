@@ -4,13 +4,28 @@ import Foundation
 import UIKit
 
 class Utilities {
+  
+  
+  static func styleBarButton(button: UIButton, title: String) {
+      button.setTitle(title, for: .normal)
+      button.titleLabel!.font = UIFont(name: "San Francisco", size: 20)
+      button.setTitleColor(.systemBlue, for: .normal)
+  }
+  
+  
+  static func roundImageView(image:UIImageView) {
+    // call in viewDidLayoutSubviews
+      image.layer.masksToBounds = false
+      image.layer.cornerRadius = image.frame.height/2
+      image.clipsToBounds = true
+  }
     
     static func styleTextField(_ textfield:UITextField) {
         
         // Create the bottom line
         let bottomLine = CALayer()
         
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
+        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 1)
         
         //        bottomLine.frame = CGRect(x: 0, y: 50 - 2, width: 300, height: 2)
         
