@@ -150,7 +150,7 @@ class CreateListingView: UIView {
     private func constrainSqFootageTextField() {
         sqFootageTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        [sqFootageTextField.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor), sqFootageTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+        [sqFootageTextField.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor, constant: frame.height * 0.05), sqFootageTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainPriceTextField() {
