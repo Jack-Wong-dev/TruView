@@ -62,6 +62,11 @@ class CreateListingView: UIView {
         return tf
     }()
     
+    let collectionView: ListingCVView = {
+        let cv = ListingCVView()
+        return cv
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,6 +88,8 @@ class CreateListingView: UIView {
         addSubview(numOfBathsSegController)
         addSubview(sqFootageTextField)
         addSubview(priceTextField)
+        addSubview(collectionView)
+        
     }
     
     private func addConstraints() {
@@ -93,6 +100,7 @@ class CreateListingView: UIView {
         constrainNumOfBathsSegControl()
         constrainSqFootageTextField()
         constrainPriceTextField()
+        constrainCollectionView()
     }
     
     private func setUpViewUI() {
@@ -140,6 +148,12 @@ class CreateListingView: UIView {
         priceTextField.translatesAutoresizingMaskIntoConstraints = false
         
         [priceTextField.topAnchor.constraint(equalTo: sqFootageTextField.bottomAnchor), priceTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainCollectionView() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [collectionView.topAnchor.constraint(equalTo: priceTextField.bottomAnchor), collectionView.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), collectionView.centerXAnchor.constraint(equalTo: centerXAnchor), collectionView.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 3)].forEach({$0.isActive = true})
     }
     
 }
