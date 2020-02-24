@@ -67,6 +67,13 @@ class CreateListingView: UIView {
         return cv
     }()
     
+    let createTourButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Create Tour", for: .normal)
+        button.backgroundColor = .orange
+        return button
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,6 +96,7 @@ class CreateListingView: UIView {
         addSubview(sqFootageTextField)
         addSubview(priceTextField)
         addSubview(collectionView)
+        addSubview(createTourButton)
         
     }
     
@@ -101,6 +109,7 @@ class CreateListingView: UIView {
         constrainSqFootageTextField()
         constrainPriceTextField()
         constrainCollectionView()
+        constrainCreateTourButton()
     }
     
     private func setUpViewUI() {
@@ -154,6 +163,12 @@ class CreateListingView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         [collectionView.topAnchor.constraint(equalTo: priceTextField.bottomAnchor), collectionView.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), collectionView.centerXAnchor.constraint(equalTo: centerXAnchor), collectionView.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 3)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainCreateTourButton() {
+        createTourButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [createTourButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor), createTourButton.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 1.75)].forEach({$0.isActive = true})
     }
     
 }
