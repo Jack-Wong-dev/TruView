@@ -36,7 +36,7 @@ class CreateListingVC: UIViewController {
     }
     
     private func addConstraints() {
-        constrainCreateListingView()
+        
     }
     
     private func setUpVCViews() {
@@ -78,12 +78,8 @@ class CreateListingVC: UIViewController {
         }
     }
     
-    // MARK: - Constraint Methods
-    private func constrainCreateListingView() {
-        createListingView.translatesAutoresizingMaskIntoConstraints = false
-        
-        [createListingView.topAnchor.constraint(equalTo: view.topAnchor), createListingView.leadingAnchor.constraint(equalTo: view.leadingAnchor), createListingView.trailingAnchor.constraint(equalTo: view.trailingAnchor), createListingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].forEach({$0.isActive = true})
-    }
+//     MARK: - Constraint Methods
+   
     
     
     
