@@ -24,7 +24,6 @@ class CreateListingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
-        addConstraints()
         setUpVCViews()
         delegation()
         checkPhotoLibraryAccess()
@@ -33,10 +32,6 @@ class CreateListingVC: UIViewController {
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(createListingView)
-    }
-    
-    private func addConstraints() {
-        
     }
     
     private func setUpVCViews() {
@@ -77,13 +72,6 @@ class CreateListingVC: UIViewController {
             print("nothing should happen here")
         }
     }
-    
-//     MARK: - Constraint Methods
-   
-    
-    
-    
-
     
 }
 
