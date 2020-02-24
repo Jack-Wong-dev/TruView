@@ -26,6 +26,7 @@ class CreateListingVC: UIViewController {
         addSubViews()
         addConstraints()
         setUpVCViews()
+        delegation()
         checkPhotoLibraryAccess()
     }
     
@@ -40,6 +41,11 @@ class CreateListingVC: UIViewController {
     
     private func setUpVCViews() {
         view.backgroundColor = .white
+    }
+    
+    private func delegation() {
+        createListingView.collectionView.collectionView.dataSource = self
+        createListingView.collectionView.collectionView.delegate = self
     }
     
     private func checkPhotoLibraryAccess() {
@@ -60,7 +66,7 @@ class CreateListingVC: UIViewController {
                 case .denied:
                     self?.photoLibraryAccessIsAuthorized = false
                 @unknown default:
-                    fatalError()
+                    fatalError("This is outside of any authorization case.")
                 }
             }
         case .restricted:
@@ -83,4 +89,28 @@ class CreateListingVC: UIViewController {
     
 
     
+}
+
+extension CreateListingVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
+            cell.aptThumbnail.image = UIImage(systemName: "bed.double")
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    
+}
+
+extension CreateListingVC: UICollectionViewDelegate {}
+
+extension CreateListingVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width / 7, height: view.frame.height / 10)
+    }
 }
