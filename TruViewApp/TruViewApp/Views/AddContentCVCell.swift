@@ -21,6 +21,7 @@ class AddContentCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubViews()
+        addConstraints()
     }
     
     required init?(coder: NSCoder) {
