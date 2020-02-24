@@ -168,7 +168,7 @@ class CreateListingView: UIView {
     private func constrainCreateTourButton() {
         createTourButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [createTourButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor), createTourButton.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 1.75)].forEach({$0.isActive = true})
+        [createTourButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 1.75)].forEach({$0.isActive = true})
     }
     
 }
