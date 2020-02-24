@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class CreateListingVC: UIViewController {
     
@@ -15,6 +16,9 @@ class CreateListingVC: UIViewController {
         let view = CreateListingView()
         return view
     }()
+    
+    // MARK: - Properties
+    var photoLibraryAccessIsAuthorized = false
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -22,6 +26,7 @@ class CreateListingVC: UIViewController {
         addSubViews()
         addConstraints()
         setUpVCViews()
+        checkPhotoLibraryAccess()
     }
     
     // MARK: - Private Methods
@@ -35,6 +40,36 @@ class CreateListingVC: UIViewController {
     
     private func setUpVCViews() {
         view.backgroundColor = .white
+    }
+    
+    private func checkPhotoLibraryAccess() {
+        let status = PHPhotoLibrary.authorizationStatus()
+
+        switch status {
+        case .authorized:
+            print(status)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { [weak self] (status) in
+                switch status {
+                case .authorized:
+                    self?.photoLibraryAccessIsAuthorized = true
+                case .notDetermined:
+                    print("not determined")
+                case .restricted:
+                    print("restricted")
+                case .denied:
+                    self?.photoLibraryAccessIsAuthorized = false
+                @unknown default:
+                    fatalError()
+                }
+            }
+        case .restricted:
+            print("restricted")
+        case .denied:
+            photoLibraryAccessIsAuthorized = false
+        @unknown default:
+            print("nothing should happen here")
+        }
     }
     
     // MARK: - Constraint Methods
