@@ -88,9 +88,15 @@ extension CreateListingVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
-            cell.aptThumbnail.image = UIImage(systemName: "bed.double")
-            return cell
+        if indexPath.item == 0 {
+            if let firstCell = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.addContentCell.rawValue, for: indexPath) as? AddContentCVCell {
+                return firstCell
+            }
+        } else {
+           if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
+            subsequentCells.aptThumbnail.image = UIImage(systemName: "bed.double")
+            return subsequentCells
+            }
         }
         return UICollectionViewCell()
     }
