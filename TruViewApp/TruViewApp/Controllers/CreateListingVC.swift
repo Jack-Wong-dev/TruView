@@ -14,6 +14,7 @@ class CreateListingVC: UIViewController {
     // MARK: - UI Objects
     let createListingView: CreateListingView = {
         let view = CreateListingView()
+        view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -27,6 +28,12 @@ class CreateListingVC: UIViewController {
         setUpVCViews()
         delegation()
         checkPhotoLibraryAccess()
+    }
+    
+    // MARK: - Actions
+    @objc func createTourButtonPressed() {
+        let editorVC = TourEditorVC()
+        present(editorVC, animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
