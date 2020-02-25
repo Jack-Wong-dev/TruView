@@ -30,6 +30,10 @@ class CreateListingVC: UIViewController {
         checkPhotoLibraryAccess()
     }
     
+    override func viewDidLayoutSubviews() {
+        Utilities.styleTextField(createListingView.streetAddressTextField)
+    }
+    
     // MARK: - Actions
     @objc func createTourButtonPressed() {
         let editorVC = TourEditorVC()
