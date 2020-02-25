@@ -30,6 +30,15 @@ class CreateListingVC: UIViewController {
         checkPhotoLibraryAccess()
     }
     
+    override func viewDidLayoutSubviews() {
+        Utilities.styleTextField(createListingView.streetAddressTextField)
+        Utilities.styleTextField(createListingView.cityTextField)
+        Utilities.styleTextField(createListingView.stateTextField)
+        Utilities.styleTextField(createListingView.zipcodeTextField)
+        Utilities.styleTextField(createListingView.sqFootageTextField)
+        Utilities.styleTextField(createListingView.priceTextField)
+    }
+    
     // MARK: - Actions
     @objc func createTourButtonPressed() {
         let editorVC = TourEditorVC()
@@ -88,9 +97,15 @@ extension CreateListingVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
-            cell.aptThumbnail.image = UIImage(systemName: "bed.double")
-            return cell
+        if indexPath.item == 0 {
+            if let firstCell = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.addContentCell.rawValue, for: indexPath) as? AddContentCVCell {
+                return firstCell
+            }
+        } else {
+           if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
+            subsequentCells.aptThumbnail.image = UIImage(systemName: "bed.double")
+            return subsequentCells
+            }
         }
         return UICollectionViewCell()
     }
@@ -102,6 +117,6 @@ extension CreateListingVC: UICollectionViewDelegate {}
 
 extension CreateListingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 7, height: view.frame.height / 10)
+        return CGSize(width: view.frame.width / 7, height: view.frame.height / 14)
     }
 }

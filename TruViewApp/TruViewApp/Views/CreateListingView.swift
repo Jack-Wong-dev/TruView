@@ -11,6 +11,54 @@ import UIKit
 class CreateListingView: UIView {
 
     // MARK: - UI objects
+    lazy var streetAddressLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Street Address"
+        return label
+    }()
+    
+    lazy var streetAddressTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter street address"
+        return tf
+    }()
+    
+    lazy var cityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "City"
+        return label
+    }()
+    
+    lazy var cityTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter city"
+        return tf
+    }()
+    
+    lazy var stateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "State"
+        return label
+    }()
+    
+    lazy var stateTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter state"
+        return tf
+    }()
+    
+    lazy var zipcodeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Zipcode"
+        return label
+    }()
+    
+    lazy var zipcodeTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter zipcode"
+        return tf
+    }()
+    
     lazy var purchaseTypeSegController: UISegmentedControl = {
         let items = ["For Sale", "For Rent", "Room Shares"]
         let sc = UISegmentedControl(items: items)
@@ -26,7 +74,7 @@ class CreateListingView: UIView {
     }()
     
     lazy var numOfBedroomsSegController: UISegmentedControl = {
-        let items = ["Studio", "1+", "2+", "3+", "4+", "5+"]
+        let items = ["Studio", "1", "2", "3", "4", "5"]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
         return sc
@@ -34,31 +82,39 @@ class CreateListingView: UIView {
     
     lazy var numOfBathsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Number of Baths"
+        label.text = "Number of Bathrooms"
         label.textColor = .gray
         return label
     }()
     
     lazy var numOfBathsSegController: UISegmentedControl = {
-        let items = ["Any", "1+", "2+", "3+", "4+", "5+"]
+        let items = ["1", "2", "3", "4", "5"]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
         return sc
     }()
     
+    lazy var squareFootageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Square footage"
+        return label
+    }()
+    
     lazy var sqFootageTextField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .gray
-        tf.attributedPlaceholder = NSAttributedString(string: "Enter Square Footage",
-                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        tf.placeholder = "Enter square footage"
         return tf
+    }()
+    
+    lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Price"
+        return label
     }()
     
     lazy var priceTextField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .gray
-        tf.attributedPlaceholder = NSAttributedString(string: "Enter Price",
-                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        tf.placeholder = "Enter price"
         return tf
     }()
     
@@ -88,12 +144,22 @@ class CreateListingView: UIView {
     
     // MARK: - Private Methods
     private func addSubViews() {
+        addSubview(streetAddressLabel)
+        addSubview(streetAddressTextField)
+        addSubview(cityLabel)
+        addSubview(cityTextField)
+        addSubview(stateLabel)
+        addSubview(stateTextField)
+        addSubview(zipcodeLabel)
+        addSubview(zipcodeTextField)
         addSubview(purchaseTypeSegController)
         addSubview(numOfBedroomsLabel)
         addSubview(numOfBedroomsSegController)
         addSubview(numOfBathsLabel)
         addSubview(numOfBathsSegController)
+        addSubview(squareFootageLabel)
         addSubview(sqFootageTextField)
+        addSubview(priceLabel)
         addSubview(priceTextField)
         addSubview(collectionView)
         addSubview(createTourButton)
@@ -101,12 +167,22 @@ class CreateListingView: UIView {
     }
     
     private func addConstraints() {
+        constrainStreetAddressLabel()
+        constrainStreetAddressTextField()
+        constrainCityLabel()
+        constrainCityTextField()
+        constrainStateLabel()
+        constrainStateTextField()
+        constrainZipcodeLabel()
+        constrainZipcodeTextField()
         constrainPurchaseTypeSegControl()
         constrainNumOfBedroomsLabel()
         constrainNumOfBedSegControl()
         constrainNumOfBathsLabel()
         constrainNumOfBathsSegControl()
+        constrainSqFootageLabel()
         constrainSqFootageTextField()
+        constrainPriceLabel()
         constrainPriceTextField()
         constrainCollectionView()
         constrainCreateTourButton()
@@ -117,58 +193,118 @@ class CreateListingView: UIView {
     }
     
     // MARK: - Constraint Methods
+    private func constrainStreetAddressLabel() {
+        streetAddressLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [streetAddressLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.032)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainStreetAddressTextField() {
+        streetAddressTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        [streetAddressTextField.topAnchor.constraint(equalTo: streetAddressLabel.bottomAnchor), streetAddressTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), streetAddressTextField.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainCityLabel() {
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [cityLabel.topAnchor.constraint(equalTo: streetAddressTextField.bottomAnchor), cityLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), cityLabel.centerXAnchor.constraint(equalTo: centerXAnchor), cityLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainCityTextField() {
+        cityTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        [cityTextField.topAnchor.constraint(equalTo: cityLabel.bottomAnchor), cityTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), cityTextField.centerXAnchor.constraint(equalTo: centerXAnchor), cityTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainStateLabel() {
+        stateLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [stateLabel.topAnchor.constraint(equalTo: cityTextField.bottomAnchor), stateLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), stateLabel.centerXAnchor.constraint(equalTo: centerXAnchor), stateLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainStateTextField() {
+        stateTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        [stateTextField.topAnchor.constraint(equalTo: stateLabel.bottomAnchor), stateTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), stateTextField.centerXAnchor.constraint(equalTo: centerXAnchor), stateTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainZipcodeLabel() {
+        zipcodeLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [zipcodeLabel.topAnchor.constraint(equalTo: stateTextField.bottomAnchor), zipcodeLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), zipcodeLabel.centerXAnchor.constraint(equalTo: centerXAnchor), zipcodeLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainZipcodeTextField() {
+        zipcodeTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        [zipcodeTextField.topAnchor.constraint(equalTo: zipcodeLabel.bottomAnchor), zipcodeTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), zipcodeTextField.centerXAnchor.constraint(equalTo: centerXAnchor), zipcodeTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
     private func constrainPurchaseTypeSegControl() {
         purchaseTypeSegController.translatesAutoresizingMaskIntoConstraints = false
         
-        [purchaseTypeSegController.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05), purchaseTypeSegController.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04)].forEach({$0.isActive = true})
+        [purchaseTypeSegController.topAnchor.constraint(equalTo: zipcodeTextField.bottomAnchor, constant: frame.height * 0.01), purchaseTypeSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBedroomsLabel() {
         numOfBedroomsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [numOfBedroomsLabel.topAnchor.constraint(equalTo: purchaseTypeSegController.bottomAnchor), numOfBedroomsLabel.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBedroomsLabel.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBedroomsLabel.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 2)].forEach({$0.isActive = true})
+        [numOfBedroomsLabel.topAnchor.constraint(equalTo: purchaseTypeSegController.bottomAnchor), numOfBedroomsLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), numOfBedroomsLabel.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBedroomsLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.3)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBedSegControl() {
         numOfBedroomsSegController.translatesAutoresizingMaskIntoConstraints = false
         
-        [numOfBedroomsSegController.topAnchor.constraint(equalTo: numOfBedroomsLabel.bottomAnchor), numOfBedroomsSegController.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBedroomsSegController.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBedroomsSegController.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+        [numOfBedroomsSegController.topAnchor.constraint(equalTo: numOfBedroomsLabel.bottomAnchor), numOfBedroomsSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), numOfBedroomsSegController.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBedroomsSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBathsLabel() {
         numOfBathsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [numOfBathsLabel.topAnchor.constraint(equalTo: numOfBedroomsSegController.bottomAnchor), numOfBathsLabel.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBathsLabel.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsLabel.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 2)].forEach({$0.isActive = true})
+        [numOfBathsLabel.topAnchor.constraint(equalTo: numOfBedroomsSegController.bottomAnchor), numOfBathsLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), numOfBathsLabel.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.3)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBathsSegControl() {
         numOfBathsSegController.translatesAutoresizingMaskIntoConstraints = false
         
-        [numOfBathsSegController.topAnchor.constraint(equalTo: numOfBathsLabel.bottomAnchor), numOfBathsSegController.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBathsSegController.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsSegController.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+        [numOfBathsSegController.topAnchor.constraint(equalTo: numOfBathsLabel.bottomAnchor), numOfBathsSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), numOfBathsSegController.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainSqFootageLabel() {
+        squareFootageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [squareFootageLabel.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor, constant: frame.height * 0.01), squareFootageLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), squareFootageLabel.centerXAnchor.constraint(equalTo: centerXAnchor), squareFootageLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainSqFootageTextField() {
         sqFootageTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        [sqFootageTextField.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor, constant: frame.height * 0.05), sqFootageTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+        [sqFootageTextField.topAnchor.constraint(equalTo: squareFootageLabel.bottomAnchor), sqFootageTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainPriceLabel() {
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [priceLabel.topAnchor.constraint(equalTo: sqFootageTextField.bottomAnchor), priceLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), priceLabel.centerXAnchor.constraint(equalTo: centerXAnchor), priceLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainPriceTextField() {
         priceTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        [priceTextField.topAnchor.constraint(equalTo: sqFootageTextField.bottomAnchor, constant: frame.height * 0.05), priceTextField.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor)].forEach({$0.isActive = true})
+        [priceTextField.topAnchor.constraint(equalTo: priceLabel.bottomAnchor), priceTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        [collectionView.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), collectionView.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), collectionView.centerXAnchor.constraint(equalTo: centerXAnchor), collectionView.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 3)].forEach({$0.isActive = true})
+        [collectionView.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), collectionView.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), collectionView.centerXAnchor.constraint(equalTo: centerXAnchor), collectionView.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 2.5)].forEach({$0.isActive = true})
     }
     
     private func constrainCreateTourButton() {
         createTourButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [createTourButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 1.75)].forEach({$0.isActive = true})
+        [createTourButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
     }
     
 }
