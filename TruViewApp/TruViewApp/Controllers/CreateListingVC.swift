@@ -35,6 +35,8 @@ class CreateListingVC: UIViewController {
         Utilities.styleTextField(createListingView.cityTextField)
         Utilities.styleTextField(createListingView.stateTextField)
         Utilities.styleTextField(createListingView.zipcodeTextField)
+        Utilities.styleTextField(createListingView.sqFootageTextField)
+        Utilities.styleTextField(createListingView.priceTextField)
     }
     
     // MARK: - Actions
