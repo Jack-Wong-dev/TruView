@@ -102,8 +102,7 @@ extension CreateListingVC: UICollectionViewDataSource {
                 return firstCell
             }
         } else {
-           if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
-            subsequentCells.aptThumbnail.image = UIImage(systemName: "bed.double")
+           if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
             return subsequentCells
             }
         }
