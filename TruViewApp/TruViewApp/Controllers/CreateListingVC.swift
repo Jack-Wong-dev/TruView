@@ -109,6 +109,14 @@ extension CreateListingVC: UICollectionViewDataSource {
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            let imgPicker = UIImagePickerController()
+            imgPicker.delegate = self
+            imgPicker.sourceType = .photoLibrary
+            present(imgPicker, animated: true, completion: nil)
+        }
+    }
     
 }
 
@@ -118,4 +126,8 @@ extension CreateListingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width / 7, height: view.frame.height / 14)
     }
+}
+
+extension CreateListingVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 }
