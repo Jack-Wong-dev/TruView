@@ -33,6 +33,7 @@ class CreateListingVC: UIViewController {
     override func viewDidLayoutSubviews() {
         Utilities.styleTextField(createListingView.streetAddressTextField)
         Utilities.styleTextField(createListingView.cityTextField)
+        Utilities.styleTextField(createListingView.stateTextField)
     }
     
     // MARK: - Actions
