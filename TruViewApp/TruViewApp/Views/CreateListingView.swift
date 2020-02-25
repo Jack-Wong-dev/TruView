@@ -11,6 +11,12 @@ import UIKit
 class CreateListingView: UIView {
 
     // MARK: - UI objects
+    lazy var streetAddressLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Street Address"
+        return label
+    }()
+    
     lazy var streetAddressTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Enter street address"
@@ -94,6 +100,7 @@ class CreateListingView: UIView {
     
     // MARK: - Private Methods
     private func addSubViews() {
+        addSubview(streetAddressLabel)
         addSubview(streetAddressTextField)
         addSubview(purchaseTypeSegController)
         addSubview(numOfBedroomsLabel)
@@ -108,6 +115,7 @@ class CreateListingView: UIView {
     }
     
     private func addConstraints() {
+        constrainStreetAddressLabel()
         constrainStreetAddressTextField()
         constrainPurchaseTypeSegControl()
         constrainNumOfBedroomsLabel()
@@ -125,10 +133,16 @@ class CreateListingView: UIView {
     }
     
     // MARK: - Constraint Methods
+    private func constrainStreetAddressLabel() {
+        streetAddressLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [streetAddressLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04)].forEach({$0.isActive = true})
+    }
+    
     private func constrainStreetAddressTextField() {
         streetAddressTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        [streetAddressTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05), streetAddressTextField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressTextField.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04)].forEach({$0.isActive = true})
+        [streetAddressTextField.topAnchor.constraint(equalTo: streetAddressLabel.bottomAnchor), streetAddressTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), streetAddressTextField.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainPurchaseTypeSegControl() {
