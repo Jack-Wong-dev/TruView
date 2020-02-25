@@ -35,6 +35,18 @@ class CreateListingView: UIView {
         return tf
     }()
     
+    lazy var stateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "State"
+        return label
+    }()
+    
+    lazy var stateTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter state"
+        return tf
+    }()
+    
     lazy var purchaseTypeSegController: UISegmentedControl = {
         let items = ["For Sale", "For Rent", "Room Shares"]
         let sc = UISegmentedControl(items: items)
@@ -116,6 +128,8 @@ class CreateListingView: UIView {
         addSubview(streetAddressTextField)
         addSubview(cityLabel)
         addSubview(cityTextField)
+        addSubview(stateLabel)
+        addSubview(stateTextField)
         addSubview(purchaseTypeSegController)
         addSubview(numOfBedroomsLabel)
         addSubview(numOfBedroomsSegController)
@@ -133,6 +147,8 @@ class CreateListingView: UIView {
         constrainStreetAddressTextField()
         constrainCityLabel()
         constrainCityTextField()
+        constrainStateLabel()
+        constrainStateTextField()
         constrainPurchaseTypeSegControl()
         constrainNumOfBedroomsLabel()
         constrainNumOfBedSegControl()
@@ -173,10 +189,22 @@ class CreateListingView: UIView {
         [cityTextField.topAnchor.constraint(equalTo: cityLabel.bottomAnchor), cityTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), cityTextField.centerXAnchor.constraint(equalTo: centerXAnchor), cityTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
+    private func constrainStateLabel() {
+        stateLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [stateLabel.topAnchor.constraint(equalTo: cityTextField.bottomAnchor), stateLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), stateLabel.centerXAnchor.constraint(equalTo: centerXAnchor), stateLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainStateTextField() {
+        stateTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        [stateTextField.topAnchor.constraint(equalTo: stateLabel.bottomAnchor), stateTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), stateTextField.centerXAnchor.constraint(equalTo: centerXAnchor), stateTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
     private func constrainPurchaseTypeSegControl() {
         purchaseTypeSegController.translatesAutoresizingMaskIntoConstraints = false
         
-        [purchaseTypeSegController.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: frame.height * 0.02), purchaseTypeSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [purchaseTypeSegController.topAnchor.constraint(equalTo: stateTextField.bottomAnchor, constant: frame.height * 0.02), purchaseTypeSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBedroomsLabel() {
