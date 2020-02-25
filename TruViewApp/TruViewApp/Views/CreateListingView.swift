@@ -152,7 +152,7 @@ class CreateListingView: UIView {
     private func constrainNumOfBathsLabel() {
         numOfBathsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [numOfBathsLabel.topAnchor.constraint(equalTo: numOfBedroomsSegController.bottomAnchor), numOfBathsLabel.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBathsLabel.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsLabel.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 2)].forEach({$0.isActive = true})
+        [numOfBathsLabel.topAnchor.constraint(equalTo: numOfBedroomsSegController.bottomAnchor), numOfBathsLabel.widthAnchor.constraint(equalTo: purchaseTypeSegController.widthAnchor), numOfBathsLabel.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsLabel.heightAnchor.constraint(equalTo: purchaseTypeSegController.heightAnchor, multiplier: 1.3)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBathsSegControl() {
