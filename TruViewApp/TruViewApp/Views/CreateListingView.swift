@@ -94,10 +94,22 @@ class CreateListingView: UIView {
         return sc
     }()
     
+    lazy var squareFootageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Square footage"
+        return label
+    }()
+    
     lazy var sqFootageTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Enter square footage"
         return tf
+    }()
+    
+    lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Price"
+        return label
     }()
     
     lazy var priceTextField: UITextField = {
@@ -145,7 +157,9 @@ class CreateListingView: UIView {
         addSubview(numOfBedroomsSegController)
         addSubview(numOfBathsLabel)
         addSubview(numOfBathsSegController)
+        addSubview(squareFootageLabel)
         addSubview(sqFootageTextField)
+        addSubview(priceLabel)
         addSubview(priceTextField)
         addSubview(collectionView)
         addSubview(createTourButton)
@@ -166,7 +180,9 @@ class CreateListingView: UIView {
         constrainNumOfBedSegControl()
         constrainNumOfBathsLabel()
         constrainNumOfBathsSegControl()
+        constrainSqFootageLabel()
         constrainSqFootageTextField()
+        constrainPriceLabel()
         constrainPriceTextField()
         constrainCollectionView()
         constrainCreateTourButton()
@@ -255,16 +271,28 @@ class CreateListingView: UIView {
         [numOfBathsSegController.topAnchor.constraint(equalTo: numOfBathsLabel.bottomAnchor), numOfBathsSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), numOfBathsSegController.centerXAnchor.constraint(equalTo: centerXAnchor), numOfBathsSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
+    private func constrainSqFootageLabel() {
+        squareFootageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [squareFootageLabel.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor, constant: frame.height * 0.01), squareFootageLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), squareFootageLabel.centerXAnchor.constraint(equalTo: centerXAnchor), squareFootageLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
     private func constrainSqFootageTextField() {
         sqFootageTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        [sqFootageTextField.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor, constant: frame.height * 0.05), sqFootageTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [sqFootageTextField.topAnchor.constraint(equalTo: squareFootageLabel.bottomAnchor), sqFootageTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), sqFootageTextField.centerXAnchor.constraint(equalTo: centerXAnchor), sqFootageTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainPriceLabel() {
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [priceLabel.topAnchor.constraint(equalTo: sqFootageTextField.bottomAnchor), priceLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), priceLabel.centerXAnchor.constraint(equalTo: centerXAnchor), priceLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainPriceTextField() {
         priceTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        [priceTextField.topAnchor.constraint(equalTo: sqFootageTextField.bottomAnchor, constant: frame.height * 0.05), priceTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [priceTextField.topAnchor.constraint(equalTo: priceLabel.bottomAnchor), priceTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainCollectionView() {
