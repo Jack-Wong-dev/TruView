@@ -96,17 +96,13 @@ class CreateListingView: UIView {
     
     lazy var sqFootageTextField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .gray
-        tf.attributedPlaceholder = NSAttributedString(string: "Enter Square Footage",
-                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        tf.placeholder = "Enter square footage"
         return tf
     }()
     
     lazy var priceTextField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .gray
-        tf.attributedPlaceholder = NSAttributedString(string: "Enter Price",
-                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        tf.placeholder = "Enter price"
         return tf
     }()
     
