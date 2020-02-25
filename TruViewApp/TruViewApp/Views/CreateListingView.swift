@@ -74,7 +74,7 @@ class CreateListingView: UIView {
     }()
     
     lazy var numOfBedroomsSegController: UISegmentedControl = {
-        let items = ["Studio", "1+", "2+", "3+", "4+", "5+"]
+        let items = ["Studio", "1", "2", "3", "4", "5"]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
         return sc
@@ -82,13 +82,13 @@ class CreateListingView: UIView {
     
     lazy var numOfBathsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Number of Baths"
+        label.text = "Number of Bathrooms"
         label.textColor = .gray
         return label
     }()
     
     lazy var numOfBathsSegController: UISegmentedControl = {
-        let items = ["Any", "1+", "2+", "3+", "4+", "5+"]
+        let items = ["1", "2", "3", "4", "5"]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
         return sc
@@ -184,7 +184,7 @@ class CreateListingView: UIView {
     private func constrainStreetAddressLabel() {
         streetAddressLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [streetAddressLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04)].forEach({$0.isActive = true})
+        [streetAddressLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.032)].forEach({$0.isActive = true})
     }
     
     private func constrainStreetAddressTextField() {
@@ -232,7 +232,7 @@ class CreateListingView: UIView {
     private func constrainPurchaseTypeSegControl() {
         purchaseTypeSegController.translatesAutoresizingMaskIntoConstraints = false
         
-        [purchaseTypeSegController.topAnchor.constraint(equalTo: zipcodeTextField.bottomAnchor), purchaseTypeSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [purchaseTypeSegController.topAnchor.constraint(equalTo: zipcodeTextField.bottomAnchor, constant: frame.height * 0.01), purchaseTypeSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBedroomsLabel() {
