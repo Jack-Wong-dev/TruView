@@ -11,6 +11,7 @@
 		3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9DB240074B400CFE44B /* EditProfileView.swift */; };
 		A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */; };
 		A53658E32405C1DF004ABDE0 /* ImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */; };
+		A53658E524070600004ABDE0 /* ImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E424070600004ABDE0 /* ImagePreviewVC.swift */; };
 		A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED723F5BCAF0090E90E /* AppDelegate.swift */; };
 		A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */; };
 		A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */; };
@@ -63,6 +64,7 @@
 		3CDCF9DB240074B400CFE44B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCVCell.swift; sourceTree = "<group>"; };
 		A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCVCell.swift; sourceTree = "<group>"; };
+		A53658E424070600004ABDE0 /* ImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewVC.swift; sourceTree = "<group>"; };
 		A5603ED423F5BCAF0090E90E /* TruViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5603ED723F5BCAF0090E90E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				A5603F2323F5C4BF0090E90E /* TabBarController.swift */,
 				A5603F2523F5C4E20090E90E /* SignUpVC.swift */,
 				A5603F2723F5C4F50090E90E /* LogInVC.swift */,
+				A53658E424070600004ABDE0 /* ImagePreviewVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */,
 				A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */,
 				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
+				A53658E524070600004ABDE0 /* ImagePreviewVC.swift in Sources */,
 				A5603F3A23F5C65C0090E90E /* Toast.swift in Sources */,
 				A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */,
 				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
@@ -539,7 +543,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8FR9D6557V;
+				DEVELOPMENT_TEAM = QS5639B4T5;
 				INFOPLIST_FILE = TruViewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -557,7 +561,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8FR9D6557V;
+				DEVELOPMENT_TEAM = QS5639B4T5;
 				INFOPLIST_FILE = TruViewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
