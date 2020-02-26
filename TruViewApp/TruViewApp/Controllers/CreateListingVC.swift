@@ -129,5 +129,13 @@ extension CreateListingVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension CreateListingVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let imagePreviewVC = ImagePreviewVC()
+        if let image = info[.originalImage] as? UIImage {
+            imagePreviewVC.currentImage = image
+        }
+        dismiss(animated: true) {
+            self.present(imagePreviewVC, animated: true, completion: nil)
+        }
+    }
 }
