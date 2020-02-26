@@ -128,3 +128,19 @@ class GraphData{
         return newGraph
     }
 }
+
+
+class AllRoomData {
+    
+   static var imageCollection = [RoomData]()
+    
+    func addRoomData(data: RoomData){
+     AllRoomData.imageCollection.append(data)
+    }
+    
+}
+
+struct RoomData {
+    var image: UIImage
+    var name: String
+}
