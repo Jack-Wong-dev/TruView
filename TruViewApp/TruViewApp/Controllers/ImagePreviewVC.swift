@@ -15,12 +15,20 @@ class ImagePreviewVC: UIViewController {
         let img = UIImageView()
         return img
     }()
+    
+    // MARK: - Properties
+    var currentImage: UIImage! {
+        didSet {
+            previewImageView.image = self.currentImage
+        }
+    }
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
         addConstraints()
+        setUpVCView()
     }
     
     // MARK: - Private Methods
@@ -30,6 +38,10 @@ class ImagePreviewVC: UIViewController {
     
     private func addConstraints() {
         constrainPreviewImageView()
+    }
+    
+    private func setUpVCView() {
+        view.backgroundColor = .white
     }
     
     // MARK: - Constraint Methods
