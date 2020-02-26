@@ -9,22 +9,34 @@
 import UIKit
 
 class ImagePreviewVC: UIViewController {
+    
+    // MARK: - UI Objects
+    lazy var previewImageView: UIImageView = {
+        let img = UIImageView()
+        return img
+    }()
 
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        addSubViews()
+        addConstraints()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Private Methods
+    private func addSubViews() {
+        view.addSubview(previewImageView)
     }
-    */
+    
+    private func addConstraints() {
+        constrainPreviewImageView()
+    }
+    
+    // MARK: - Constraint Methods
+    private func constrainPreviewImageView() {
+        previewImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [previewImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), previewImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor), previewImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor), previewImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
+    }
 
 }
