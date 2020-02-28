@@ -46,9 +46,11 @@ class CreateListingVC: UIViewController {
     
     // MARK: - Actions
     @objc func createTourButtonPressed() {
-        let editorVC = TourEditorVC()
-        editorVC.modalPresentationStyle = .fullScreen
-        present(editorVC, animated: true, completion: nil)
+                
+        let floorplanVC = FloorPlanVC()
+
+        floorplanVC.modalPresentationStyle = .fullScreen
+        present(floorplanVC, animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
@@ -131,7 +133,7 @@ extension CreateListingVC: UICollectionViewDelegate {}
 
 extension CreateListingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 6.46875, height: view.frame.height / 14)
+        return CGSize(width: view.frame.width / 10, height: view.frame.width / 10)
     }
 }
 
