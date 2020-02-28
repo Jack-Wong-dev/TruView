@@ -145,6 +145,6 @@ struct RoomData {
     var name: String
 }
 
-protocol DataSendingProtocol {
+protocol DataSendingProtocol: AnyObject {
     func sendDataToCreateListingVC(roomData: RoomData)
 }
