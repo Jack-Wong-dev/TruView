@@ -11,4 +11,5 @@ import Foundation
 enum CellIdentifiers: String {
     case listViewCVCell
     case addContentCell
+    case imageUploadCell
 }

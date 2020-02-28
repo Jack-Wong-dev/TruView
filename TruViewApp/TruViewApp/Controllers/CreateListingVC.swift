@@ -20,6 +20,11 @@ class CreateListingVC: UIViewController {
     
     // MARK: - Properties
     var photoLibraryAccessIsAuthorized = false
+    var imagesForCV = AllRoomData.imageCollection {
+        didSet{
+            createListingView.collectionView.collectionView.reloadData()
+        }
+    }
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -42,6 +47,7 @@ class CreateListingVC: UIViewController {
     // MARK: - Actions
     @objc func createTourButtonPressed() {
         let editorVC = TourEditorVC()
+        editorVC.modalPresentationStyle = .fullScreen
         present(editorVC, animated: true, completion: nil)
     }
     
@@ -93,7 +99,7 @@ class CreateListingVC: UIViewController {
 
 extension CreateListingVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return imagesForCV.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,14 +108,22 @@ extension CreateListingVC: UICollectionViewDataSource {
                 return firstCell
             }
         } else {
-           if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue, for: indexPath) as? ListingCVCell {
-            subsequentCells.aptThumbnail.image = UIImage(systemName: "bed.double")
+           if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
+            subsequentCells.imageUploadImageView.image = imagesForCV[0].image
             return subsequentCells
             }
         }
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            let imgPicker = UIImagePickerController()
+            imgPicker.delegate = self
+            imgPicker.sourceType = .photoLibrary
+            present(imgPicker, animated: true, completion: nil)
+        }
+    }
     
 }
 
@@ -117,6 +131,28 @@ extension CreateListingVC: UICollectionViewDelegate {}
 
 extension CreateListingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 7, height: view.frame.height / 14)
+        return CGSize(width: view.frame.width / 6.46875, height: view.frame.height / 14)
     }
+}
+
+extension CreateListingVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let imagePreviewVC = ImagePreviewVC()
+        if let image = info[.originalImage] as? UIImage {
+            imagePreviewVC.currentImage = image
+        }
+        imagePreviewVC.delegate = self
+        dismiss(animated: true) {
+            self.present(imagePreviewVC, animated: true, completion: nil)
+        }
+    }
+}
+
+extension CreateListingVC: DataSendingProtocol {
+    
+    func sendDataToCreateListingVC(roomData: RoomData) {
+        imagesForCV.append(roomData)
+    }
+    
+    
 }
