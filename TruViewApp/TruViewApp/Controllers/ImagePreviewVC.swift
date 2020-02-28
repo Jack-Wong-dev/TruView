@@ -13,10 +13,13 @@ class ImagePreviewVC: UIViewController {
     // MARK: - UI Objects
     lazy var previewImageView: UIImageView = {
         let img = UIImageView()
+        img.isUserInteractionEnabled = true
         return img
     }()
     
     // MARK: - Properties
+    weak var delegate: DataSendingProtocol?
+    var currentRoomName: String?
     var currentImage: UIImage! {
         didSet {
             previewImageView.image = self.currentImage
@@ -31,6 +34,10 @@ class ImagePreviewVC: UIViewController {
         setUpVCView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        showAlert()
+    }
+    
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(previewImageView)
@@ -43,6 +50,31 @@ class ImagePreviewVC: UIViewController {
     private func setUpVCView() {
         view.backgroundColor = .white
     }
+    
+    private func showAlert() {
+        let alertController = UIAlertController(title: "Please enter room name.", message: "NOTE: All room names must be unique.", preferredStyle: .alert)
+    
+        let action = UIAlertAction(title: "Save", style: .default) { (alertAction) in
+          let textField = alertController.textFields![0] as UITextField
+            self.currentRoomName = textField.text
+            if let unwrappedRoomName = self.currentRoomName {
+                let currentRoomData = RoomData(image: self.currentImage, name: unwrappedRoomName)
+                self.delegate?.sendDataToCreateListingVC(roomData: currentRoomData)
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    
+        alertController.addTextField { (textField) in
+        textField.placeholder = "Enter the room name"
+        }
+    
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
+    
+    
+    }
+
     
     // MARK: - Constraint Methods
     private func constrainPreviewImageView() {

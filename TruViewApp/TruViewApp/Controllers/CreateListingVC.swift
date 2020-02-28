@@ -20,6 +20,11 @@ class CreateListingVC: UIViewController {
     
     // MARK: - Properties
     var photoLibraryAccessIsAuthorized = false
+    var imagesForCV = AllRoomData.imageCollection {
+        didSet{
+            createListingView.collectionView.collectionView.reloadData()
+        }
+    }
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -93,7 +98,7 @@ class CreateListingVC: UIViewController {
 
 extension CreateListingVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return imagesForCV.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -103,6 +108,7 @@ extension CreateListingVC: UICollectionViewDataSource {
             }
         } else {
            if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
+            subsequentCells.imageUploadImageView.image = imagesForCV[0].image
             return subsequentCells
             }
         }
@@ -134,8 +140,18 @@ extension CreateListingVC: UIImagePickerControllerDelegate, UINavigationControll
         if let image = info[.originalImage] as? UIImage {
             imagePreviewVC.currentImage = image
         }
+        imagePreviewVC.delegate = self
         dismiss(animated: true) {
             self.present(imagePreviewVC, animated: true, completion: nil)
         }
     }
+}
+
+extension CreateListingVC: DataSendingProtocol {
+    
+    func sendDataToCreateListingVC(roomData: RoomData) {
+        imagesForCV.append(roomData)
+    }
+    
+    
 }
