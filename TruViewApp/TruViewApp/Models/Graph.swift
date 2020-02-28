@@ -144,3 +144,7 @@ struct RoomData {
     var image: UIImage
     var name: String
 }
+
+protocol DataSendingProtocol {
+    func sendDataToCreateListingVC(roomData: RoomData)
+}
