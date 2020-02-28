@@ -47,6 +47,7 @@ class CreateListingVC: UIViewController {
     // MARK: - Actions
     @objc func createTourButtonPressed() {
         let editorVC = TourEditorVC()
+        editorVC.modalPresentationStyle = .fullScreen
         present(editorVC, animated: true, completion: nil)
     }
     
