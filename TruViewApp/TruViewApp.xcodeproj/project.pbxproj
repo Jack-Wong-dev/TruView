@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9D06302409A62800952930 /* FloorPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D062F2409A62800952930 /* FloorPlanVC.swift */; };
+		0A9D06322409A73A00952930 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D06312409A73A00952930 /* RoomTableViewCell.swift */; };
+		0A9D06342409A77500952930 /* FloorPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D06332409A77500952930 /* FloorPlanView.swift */; };
 		3CDCF9DA2400715900CFE44B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9D92400715900CFE44B /* ProfileView.swift */; };
 		3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9DB240074B400CFE44B /* EditProfileView.swift */; };
 		A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */; };
+		A53658E32405C1DF004ABDE0 /* ImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */; };
+		A53658E524070600004ABDE0 /* ImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E424070600004ABDE0 /* ImagePreviewVC.swift */; };
 		A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED723F5BCAF0090E90E /* AppDelegate.swift */; };
 		A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */; };
 		A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */; };
@@ -58,9 +63,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A9D062F2409A62800952930 /* FloorPlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FloorPlanVC.swift; path = "../../../../../Library/Autosave Information/FloorPlanVC.swift"; sourceTree = "<group>"; };
+		0A9D06312409A73A00952930 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoomTableViewCell.swift; path = "../../../../../Library/Autosave Information/RoomTableViewCell.swift"; sourceTree = "<group>"; };
+		0A9D06332409A77500952930 /* FloorPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FloorPlanView.swift; path = "../../../../../Library/Autosave Information/FloorPlanView.swift"; sourceTree = "<group>"; };
 		3CDCF9D92400715900CFE44B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3CDCF9DB240074B400CFE44B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCVCell.swift; sourceTree = "<group>"; };
+		A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCVCell.swift; sourceTree = "<group>"; };
+		A53658E424070600004ABDE0 /* ImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewVC.swift; sourceTree = "<group>"; };
 		A5603ED423F5BCAF0090E90E /* TruViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5603ED723F5BCAF0090E90E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5603ED923F5BCAF0090E90E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +207,8 @@
 				A5603F2323F5C4BF0090E90E /* TabBarController.swift */,
 				A5603F2523F5C4E20090E90E /* SignUpVC.swift */,
 				A5603F2723F5C4F50090E90E /* LogInVC.swift */,
+				A53658E424070600004ABDE0 /* ImagePreviewVC.swift */,
+				0A9D062F2409A62800952930 /* FloorPlanVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -213,6 +225,9 @@
 				3CDCF9D92400715900CFE44B /* ProfileView.swift */,
 				3CDCF9DB240074B400CFE44B /* EditProfileView.swift */,
 				A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */,
+				A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */,
+				0A9D06312409A73A00952930 /* RoomTableViewCell.swift */,
+				0A9D06332409A77500952930 /* FloorPlanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53658E32405C1DF004ABDE0 /* ImageCVCell.swift in Sources */,
 				A5603F1A23F5C4070090E90E /* ProfileVC.swift in Sources */,
 				A5603F0823F5C08D0090E90E /* Graph.swift in Sources */,
 				A5603F0A23F5C1E60090E90E /* ListingCVView.swift in Sources */,
@@ -359,13 +375,16 @@
 				A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */,
 				A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */,
 				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
+				A53658E524070600004ABDE0 /* ImagePreviewVC.swift in Sources */,
 				A5603F3A23F5C65C0090E90E /* Toast.swift in Sources */,
+				0A9D06302409A62800952930 /* FloorPlanVC.swift in Sources */,
 				A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */,
 				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
 				A5603F2C23F5C5850090E90E /* FBService.swift in Sources */,
 				A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */,
 				A5603F2023F5C44E0090E90E /* CreateListingVC.swift in Sources */,
 				A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */,
+				0A9D06322409A73A00952930 /* RoomTableViewCell.swift in Sources */,
 				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
 				3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */,
 				A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */,
@@ -374,6 +393,7 @@
 				A5603F0623F5C07E0090E90E /* Room.swift in Sources */,
 				A5603F1223F5C2810090E90E /* PanoView.swift in Sources */,
 				A5603F3023F5C5F30090E90E /* Enums.swift in Sources */,
+				0A9D06342409A77500952930 /* FloorPlanView.swift in Sources */,
 				A5603F3223F5C6070090E90E /* CellIdentifiers.swift in Sources */,
 				A5603F2A23F5C56C0090E90E /* FBAuthService.swift in Sources */,
 				A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */,
@@ -541,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Pursuit.TruViewApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Pursuit.TruView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,7 +579,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Pursuit.TruViewApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Pursuit.TruView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
