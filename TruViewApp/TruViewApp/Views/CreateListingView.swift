@@ -11,6 +11,22 @@ import UIKit
 class CreateListingView: UIView {
 
     // MARK: - UI objects
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .white
+        return button
+    }()
+    
+    let saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Save", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .white
+        return button
+    }()
+    
     lazy var streetAddressLabel: UILabel = {
         let label = UILabel()
         label.text = "Street Address"
@@ -144,6 +160,8 @@ class CreateListingView: UIView {
     
     // MARK: - Private Methods
     private func addSubViews() {
+        addSubview(cancelButton)
+        addSubview(saveButton)
         addSubview(streetAddressLabel)
         addSubview(streetAddressTextField)
         addSubview(cityLabel)
@@ -167,6 +185,8 @@ class CreateListingView: UIView {
     }
     
     private func addConstraints() {
+        constrainCancelButton()
+        constrainSaveButton()
         constrainStreetAddressLabel()
         constrainStreetAddressTextField()
         constrainCityLabel()
@@ -193,10 +213,22 @@ class CreateListingView: UIView {
     }
     
     // MARK: - Constraint Methods
+    private func constrainCancelButton() {
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor), cancelButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25), cancelButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainSaveButton() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [saveButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), saveButton.trailingAnchor.constraint(equalTo: trailingAnchor), saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor), saveButton.heightAnchor.constraint(equalTo: cancelButton.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
     private func constrainStreetAddressLabel() {
         streetAddressLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [streetAddressLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.032)].forEach({$0.isActive = true})
+        [streetAddressLabel.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.032)].forEach({$0.isActive = true})
     }
     
     private func constrainStreetAddressTextField() {
