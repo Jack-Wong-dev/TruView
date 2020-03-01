@@ -15,6 +15,7 @@ class CreateListingVC: UIViewController {
     let createListingView: CreateListingView = {
         let view = CreateListingView()
         view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
+        view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -51,6 +52,10 @@ class CreateListingVC: UIViewController {
 
         floorplanVC.modalPresentationStyle = .fullScreen
         present(floorplanVC, animated: true, completion: nil)
+    }
+    
+    @objc func cancelButtonPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
