@@ -11,7 +11,7 @@ import UIKit
 class CreateListingView: UIView {
 
     // MARK: - UI objects
-    let cancelButton: UIButton = {
+    lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.blue, for: .normal)
@@ -19,7 +19,7 @@ class CreateListingView: UIView {
         return button
     }()
     
-    let saveButton: UIButton = {
+    lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Save", for: .normal)
         button.setTitleColor(.blue, for: .normal)
@@ -134,12 +134,13 @@ class CreateListingView: UIView {
         return tf
     }()
     
-    let collectionView: ListingCVView = {
-        let cv = ListingCVView()
-        return cv
+    lazy var descriptionTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter description"
+        return tf
     }()
     
-    let createTourButton: UIButton = {
+    lazy var createTourButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Tour", for: .normal)
         button.backgroundColor = .orange
@@ -179,7 +180,7 @@ class CreateListingView: UIView {
         addSubview(sqFootageTextField)
         addSubview(priceLabel)
         addSubview(priceTextField)
-        addSubview(collectionView)
+        addSubview(descriptionTextField)
         addSubview(createTourButton)
         
     }
@@ -204,7 +205,7 @@ class CreateListingView: UIView {
         constrainSqFootageTextField()
         constrainPriceLabel()
         constrainPriceTextField()
-        constrainCollectionView()
+        constrainDescriptionTextField()
         constrainCreateTourButton()
     }
     
@@ -327,16 +328,16 @@ class CreateListingView: UIView {
         [priceTextField.topAnchor.constraint(equalTo: priceLabel.bottomAnchor), priceTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
-    private func constrainCollectionView() {
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+    private func constrainDescriptionTextField() {
+        descriptionTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        [collectionView.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), collectionView.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), collectionView.centerXAnchor.constraint(equalTo: centerXAnchor), collectionView.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 2.5)].forEach({$0.isActive = true})
+        [descriptionTextField.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), descriptionTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionTextField.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 2.5)].forEach({$0.isActive = true})
     }
     
     private func constrainCreateTourButton() {
         createTourButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [createTourButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
+        [createTourButton.topAnchor.constraint(equalTo: descriptionTextField.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
     }
     
 }
