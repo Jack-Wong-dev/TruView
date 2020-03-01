@@ -111,7 +111,7 @@ extension CreateListingVC: UICollectionViewDataSource {
             }
         } else {
            if let subsequentCells = createListingView.collectionView.collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
-            subsequentCells.imageUploadImageView.image = imagesForCV[0].image
+            subsequentCells.imageUploadImageView.image = imagesForCV[indexPath.row - 1].image
             return subsequentCells
             }
         }
