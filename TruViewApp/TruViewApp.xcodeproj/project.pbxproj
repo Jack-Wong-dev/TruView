@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A9D06302409A62800952930 /* FloorPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D062F2409A62800952930 /* FloorPlanVC.swift */; };
 		0A9D0636240B3FB700952930 /* FloorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D0635240B3FB700952930 /* FloorView.swift */; };
 		0A9D0638240B3FC800952930 /* FloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D0637240B3FC800952930 /* FloorCell.swift */; };
+		0A9D063A240B425200952930 /* FloorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D0639240B425200952930 /* FloorVC.swift */; };
 		3CDCF9DA2400715900CFE44B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9D92400715900CFE44B /* ProfileView.swift */; };
 		3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9DB240074B400CFE44B /* EditProfileView.swift */; };
 		A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */; };
@@ -63,9 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A9D062F2409A62800952930 /* FloorPlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FloorPlanVC.swift; path = "../../../../../Library/Autosave Information/FloorPlanVC.swift"; sourceTree = "<group>"; };
 		0A9D0635240B3FB700952930 /* FloorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorView.swift; sourceTree = "<group>"; };
 		0A9D0637240B3FC800952930 /* FloorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorCell.swift; sourceTree = "<group>"; };
+		0A9D0639240B425200952930 /* FloorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorVC.swift; sourceTree = "<group>"; };
 		3CDCF9D92400715900CFE44B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3CDCF9DB240074B400CFE44B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCVCell.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				A5603F2523F5C4E20090E90E /* SignUpVC.swift */,
 				A5603F2723F5C4F50090E90E /* LogInVC.swift */,
 				A53658E424070600004ABDE0 /* ImagePreviewVC.swift */,
-				0A9D062F2409A62800952930 /* FloorPlanVC.swift */,
+				0A9D0639240B425200952930 /* FloorVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -378,7 +378,6 @@
 				A5603ED823F5BCAF0090E90E /* AppDelegate.swift in Sources */,
 				A53658E524070600004ABDE0 /* ImagePreviewVC.swift in Sources */,
 				A5603F3A23F5C65C0090E90E /* Toast.swift in Sources */,
-				0A9D06302409A62800952930 /* FloorPlanVC.swift in Sources */,
 				A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */,
 				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
 				A5603F2C23F5C5850090E90E /* FBService.swift in Sources */,
@@ -392,6 +391,7 @@
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
 				A5603F3C23F5C6690090E90E /* AppError.swift in Sources */,
 				A5603F0623F5C07E0090E90E /* Room.swift in Sources */,
+				0A9D063A240B425200952930 /* FloorVC.swift in Sources */,
 				A5603F1223F5C2810090E90E /* PanoView.swift in Sources */,
 				A5603F3023F5C5F30090E90E /* Enums.swift in Sources */,
 				A5603F3223F5C6070090E90E /* CellIdentifiers.swift in Sources */,
