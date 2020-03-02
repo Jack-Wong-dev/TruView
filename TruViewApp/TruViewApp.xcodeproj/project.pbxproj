@@ -15,6 +15,7 @@
 		A50A02F5240CA43A003B9413 /* MediaUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F4240CA43A003B9413 /* MediaUploadView.swift */; };
 		A50A02F7240CA45F003B9413 /* MediaUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */; };
 		A50A02F9240D5D02003B9413 /* StartingPointPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F8240D5D02003B9413 /* StartingPointPickerView.swift */; };
+		A50A02FB240D6535003B9413 /* StartingPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02FA240D6535003B9413 /* StartingPointVC.swift */; };
 		A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */; };
 		A53658E32405C1DF004ABDE0 /* ImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */; };
 		A53658E524070600004ABDE0 /* ImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E424070600004ABDE0 /* ImagePreviewVC.swift */; };
@@ -74,6 +75,7 @@
 		A50A02F4240CA43A003B9413 /* MediaUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUploadView.swift; sourceTree = "<group>"; };
 		A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUploadVC.swift; sourceTree = "<group>"; };
 		A50A02F8240D5D02003B9413 /* StartingPointPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPointPickerView.swift; sourceTree = "<group>"; };
+		A50A02FA240D6535003B9413 /* StartingPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPointVC.swift; sourceTree = "<group>"; };
 		A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCVCell.swift; sourceTree = "<group>"; };
 		A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCVCell.swift; sourceTree = "<group>"; };
 		A53658E424070600004ABDE0 /* ImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewVC.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				A53658E424070600004ABDE0 /* ImagePreviewVC.swift */,
 				0A9D0639240B425200952930 /* FloorVC.swift */,
 				A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */,
+				A50A02FA240D6535003B9413 /* StartingPointVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				A5603F1423F5C3270090E90E /* ListingCVCell.swift in Sources */,
 				A5603F2C23F5C5850090E90E /* FBService.swift in Sources */,
 				A5603F0C23F5C2070090E90E /* SlideCardView.swift in Sources */,
+				A50A02FB240D6535003B9413 /* StartingPointVC.swift in Sources */,
 				A5603F2023F5C44E0090E90E /* CreateListingVC.swift in Sources */,
 				A50A02F7240CA45F003B9413 /* MediaUploadVC.swift in Sources */,
 				A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */,
