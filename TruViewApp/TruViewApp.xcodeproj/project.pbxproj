@@ -14,6 +14,7 @@
 		3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9DB240074B400CFE44B /* EditProfileView.swift */; };
 		A50A02F5240CA43A003B9413 /* MediaUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F4240CA43A003B9413 /* MediaUploadView.swift */; };
 		A50A02F7240CA45F003B9413 /* MediaUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */; };
+		A50A02F9240D5D02003B9413 /* StartingPointPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F8240D5D02003B9413 /* StartingPointPickerView.swift */; };
 		A53658CE24046A6C004ABDE0 /* AddContentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */; };
 		A53658E32405C1DF004ABDE0 /* ImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */; };
 		A53658E524070600004ABDE0 /* ImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53658E424070600004ABDE0 /* ImagePreviewVC.swift */; };
@@ -72,6 +73,7 @@
 		3CDCF9DB240074B400CFE44B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A50A02F4240CA43A003B9413 /* MediaUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUploadView.swift; sourceTree = "<group>"; };
 		A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUploadVC.swift; sourceTree = "<group>"; };
+		A50A02F8240D5D02003B9413 /* StartingPointPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPointPickerView.swift; sourceTree = "<group>"; };
 		A53658CD24046A6C004ABDE0 /* AddContentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentCVCell.swift; sourceTree = "<group>"; };
 		A53658E22405C1DE004ABDE0 /* ImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCVCell.swift; sourceTree = "<group>"; };
 		A53658E424070600004ABDE0 /* ImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewVC.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				0A9D0635240B3FB700952930 /* FloorView.swift */,
 				0A9D0637240B3FC800952930 /* FloorCell.swift */,
 				A50A02F4240CA43A003B9413 /* MediaUploadView.swift */,
+				A50A02F8240D5D02003B9413 /* StartingPointPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */,
 				A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */,
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
+				A50A02F9240D5D02003B9413 /* StartingPointPickerView.swift in Sources */,
 				A5603F3C23F5C6690090E90E /* AppError.swift in Sources */,
 				A5603F0623F5C07E0090E90E /* Room.swift in Sources */,
 				0A9D063A240B425200952930 /* FloorVC.swift in Sources */,
