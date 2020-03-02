@@ -134,10 +134,15 @@ class CreateListingView: UIView {
         return tf
     }()
     
-    lazy var descriptionTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Enter description"
-        return tf
+    lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Description"
+        return label
+    }()
+    
+    lazy var descriptionTextView: UITextView = {
+        let tv = UITextView()
+        return tv
     }()
     
     lazy var createTourButton: UIButton = {
@@ -180,7 +185,8 @@ class CreateListingView: UIView {
         addSubview(sqFootageTextField)
         addSubview(priceLabel)
         addSubview(priceTextField)
-        addSubview(descriptionTextField)
+        addSubview(descriptionLabel)
+        addSubview(descriptionTextView)
         addSubview(createTourButton)
         
     }
@@ -205,7 +211,8 @@ class CreateListingView: UIView {
         constrainSqFootageTextField()
         constrainPriceLabel()
         constrainPriceTextField()
-        constrainDescriptionTextField()
+        constrainDescriptionLabel()
+        constrainDescriptionTextView()
         constrainCreateTourButton()
     }
     
@@ -328,16 +335,22 @@ class CreateListingView: UIView {
         [priceTextField.topAnchor.constraint(equalTo: priceLabel.bottomAnchor), priceTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), priceTextField.centerXAnchor.constraint(equalTo: centerXAnchor), priceTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
-    private func constrainDescriptionTextField() {
-        descriptionTextField.translatesAutoresizingMaskIntoConstraints = false
+    private func constrainDescriptionLabel() {
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [descriptionTextField.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), descriptionTextField.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionTextField.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionTextField.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 2.5)].forEach({$0.isActive = true})
+        [descriptionLabel.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), descriptionLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainDescriptionTextView() {
+        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor), descriptionTextView.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionTextView.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 3.5)].forEach({$0.isActive = true})
     }
     
     private func constrainCreateTourButton() {
         createTourButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [createTourButton.topAnchor.constraint(equalTo: descriptionTextField.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
+        [createTourButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
     }
     
 }
