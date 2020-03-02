@@ -338,13 +338,13 @@ class CreateListingView: UIView {
     private func constrainDescriptionLabel() {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [descriptionLabel.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), descriptionLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [descriptionLabel.topAnchor.constraint(equalTo: priceTextField.bottomAnchor), descriptionLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainDescriptionTextView() {
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        [descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor), descriptionTextView.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionTextView.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 3.5)].forEach({$0.isActive = true})
+        [descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor), descriptionTextView.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionTextView.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 4.5)].forEach({$0.isActive = true})
     }
     
     private func constrainCreateTourButton() {
