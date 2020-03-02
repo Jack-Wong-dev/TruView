@@ -40,11 +40,9 @@ class CreateListingVC: UIViewController {
     
     // MARK: - Actions
     @objc func createTourButtonPressed() {
-                
-        let floorplanVC = FloorPlanVC()
-
-        floorplanVC.modalPresentationStyle = .fullScreen
-        present(floorplanVC, animated: true, completion: nil)
+        let mediaUploadVC = MediaUploadVC()
+        mediaUploadVC.modalPresentationStyle = .fullScreen
+        present(mediaUploadVC, animated: true, completion: nil)
     }
     
     @objc func cancelButtonPressed() {
