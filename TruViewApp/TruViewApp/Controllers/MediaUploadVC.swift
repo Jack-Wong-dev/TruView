@@ -14,6 +14,7 @@ class MediaUploadVC: UIViewController {
     // MARK: - UI Objects
     lazy var mediaUploadView: MediaUploadView = {
         let view = MediaUploadView()
+        view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -37,6 +38,11 @@ class MediaUploadVC: UIViewController {
         setUpVCView()
         checkPhotoLibraryAccess()
         delegation()
+    }
+    
+    // MARK: - Actions
+    @objc func cancelButtonPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
