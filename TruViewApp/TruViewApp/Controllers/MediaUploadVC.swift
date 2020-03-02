@@ -24,6 +24,11 @@ class MediaUploadVC: UIViewController {
             mediaUploadView.panoImageCV.reloadData()
         }
     }
+    var imagesForThumbnailCV = AllRoomData.imageCollection {
+        didSet {
+            mediaUploadView.thumbnailImageCV.reloadData()
+        }
+    }
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -31,6 +36,7 @@ class MediaUploadVC: UIViewController {
         addSubViews()
         setUpVCView()
         checkPhotoLibraryAccess()
+        delegation()
     }
     
     // MARK: - Private Methods
@@ -40,6 +46,13 @@ class MediaUploadVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .white
+    }
+    
+    private func delegation() {
+        mediaUploadView.thumbnailImageCV.delegate = self
+        mediaUploadView.thumbnailImageCV.dataSource = self
+        mediaUploadView.panoImageCV.delegate = self
+        mediaUploadView.panoImageCV.dataSource = self
     }
     
     private func checkPhotoLibraryAccess() {
@@ -75,15 +88,81 @@ class MediaUploadVC: UIViewController {
 }
 
 // MARK: - Extensions
-extension CreateListingVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MediaUploadVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (collectionView == mediaUploadView.thumbnailImageCV) {
+            return imagesForThumbnailCV.count + 1
+        } else if (collectionView == mediaUploadView.panoImageCV) {
+            return imagesForPanoCV.count + 1
+        }
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if (collectionView == mediaUploadView.thumbnailImageCV) {
+            if indexPath.item == 0 {
+                if let firstThumbnailCell = mediaUploadView.thumbnailImageCV.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.addContentCell.rawValue, for: indexPath) as? AddContentCVCell {
+                    return firstThumbnailCell
+                }
+            } else {
+               if let subsequentThumbnailCells = mediaUploadView.thumbnailImageCV.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
+                subsequentThumbnailCells.imageUploadImageView.image = imagesForThumbnailCV[indexPath.row - 1].image
+                return subsequentThumbnailCells
+                }
+            }
+        } else if (collectionView == mediaUploadView.panoImageCV) {
+            if indexPath.item == 0 {
+                if let firstPanoCell = mediaUploadView.panoImageCV.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.addContentCell.rawValue, for: indexPath) as? AddContentCVCell {
+                    return firstPanoCell
+                }
+            } else {
+               if let subsequentPanoCells = mediaUploadView.panoImageCV.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
+                subsequentPanoCells.imageUploadImageView.image = imagesForPanoCV[indexPath.row - 1].image
+                return subsequentPanoCells
+                }
+            }
+        }
+        
+        return UICollectionViewCell()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            let imgPicker = UIImagePickerController()
+            imgPicker.delegate = self
+            imgPicker.sourceType = .photoLibrary
+            present(imgPicker, animated: true, completion: nil)
+        }
+    }
+
+}
+
+extension MediaUploadVC: UICollectionViewDelegate {}
+
+extension MediaUploadVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width / 4, height: view.frame.width / 4)
+    }
+}
+
+extension MediaUploadVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let imagePreviewVC = ImagePreviewVC()
         if let image = info[.originalImage] as? UIImage {
             imagePreviewVC.currentImage = image
         }
-//        imagePreviewVC.delegate = self
+        imagePreviewVC.delegate = self
         dismiss(animated: true) {
             self.present(imagePreviewVC, animated: true, completion: nil)
         }
     }
+}
+
+extension MediaUploadVC: DataSendingProtocol {
+
+    func sendDataToCreateListingVC(roomData: RoomData) {
+        imagesForPanoCV.append(roomData)
+    }
+
+
 }
