@@ -27,6 +27,8 @@ class StartingPointPickerView: UIView {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        addSubViews()
+        addConstraints()
     }
     
     required init?(coder: NSCoder) {
