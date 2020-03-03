@@ -23,7 +23,8 @@ class MediaUploadView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
+        cv.backgroundColor = .lightGray
+        cv.layer.cornerRadius = 25
         cv.register(AddContentCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.addContentCell.rawValue)
         cv.register(ImageCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue)
         return cv
@@ -33,7 +34,8 @@ class MediaUploadView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
+        cv.backgroundColor = .lightGray
+        cv.layer.cornerRadius = 25
         cv.register(AddContentCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.addContentCell.rawValue)
         cv.register(ImageCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue)
         return cv
@@ -83,13 +85,13 @@ class MediaUploadView: UIView {
     private func constrainThumbnailCV() {
         thumbnailImageCV.translatesAutoresizingMaskIntoConstraints = false
         
-        [thumbnailImageCV.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), thumbnailImageCV.leadingAnchor.constraint(equalTo: leadingAnchor), thumbnailImageCV.trailingAnchor.constraint(equalTo: trailingAnchor), thumbnailImageCV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.25)].forEach({$0.isActive = true})
+        [thumbnailImageCV.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), thumbnailImageCV.leadingAnchor.constraint(equalTo: leadingAnchor), thumbnailImageCV.trailingAnchor.constraint(equalTo: trailingAnchor), thumbnailImageCV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
     }
     
     private func constrainPanoCV() {
         panoImageCV.translatesAutoresizingMaskIntoConstraints = false
         
-        [panoImageCV.topAnchor.constraint(equalTo: thumbnailImageCV.bottomAnchor), panoImageCV.leadingAnchor.constraint(equalTo: leadingAnchor), panoImageCV.trailingAnchor.constraint(equalTo: trailingAnchor), panoImageCV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.25)].forEach({$0.isActive = true})
+        [panoImageCV.topAnchor.constraint(equalTo: thumbnailImageCV.bottomAnchor), panoImageCV.leadingAnchor.constraint(equalTo: leadingAnchor), panoImageCV.trailingAnchor.constraint(equalTo: trailingAnchor), panoImageCV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
     }
     
     private func constrainCreateTourButton() {
