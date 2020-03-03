@@ -15,6 +15,7 @@ class MediaUploadVC: UIViewController {
     lazy var mediaUploadView: MediaUploadView = {
         let view = MediaUploadView()
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -43,6 +44,12 @@ class MediaUploadVC: UIViewController {
     // MARK: - Actions
     @objc func cancelButtonPressed() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func createTourButtonPressed() {
+        let startPointVC = StartingPointVC()
+        startPointVC.modalPresentationStyle = .fullScreen
+        present(startPointVC, animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
