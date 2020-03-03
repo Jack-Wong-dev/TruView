@@ -1,11 +1,9 @@
 //
-//  FBAuthService.swift
+//  Hotspot.swift
 //  TruViewApp
 //
-//  Created by Liana Norman on 2/13/20.
+//  Created by Jack Wong on 3/3/20.
 //  Copyright © 2020 Liana Norman. All rights reserved.
 //
 
 import Foundation
-import FirebaseAuth
-
