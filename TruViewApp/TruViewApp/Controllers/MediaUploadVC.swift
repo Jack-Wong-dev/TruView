@@ -154,7 +154,7 @@ extension MediaUploadVC: UICollectionViewDelegate {}
 
 extension MediaUploadVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 4, height: view.frame.width / 4)
+        return CGSize(width: view.frame.width / 3, height: view.frame.width / 3)
     }
 }
 
