@@ -166,6 +166,7 @@ extension MediaUploadVC: UIImagePickerControllerDelegate, UINavigationController
         }
         imagePreviewVC.delegate = self
         dismiss(animated: true) {
+            imagePreviewVC.modalPresentationStyle = .fullScreen
             self.present(imagePreviewVC, animated: true, completion: nil)
         }
     }
