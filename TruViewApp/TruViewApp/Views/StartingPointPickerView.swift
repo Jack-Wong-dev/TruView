@@ -32,6 +32,14 @@ class StartingPointPickerView: UIView {
         return pv
     }()
     
+    lazy var nextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Next", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .gray
+        return button
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -48,12 +56,14 @@ class StartingPointPickerView: UIView {
         addSubview(cancelButton)
         addSubview(startingPointLabel)
         addSubview(startingPointPV)
+        addSubview(nextButton)
     }
     
     private func addConstraints() {
         constrainCancelButton()
         constrainStartPointlabel()
         constrainStartPointPV()
+        constrainNextButton()
     }
     
     // MARK: - Constraint Methods
@@ -73,5 +83,11 @@ class StartingPointPickerView: UIView {
         startingPointPV.translatesAutoresizingMaskIntoConstraints = false
         
         [startingPointPV.centerXAnchor.constraint(equalTo: centerXAnchor), startingPointPV.centerYAnchor.constraint(equalTo: centerYAnchor), startingPointPV.widthAnchor.constraint(equalTo: widthAnchor), startingPointPV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainNextButton() {
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [nextButton.topAnchor.constraint(equalTo: startingPointPV.bottomAnchor), nextButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.89), nextButton.centerXAnchor.constraint(equalTo: centerXAnchor), nextButton.heightAnchor.constraint(equalTo: cancelButton.heightAnchor)].forEach({$0.isActive = true})
     }
 }
