@@ -145,7 +145,7 @@ class CreateListingView: UIView {
         return tv
     }()
     
-    lazy var createTourButton: UIButton = {
+    lazy var uploadPhotosButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Tour", for: .normal)
         button.backgroundColor = .orange
@@ -187,7 +187,7 @@ class CreateListingView: UIView {
         addSubview(priceTextField)
         addSubview(descriptionLabel)
         addSubview(descriptionTextView)
-        addSubview(createTourButton)
+        addSubview(uploadPhotosButton)
         
     }
     
@@ -338,19 +338,19 @@ class CreateListingView: UIView {
     private func constrainDescriptionLabel() {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [descriptionLabel.topAnchor.constraint(equalTo: priceTextField.bottomAnchor, constant: frame.height * 0.05), descriptionLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [descriptionLabel.topAnchor.constraint(equalTo: priceTextField.bottomAnchor), descriptionLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainDescriptionTextView() {
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        [descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor), descriptionTextView.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionTextView.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 3.5)].forEach({$0.isActive = true})
+        [descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor), descriptionTextView.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), descriptionTextView.centerXAnchor.constraint(equalTo: centerXAnchor), descriptionTextView.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 4.5)].forEach({$0.isActive = true})
     }
     
     private func constrainCreateTourButton() {
-        createTourButton.translatesAutoresizingMaskIntoConstraints = false
+        uploadPhotosButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [createTourButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
+        [uploadPhotosButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: frame.height * 0.05), uploadPhotosButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), uploadPhotosButton.centerXAnchor.constraint(equalTo: centerXAnchor), uploadPhotosButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
     }
     
 }

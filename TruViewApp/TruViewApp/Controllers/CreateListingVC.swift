@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import Photos
 
 class CreateListingVC: UIViewController {
     
     // MARK: - UI Objects
     let createListingView: CreateListingView = {
         let view = CreateListingView()
-        view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
+        view.uploadPhotosButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()
@@ -35,15 +34,14 @@ class CreateListingVC: UIViewController {
         Utilities.styleTextField(createListingView.zipcodeTextField)
         Utilities.styleTextField(createListingView.sqFootageTextField)
         Utilities.styleTextField(createListingView.priceTextField)
+        Utilities.styleTextView(createListingView.descriptionTextView)
     }
     
     // MARK: - Actions
     @objc func createTourButtonPressed() {
-                
-        let floorplanVC = FloorPlanVC()
-
-        floorplanVC.modalPresentationStyle = .fullScreen
-        present(floorplanVC, animated: true, completion: nil)
+        let mediaUploadVC = MediaUploadVC()
+        mediaUploadVC.modalPresentationStyle = .fullScreen
+        present(mediaUploadVC, animated: true, completion: nil)
     }
     
     @objc func cancelButtonPressed() {
