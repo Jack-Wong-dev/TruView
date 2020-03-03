@@ -11,6 +11,14 @@ import UIKit
 class StartingPointPickerView: UIView {
 
     // MARK: - UI Objects
+    lazy var cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .white
+        return button
+    }()
+    
     lazy var startingPointLabel: UILabel = {
         let label = UILabel()
         label.text = "CHOOSE STARTING POINT OF THE TOUR"
@@ -37,20 +45,28 @@ class StartingPointPickerView: UIView {
     
     // MARK: - Private Methods
     private func addSubViews() {
+        addSubview(cancelButton)
         addSubview(startingPointLabel)
         addSubview(startingPointPV)
     }
     
     private func addConstraints() {
-       constrainStartPointlabel()
+        constrainCancelButton()
+        constrainStartPointlabel()
         constrainStartPointPV()
     }
     
     // MARK: - Constraint Methods
+    private func constrainCancelButton() {
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor), cancelButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25), cancelButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05)].forEach({$0.isActive = true})
+    }
+    
     private func constrainStartPointlabel() {
         startingPointLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [startingPointLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), startingPointLabel.leadingAnchor.constraint(equalTo: leadingAnchor), startingPointLabel.trailingAnchor.constraint(equalTo: trailingAnchor), startingPointLabel.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.25)].forEach({$0.isActive = true})
+        [startingPointLabel.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), startingPointLabel.leadingAnchor.constraint(equalTo: leadingAnchor), startingPointLabel.trailingAnchor.constraint(equalTo: trailingAnchor), startingPointLabel.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.25)].forEach({$0.isActive = true})
     }
     
     private func constrainStartPointPV() {
