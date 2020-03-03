@@ -19,14 +19,6 @@ class MediaUploadView: UIView {
         return button
     }()
     
-    lazy var saveButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Save", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.backgroundColor = .white
-        return button
-    }()
-    
     lazy var thumbnailImageCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -47,6 +39,14 @@ class MediaUploadView: UIView {
         return cv
     }()
     
+    lazy var createTourButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Create Tour", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = .gray
+        return button
+    }()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -61,14 +61,14 @@ class MediaUploadView: UIView {
     // MARK: - Private Methods
     private func addSubViews() {
         addSubview(cancelButton)
-        addSubview(saveButton)
+        addSubview(createTourButton)
         addSubview(thumbnailImageCV)
         addSubview(panoImageCV)
     }
     
     private func addConstraints() {
         constrainCancelButton()
-        constrainSaveButton()
+        constrainCreateTourButton()
         constrainThumbnailCV()
         constrainPanoCV()
     }
@@ -78,12 +78,6 @@ class MediaUploadView: UIView {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         
         [cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor), cancelButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25), cancelButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05)].forEach({$0.isActive = true})
-    }
-    
-    private func constrainSaveButton() {
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        [saveButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), saveButton.trailingAnchor.constraint(equalTo: trailingAnchor), saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor), saveButton.heightAnchor.constraint(equalTo: cancelButton.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainThumbnailCV() {
@@ -96,5 +90,11 @@ class MediaUploadView: UIView {
         panoImageCV.translatesAutoresizingMaskIntoConstraints = false
         
         [panoImageCV.topAnchor.constraint(equalTo: thumbnailImageCV.bottomAnchor), panoImageCV.leadingAnchor.constraint(equalTo: leadingAnchor), panoImageCV.trailingAnchor.constraint(equalTo: trailingAnchor), panoImageCV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.25)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainCreateTourButton() {
+        createTourButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [createTourButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: frame.height * 0.01), createTourButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.89), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: cancelButton.heightAnchor)].forEach({$0.isActive = true})
     }
 }

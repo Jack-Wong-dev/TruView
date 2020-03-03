@@ -13,7 +13,7 @@ class CreateListingVC: UIViewController {
     // MARK: - UI Objects
     let createListingView: CreateListingView = {
         let view = CreateListingView()
-        view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
+        view.uploadPhotosButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()
