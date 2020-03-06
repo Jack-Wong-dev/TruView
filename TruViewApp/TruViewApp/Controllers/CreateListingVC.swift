@@ -18,7 +18,7 @@ class CreateListingVC: UIViewController {
     
     lazy var createListingView: CreateListingView = {
         let view = CreateListingView()
-        view.uploadPhotosButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
+        view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()

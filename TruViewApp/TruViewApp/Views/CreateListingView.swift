@@ -145,7 +145,7 @@ class CreateListingView: UIView {
         return tv
     }()
     
-    lazy var uploadPhotosButton: UIButton = {
+    lazy var createTourButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Tour", for: .normal)
         button.backgroundColor = .orange
@@ -187,7 +187,7 @@ class CreateListingView: UIView {
         addSubview(priceTextField)
         addSubview(descriptionLabel)
         addSubview(descriptionTextView)
-        addSubview(uploadPhotosButton)
+        addSubview(createTourButton)
         
     }
     
@@ -348,9 +348,9 @@ class CreateListingView: UIView {
     }
     
     private func constrainCreateTourButton() {
-        uploadPhotosButton.translatesAutoresizingMaskIntoConstraints = false
+        createTourButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [uploadPhotosButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: frame.height * 0.05), uploadPhotosButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), uploadPhotosButton.centerXAnchor.constraint(equalTo: centerXAnchor), uploadPhotosButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
+        [createTourButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
     }
     
 }
