@@ -42,6 +42,20 @@ class Utilities {
         
     }
     
+    static func styleTextView(_ textView: UITextView) {
+        
+        let bottomLine = CALayer()
+        
+        bottomLine.frame = CGRect(x: 0, y: textView.frame.height - 2, width: textView.frame.width, height: 1)
+        
+        bottomLine.backgroundColor = UIColor.init(red: 23/255, green: 123/255, blue: 174/255, alpha: 1).cgColor
+        
+        textView.layer.addSublayer(bottomLine)
+        
+        textView.returnKeyType = .next
+        
+    }
+    
     static func styleSecureTextField(_ textfield:UITextField) {
         
         // Create the bottom line
