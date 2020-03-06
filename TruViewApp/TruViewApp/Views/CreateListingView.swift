@@ -166,6 +166,9 @@ class CreateListingView: UIView {
         return button
     }()
     
+    // MARK: - Properties
+    let scrollViewHeight = UIScreen.main.bounds.height * 1.5
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -302,7 +305,7 @@ class CreateListingView: UIView {
     private func constrainPurchaseTypeSegControl() {
         purchaseTypeSegController.translatesAutoresizingMaskIntoConstraints = false
         
-        [purchaseTypeSegController.topAnchor.constraint(equalTo: zipcodeTextField.bottomAnchor, constant: frame.height * 0.01), purchaseTypeSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [purchaseTypeSegController.topAnchor.constraint(equalTo: zipcodeTextField.bottomAnchor, constant: scrollViewHeight * 0.01), purchaseTypeSegController.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), purchaseTypeSegController.centerXAnchor.constraint(equalTo: centerXAnchor), purchaseTypeSegController.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainNumOfBedroomsLabel() {
@@ -332,7 +335,7 @@ class CreateListingView: UIView {
     private func constrainSqFootageLabel() {
         squareFootageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [squareFootageLabel.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor, constant: frame.height * 0.01), squareFootageLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), squareFootageLabel.centerXAnchor.constraint(equalTo: centerXAnchor), squareFootageLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [squareFootageLabel.topAnchor.constraint(equalTo: numOfBathsSegController.bottomAnchor, constant: scrollViewHeight * 0.01), squareFootageLabel.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), squareFootageLabel.centerXAnchor.constraint(equalTo: centerXAnchor), squareFootageLabel.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainSqFootageTextField() {
@@ -368,19 +371,19 @@ class CreateListingView: UIView {
     private func constrainCoverPhotosButton() {
         manageCoverPhotosButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [manageCoverPhotosButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor), manageCoverPhotosButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), manageCoverPhotosButton.centerXAnchor.constraint(equalTo: centerXAnchor), manageCoverPhotosButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [manageCoverPhotosButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: scrollViewHeight * 0.01), manageCoverPhotosButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), manageCoverPhotosButton.centerXAnchor.constraint(equalTo: centerXAnchor), manageCoverPhotosButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainTourPhotosButton() {
         manageTourPhotosButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [manageTourPhotosButton.topAnchor.constraint(equalTo: manageCoverPhotosButton.bottomAnchor), manageTourPhotosButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), manageTourPhotosButton.centerXAnchor.constraint(equalTo: centerXAnchor), manageTourPhotosButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
+        [manageTourPhotosButton.topAnchor.constraint(equalTo: manageCoverPhotosButton.bottomAnchor, constant: scrollViewHeight * 0.01), manageTourPhotosButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), manageTourPhotosButton.centerXAnchor.constraint(equalTo: centerXAnchor), manageTourPhotosButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainCreateTourButton() {
         createTourButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [createTourButton.topAnchor.constraint(equalTo: manageTourPhotosButton.bottomAnchor, constant: frame.height * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
+        [createTourButton.topAnchor.constraint(equalTo: manageTourPhotosButton.bottomAnchor, constant: scrollViewHeight * 0.05), createTourButton.widthAnchor.constraint(equalTo: streetAddressLabel.widthAnchor), createTourButton.centerXAnchor.constraint(equalTo: centerXAnchor), createTourButton.heightAnchor.constraint(equalTo: streetAddressLabel.heightAnchor, multiplier: 1.25)].forEach({$0.isActive = true})
     }
     
 }
