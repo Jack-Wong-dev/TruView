@@ -15,7 +15,7 @@ class CreateListingView: UIView {
         let button = UIButton()
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = .systemBackground
         return button
     }()
     
@@ -23,7 +23,7 @@ class CreateListingView: UIView {
         let button = UIButton()
         button.setTitle("Save", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = .systemBackground
         return button
     }()
     
@@ -241,7 +241,7 @@ class CreateListingView: UIView {
     }
     
     private func setUpViewUI() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
     }
     
     // MARK: - Constraint Methods

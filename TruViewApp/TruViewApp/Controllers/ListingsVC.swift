@@ -141,7 +141,7 @@ class ListingsVC: UIViewController {
     
     // MARK: - Private Methods
     private func setUpInitialVCViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         showMapView()
     }
     

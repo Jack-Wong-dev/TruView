@@ -65,7 +65,7 @@ class CreateListingVC: UIViewController {
     }
     
     private func setUpVCViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
 }
