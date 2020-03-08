@@ -61,6 +61,8 @@
 		A5603F3C23F5C6690090E90E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5603F3B23F5C6690090E90E /* AppError.swift */; };
 		A57C35D9241596380056C13C /* CoverPhotoManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C35D8241596380056C13C /* CoverPhotoManagerView.swift */; };
 		A57C35DB2415966A0056C13C /* TourPhotoManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C35DA2415966A0056C13C /* TourPhotoManagerView.swift */; };
+		A57C35DD2415973B0056C13C /* CoverPhotoManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C35DC2415973B0056C13C /* CoverPhotoManagerVC.swift */; };
+		A57C35E12415979B0056C13C /* TourPhotoManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C35E02415979B0056C13C /* TourPhotoManagerVC.swift */; };
 		E34D2E3779A32D6509F3993A /* Pods_TruViewApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD70A482E6C9AA632A9A3C2C /* Pods_TruViewApp.framework */; };
 		EBE25FE98F9EC143DB8CD996 /* Pods_TruViewAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E00582B2E0927E2B650FA1 /* Pods_TruViewAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -138,6 +140,8 @@
 		A5603F3B23F5C6690090E90E /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		A57C35D8241596380056C13C /* CoverPhotoManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverPhotoManagerView.swift; sourceTree = "<group>"; };
 		A57C35DA2415966A0056C13C /* TourPhotoManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPhotoManagerView.swift; sourceTree = "<group>"; };
+		A57C35DC2415973B0056C13C /* CoverPhotoManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverPhotoManagerVC.swift; sourceTree = "<group>"; };
+		A57C35E02415979B0056C13C /* TourPhotoManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPhotoManagerVC.swift; sourceTree = "<group>"; };
 		D23291308867D0E6F36B211B /* Pods-TruViewApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TruViewApp.release.xcconfig"; path = "Target Support Files/Pods-TruViewApp/Pods-TruViewApp.release.xcconfig"; sourceTree = "<group>"; };
 		FD70A482E6C9AA632A9A3C2C /* Pods_TruViewApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TruViewApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -268,6 +272,8 @@
 				0A9D0639240B425200952930 /* FloorVC.swift */,
 				A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */,
 				A50A02FA240D6535003B9413 /* StartingPointVC.swift */,
+				A57C35DC2415973B0056C13C /* CoverPhotoManagerVC.swift */,
+				A57C35E02415979B0056C13C /* TourPhotoManagerVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -525,6 +531,7 @@
 				A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */,
 				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
 				0A9D0638240B3FC800952930 /* FloorCell.swift in Sources */,
+				A57C35DD2415973B0056C13C /* CoverPhotoManagerVC.swift in Sources */,
 				3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */,
 				A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */,
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
@@ -546,6 +553,7 @@
 				A5603F3623F5C6290090E90E /* Validations.swift in Sources */,
 				3CDCF9DA2400715900CFE44B /* ProfileView.swift in Sources */,
 				A5603F3423F5C6190090E90E /* Extensions.swift in Sources */,
+				A57C35E12415979B0056C13C /* TourPhotoManagerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
