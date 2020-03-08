@@ -14,7 +14,7 @@ class CreateListingView: UIView {
     lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
         button.backgroundColor = .white
         return button
     }()
@@ -22,7 +22,7 @@ class CreateListingView: UIView {
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Save", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
         button.backgroundColor = .white
         return button
     }()
@@ -78,6 +78,7 @@ class CreateListingView: UIView {
     lazy var purchaseTypeSegController: UISegmentedControl = {
         let items = ["For Sale", "For Rent", "Room Shares"]
         let sc = UISegmentedControl(items: items)
+        sc.selectedSegmentTintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         sc.selectedSegmentIndex = 0
         return sc
     }()
@@ -92,6 +93,7 @@ class CreateListingView: UIView {
     lazy var numOfBedroomsSegController: UISegmentedControl = {
         let items = ["Studio", "1", "2", "3", "4", "5"]
         let sc = UISegmentedControl(items: items)
+        sc.selectedSegmentTintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         sc.selectedSegmentIndex = 0
         return sc
     }()
@@ -106,6 +108,7 @@ class CreateListingView: UIView {
     lazy var numOfBathsSegController: UISegmentedControl = {
         let items = ["1", "2", "3", "4", "5"]
         let sc = UISegmentedControl(items: items)
+        sc.selectedSegmentTintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         sc.selectedSegmentIndex = 0
         return sc
     }()
@@ -148,26 +151,26 @@ class CreateListingView: UIView {
     lazy var manageCoverPhotosButton: UIButton = {
         let button = UIButton()
         button.setTitle("Manage Cover Photos", for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         return button
     }()
     
     lazy var manageTourPhotosButton: UIButton = {
         let button = UIButton()
         button.setTitle("Manage Virtual Tour Photos", for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         return button
     }()
     
     lazy var createTourButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Tour", for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         return button
     }()
     
     // MARK: - Properties
-    let svContentSize = UIScreen.main.bounds.height * 1.75
+    let svContentSize = UIScreen.main.bounds.height * 2
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -245,7 +248,7 @@ class CreateListingView: UIView {
     private func constrainCancelButton() {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor), cancelButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25), cancelButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05)].forEach({$0.isActive = true})
+        [cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor), cancelButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25), cancelButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.025)].forEach({$0.isActive = true})
     }
     
     private func constrainSaveButton() {
@@ -257,7 +260,7 @@ class CreateListingView: UIView {
     private func constrainStreetAddressLabel() {
         streetAddressLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [streetAddressLabel.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.032)].forEach({$0.isActive = true})
+        [streetAddressLabel.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), streetAddressLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.92), streetAddressLabel.centerXAnchor.constraint(equalTo: centerXAnchor), streetAddressLabel.heightAnchor.constraint(equalTo: cancelButton.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainStreetAddressTextField() {

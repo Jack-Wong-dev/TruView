@@ -12,25 +12,29 @@ class CreateListingVC: UIViewController {
     
     // MARK: - UI Objects
     lazy var scrollView: UIScrollView = {
-        let sv = UIScrollView()
+        let sv = UIScrollView(frame: .zero)
+        sv.frame = self.view.bounds
+        sv.contentSize = svContentSize
+        sv.autoresizingMask = .flexibleHeight
         return sv
     }()
     
     lazy var createListingView: CreateListingView = {
         let view = CreateListingView()
+        view.frame.size = svContentSize
         view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()
     
     // MARK: - Properties
+    lazy var svContentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 2)
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
         setUpVCViews()
-        addConstraints()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,7 +45,6 @@ class CreateListingVC: UIViewController {
         Utilities.styleTextField(createListingView.sqFootageTextField)
         Utilities.styleTextField(createListingView.priceTextField)
         Utilities.styleTextView(createListingView.descriptionTextView)
-        constrainSVContentSize()
     }
     
     // MARK: - Actions
@@ -63,31 +66,6 @@ class CreateListingVC: UIViewController {
     
     private func setUpVCViews() {
         view.backgroundColor = .white
-    }
-    
-    private func addConstraints() {
-        constrainScrollView()
-        constrainCreateListingView()
-    }
-    
-    // MARK: - Constraint Methods
-    private func constrainCreateListingView() {
-        createListingView.translatesAutoresizingMaskIntoConstraints = false
-        
-        [createListingView.topAnchor.constraint(equalTo: scrollView.topAnchor), createListingView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor), createListingView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor), createListingView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor), createListingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)].forEach({$0.isActive = true})
-    }
-    
-    private func constrainScrollView() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        [scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor), scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor), scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
-    }
-    
-    private func constrainSVContentSize() {
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 1.75)
     }
     
 }
