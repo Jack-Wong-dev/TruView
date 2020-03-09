@@ -32,6 +32,7 @@ class CoverPhotoManagerVC: UIViewController {
         super.viewDidLoad()
         addSubViews()
         setUpVCView()
+        cvDelegation()
     }
     
     // MARK: - Actions
@@ -53,6 +54,11 @@ class CoverPhotoManagerVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func cvDelegation() {
+        coverPhtMngrView.coverPhotoCV.delegate = self
+        coverPhtMngrView.coverPhotoCV.dataSource = self
     }
     
     private func checkPhotoLibraryAccess() {
@@ -94,7 +100,7 @@ extension CoverPhotoManagerVC: UIImagePickerControllerDelegate, UINavigationCont
         if let image = info[.originalImage] as? UIImage {
             imagePreviewVC.currentImage = image
         }
-//        imagePreviewVC.delegate = self
+        imagePreviewVC.delegate = self
         dismiss(animated: true) {
             imagePreviewVC.modalPresentationStyle = .fullScreen
             self.present(imagePreviewVC, animated: true, completion: nil)
@@ -117,4 +123,19 @@ extension CoverPhotoManagerVC: UICollectionViewDataSource {
     }
 }
 
+extension CoverPhotoManagerVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
+    }
+}
+
 extension CoverPhotoManagerVC: UICollectionViewDelegate {}
+
+extension CoverPhotoManagerVC: DataSendingProtocol {
+
+    func sendDataToCreateListingVC(roomData: RoomData) {
+        usersCoverPhtUploads.append(roomData)
+    }
+
+
+}
