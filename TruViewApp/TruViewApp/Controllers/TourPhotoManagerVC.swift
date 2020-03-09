@@ -13,6 +13,8 @@ class TourPhotoManagerVC: UIViewController {
     // MARK: - UI Objects
     lazy var tourPhtMngrView: TourPhotoManagerView = {
         let view = TourPhotoManagerView()
+        view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        view.uploadPhotoButton.addTarget(self, action: #selector(uploadPhotoButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -26,6 +28,18 @@ class TourPhotoManagerVC: UIViewController {
         setUpVCView()
     }
     
+    // MARK: - Actions
+    @objc func cancelButtonPressed() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func uploadPhotoButtonPressed() {
+        let imgPicker = UIImagePickerController()
+        imgPicker.delegate = self
+        imgPicker.sourceType = .photoLibrary
+        present(imgPicker, animated: true, completion: nil)
+    }
+    
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(tourPhtMngrView)
@@ -35,4 +49,18 @@ class TourPhotoManagerVC: UIViewController {
         view.backgroundColor = .systemBackground
     }
 
+}
+
+extension TourPhotoManagerVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let imagePreviewVC = ImagePreviewVC()
+        if let image = info[.originalImage] as? UIImage {
+            imagePreviewVC.currentImage = image
+        }
+//        imagePreviewVC.delegate = self
+        dismiss(animated: true) {
+            imagePreviewVC.modalPresentationStyle = .fullScreen
+            self.present(imagePreviewVC, animated: true, completion: nil)
+        }
+    }
 }
