@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class TourPhotoManagerVC: UIViewController {
 
@@ -19,7 +20,12 @@ class TourPhotoManagerVC: UIViewController {
     }()
     
     // MARK: - Properties
-    
+    var photoLibraryAccessIsAuthorized = false
+    var usersTourPhtUploads = AllRoomData.imageCollection {
+        didSet {
+            tourPhtMngrView.tourPhotoCV.reloadData()
+        }
+    }
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -47,6 +53,36 @@ class TourPhotoManagerVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func checkPhotoLibraryAccess() {
+        let status = PHPhotoLibrary.authorizationStatus()
+    
+        switch status {
+        case .authorized:
+            print(status)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { [weak self] (status) in
+                switch status {
+                case .authorized:
+                    self?.photoLibraryAccessIsAuthorized = true
+                case .notDetermined:
+                    print("not determined")
+                case .restricted:
+                    print("restricted")
+                case .denied:
+                    self?.photoLibraryAccessIsAuthorized = false
+                @unknown default:
+                    fatalError("This is outside of any authorization case.")
+                }
+            }
+        case .restricted:
+            print("restricted")
+        case .denied:
+            photoLibraryAccessIsAuthorized = false
+        @unknown default:
+            print("nothing should happen here")
+        }
     }
 
 }
