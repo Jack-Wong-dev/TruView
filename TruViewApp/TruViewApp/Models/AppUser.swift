@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable {
+public class User: Codable {
     var name: String?
     var email: String?
     var phone: String?
@@ -19,5 +19,11 @@ struct User: Codable {
     var location: String?
     var libraryPermission: Bool = false
   //let userType: UserType
-  //let listings: [ListingWrapper]
+    var listings: [ListingWrapper]?
+}
+
+public class ListingWrapper: Codable {
+  var id: String?
+  var addresss: String?
+  var price: String?
 }
