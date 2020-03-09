@@ -71,7 +71,7 @@ class CoverPhotoManagerView: UIView {
     private func constrainThumbnailCV() {
         coverPhotoCV.translatesAutoresizingMaskIntoConstraints = false
         
-        [coverPhotoCV.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), coverPhotoCV.leadingAnchor.constraint(equalTo: leadingAnchor), coverPhotoCV.trailingAnchor.constraint(equalTo: trailingAnchor), coverPhotoCV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
+        [coverPhotoCV.topAnchor.constraint(equalTo: cancelButton.bottomAnchor), coverPhotoCV.leadingAnchor.constraint(equalTo: leadingAnchor), coverPhotoCV.trailingAnchor.constraint(equalTo: trailingAnchor), coverPhotoCV.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.85)].forEach({$0.isActive = true})
     }
     
     private func constrainUploadPhotoButton() {
