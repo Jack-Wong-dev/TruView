@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class CoverPhotoManagerVC: UIViewController {
 
@@ -16,10 +17,73 @@ class CoverPhotoManagerVC: UIViewController {
         return view
     }()
     
+    // MARK: - Properties
+    var photoLibraryAccessIsAuthorized = false
+    var usersImages = AllRoomData.imageCollection {
+        didSet {
+            coverPhtMngrView.coverPhotoCV.reloadData()
+        }
+    }
+    
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubViews()
+        setUpVCView()
     }
     
+    // MARK: - Private Methods
+    private func addSubViews() {
+        view.addSubview(coverPhtMngrView)
+    }
+    
+    private func setUpVCView() {
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func checkPhotoLibraryAccess() {
+        let status = PHPhotoLibrary.authorizationStatus()
+    
+        switch status {
+        case .authorized:
+            print(status)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { [weak self] (status) in
+                switch status {
+                case .authorized:
+                    self?.photoLibraryAccessIsAuthorized = true
+                case .notDetermined:
+                    print("not determined")
+                case .restricted:
+                    print("restricted")
+                case .denied:
+                    self?.photoLibraryAccessIsAuthorized = false
+                @unknown default:
+                    fatalError("This is outside of any authorization case.")
+                }
+            }
+        case .restricted:
+            print("restricted")
+        case .denied:
+            photoLibraryAccessIsAuthorized = false
+        @unknown default:
+            print("nothing should happen here")
+        }
+    }
 
+}
+
+// MARK: - Extensions
+extension CoverPhotoManagerVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let imagePreviewVC = ImagePreviewVC()
+        if let image = info[.originalImage] as? UIImage {
+            imagePreviewVC.currentImage = image
+        }
+//        imagePreviewVC.delegate = self
+        dismiss(animated: true) {
+            imagePreviewVC.modalPresentationStyle = .fullScreen
+            self.present(imagePreviewVC, animated: true, completion: nil)
+        }
+    }
 }
