@@ -22,7 +22,7 @@ class CreateListingVC: UIViewController {
     lazy var createListingView: CreateListingView = {
         let view = CreateListingView()
         view.frame.size = svContentSize
-        view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
+        view.manageCoverPhotosButton.addTarget(self, action: #selector(manageCoverPhotosBtnPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()
@@ -48,14 +48,19 @@ class CreateListingVC: UIViewController {
     }
     
     // MARK: - Actions
+    @objc func cancelButtonPressed() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func manageCoverPhotosBtnPressed() {
+        let coverPhtsVC = CoverPhotoManagerVC()
+        coverPhtsVC.modalPresentationStyle = .fullScreen
+        present(coverPhtsVC, animated: true, completion: nil)
+    }
     @objc func createTourButtonPressed() {
 //        let mediaUploadVC = MediaUploadVC()
 //        mediaUploadVC.modalPresentationStyle = .fullScreen
 //        present(mediaUploadVC, animated: true, completion: nil)
-    }
-    
-    @objc func cancelButtonPressed() {
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
