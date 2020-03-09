@@ -32,6 +32,7 @@ class TourPhotoManagerVC: UIViewController {
         super.viewDidLoad()
         addSubViews()
         setUpVCView()
+        cvDelegation()
     }
     
     // MARK: - Actions
@@ -53,6 +54,11 @@ class TourPhotoManagerVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func cvDelegation() {
+        tourPhtMngrView.tourPhotoCV.delegate = self
+        tourPhtMngrView.tourPhotoCV.dataSource = self
     }
     
     private func checkPhotoLibraryAccess() {
@@ -93,10 +99,42 @@ extension TourPhotoManagerVC: UIImagePickerControllerDelegate, UINavigationContr
         if let image = info[.originalImage] as? UIImage {
             imagePreviewVC.currentImage = image
         }
-//        imagePreviewVC.delegate = self
+        imagePreviewVC.delegate = self
         dismiss(animated: true) {
             imagePreviewVC.modalPresentationStyle = .fullScreen
             self.present(imagePreviewVC, animated: true, completion: nil)
         }
     }
+}
+
+extension TourPhotoManagerVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return usersTourPhtUploads.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let upload = usersTourPhtUploads[indexPath.row]
+        if let cell = tourPhtMngrView.tourPhotoCV.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
+            cell.imageUploadImageView.image = upload.image
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+}
+
+extension TourPhotoManagerVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width * 0.8, height: view.frame.width * 0.8)
+    }
+}
+
+extension TourPhotoManagerVC: UICollectionViewDelegate {}
+
+extension TourPhotoManagerVC: DataSendingProtocol {
+
+    func sendDataToCreateListingVC(roomData: RoomData) {
+        usersTourPhtUploads.append(roomData)
+    }
+
+
 }
