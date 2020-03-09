@@ -28,6 +28,7 @@ class AddContentCVCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+  
     // MARK: - Private Methods
     private func addSubViews() {
         addSubview(addContentImageView)
@@ -37,10 +38,12 @@ class AddContentCVCell: UICollectionViewCell {
         constrainAddContentImageView()
     }
     
+  
     // MARK: - Constraint Methods
     private func constrainAddContentImageView() {
         addContentImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        [addContentImageView.topAnchor.constraint(equalTo: topAnchor), addContentImageView.leadingAnchor.constraint(equalTo: leadingAnchor), addContentImageView.trailingAnchor.constraint(equalTo: trailingAnchor), addContentImageView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach({$0.isActive = true})
+        [addContentImageView.centerYAnchor.constraint(equalTo: centerYAnchor), addContentImageView.centerXAnchor.constraint(equalTo: centerXAnchor),         addContentImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),addContentImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
+].forEach({$0.isActive = true})
     }
 }

@@ -33,7 +33,7 @@ class EditProfileView: UIView {
     
     lazy var selectImageButton: UIButton = {
       let button = UIButton()
-      Utilities.styleBarButton(button: button, title: "select profile image")
+      Utilities.styleBarButton(button: button, title: "Select Profile Image")
       return button
     }()
     
@@ -108,7 +108,7 @@ class EditProfileView: UIView {
       tv.text = user.bio ?? "enter bio"
       //MARK: need to set and change background color for BioTV when editing starts (propably should be done in delegate extension in VC)
       if tv.text == "enter bio" {
-        tv.textColor = #colorLiteral(red: 0.7354657054, green: 0.4323248863, blue: 0.2110898495, alpha: 1)
+        tv.textColor = #colorLiteral(red: 0.7546653731, green: 0.7546653731, blue: 0.7546653731, alpha: 1)
       } else {
         tv.textColor = .black
       }

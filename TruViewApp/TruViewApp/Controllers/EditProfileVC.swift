@@ -4,15 +4,31 @@
 
     import UIKit
     import Photos
+    import Firebase
+
 
     class EditProfileVC: UIViewController {
       
 //MARK: Variables
-      var user = User()
+      let db = Firestore.firestore()
+
+      var user = User() {
+        didSet{
+          
+        }
+      }
       
+      var image = UIImage() {
+        didSet {
+          editProfileViews.userImage.image = image
+        }
+      }
       
+// MARK: UI Objects
+
       lazy var editProfileViews: EditProfileView = {
         let epv = EditProfileView()
+        epv.cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
         epv.saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         epv.selectImageButton.addTarget(self, action: #selector(addFromLibrary), for: .touchUpInside)
         return epv
@@ -23,7 +39,8 @@
       override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(editProfileViews)
-        view.setGradientBackground(colorTop: #colorLiteral(red: 0.9686274529, green: 0.8481872751, blue: 0.1920395687, alpha: 1), colorBottom: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1))
+        view.backgroundColor = .white
+        setDelgates()
       }
       
       override func viewDidLayoutSubviews() {
@@ -35,7 +52,13 @@
         Utilities.styleTextField(editProfileViews.realtorLicenseTextField)
       }
       
-     
+      func setDelgates() {
+        editProfileViews.nameTextField.delegate = self
+        editProfileViews.emailTextField.delegate = self
+        editProfileViews.phoneTextField.delegate = self
+        editProfileViews.agencyTextField.delegate = self
+        editProfileViews.realtorLicenseTextField.delegate = self
+      }
       
       
 //MARK: Objc Functions
@@ -49,9 +72,29 @@
           showAlert(title: "Error", message: "Please enter a valid email")
             return
         }
+        guard user.name != "enter your name" else {
+          showAlert(title: "Error", message: "Please enter your name")
+          return
+        }
         guard user.name != "" else {
           showAlert(title: "Error", message: "Please enter your name")
           return
+        }
+        db.collection("users").document("realtor").setData([
+          "name": user.name,
+            "email": user.email,
+            "phone": user.phone,
+            "agency": user.agency,
+            "license": user.license,
+            "bio": user.bio,
+            "profilePic": user.profilePic
+          
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
         }
         let profile = ProfileVC()
         profile.modalPresentationStyle = .overFullScreen
@@ -63,68 +106,22 @@
         let imagePickerVC = UIImagePickerController()
         imagePickerVC.delegate = self
         imagePickerVC.sourceType = .photoLibrary
-        
-        if user.libraryPermission {
-          imagePickerVC.delegate = self
-          present(imagePickerVC, animated: true, completion: nil)
-        } else {
-          let alertVC = UIAlertController(title: "Access Required", message: "Library access is required to add photos", preferredStyle: .alert)
-          
-          alertVC.addAction(UIAlertAction(title: "Deny", style: .destructive, handler: nil))
-          self.present(alertVC, animated: true, completion: nil)
-          
-          alertVC.addAction(UIAlertAction(title: "Allow", style: .default, handler: {(action) in
-            self.user.libraryPermission = true
-            self.present(imagePickerVC, animated: true, completion: nil)
-          }))
-        }
+        present(imagePickerVC, animated: true, completion: nil)
       }
-      
-      
-      
-//MARK: Check Library Permission
-
-      //MARK: Should the function below be refactored and placed in a ModelView?
-      func checkLibraryPermission() {
-        let status = PHPhotoLibrary.authorizationStatus()
-        switch status {
-        case .authorized:
-          print(status)
-        case .notDetermined:
-          PHPhotoLibrary.requestAuthorization({status in
-            switch status {
-            case . authorized:
-              self.user.libraryPermission = true
-              print(status)
-            case .denied:
-              self.user.libraryPermission = false
-              print("denied")
-            case .notDetermined:
-              print("not determined")
-            case .restricted:
-              print("restricted")
-            }
-          })
-        case .denied:
-          let alertVC = UIAlertController(title: "Denied ", message: "Camera access is required for this app", preferredStyle: .alert)
-          alertVC.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-        case .restricted:
-          print("restricted")
-        }
-      }
-      
+          
         
     }
+
 
 
 //MARK: Extensions
     extension EditProfileVC: UITextFieldDelegate {
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
           if textField == editProfileViews.nameTextField {
-                user.name = textField.text ?? ""
+                user.name = textField.text
                 textField.resignFirstResponder()
           } else if textField == editProfileViews.emailTextField {
-                user.email = textField.text ?? ""
+                user.email = textField.text
                 textField.resignFirstResponder()
           } else if textField == editProfileViews.phoneTextField {
                 user.phone = textField.text
@@ -143,10 +140,10 @@
 
 extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    guard let image = info[.originalImage] as? UIImage else {
+    guard let newImage = info[.originalImage] as? UIImage else {
       return
     }
-//    self.user.profilePic = image
+    self.image = newImage
     dismiss(animated: true, completion: nil)
   }
 }
