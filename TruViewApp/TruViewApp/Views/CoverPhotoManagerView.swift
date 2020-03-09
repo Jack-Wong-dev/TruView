@@ -33,7 +33,7 @@ class CoverPhotoManagerView: UIView {
         let button = UIButton()
         button.setTitle("Upload Photo", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-        button.backgroundColor = .gray
+        button.backgroundColor = .systemBackground
         return button
     }()
     
