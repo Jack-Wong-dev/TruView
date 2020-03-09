@@ -19,7 +19,7 @@ class CoverPhotoManagerVC: UIViewController {
     
     // MARK: - Properties
     var photoLibraryAccessIsAuthorized = false
-    var usersImages = AllRoomData.imageCollection {
+    var usersCoverPhtUploads = AllRoomData.imageCollection {
         didSet {
             coverPhtMngrView.coverPhotoCV.reloadData()
         }
@@ -87,3 +87,20 @@ extension CoverPhotoManagerVC: UIImagePickerControllerDelegate, UINavigationCont
         }
     }
 }
+
+extension CoverPhotoManagerVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return usersCoverPhtUploads.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let upload = usersCoverPhtUploads[indexPath.row]
+        if let cell = coverPhtMngrView.coverPhotoCV.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue, for: indexPath) as? ImageCVCell {
+            cell.imageUploadImageView.image = upload.image
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+}
+
+extension CoverPhotoManagerVC: UICollectionViewDelegate {}
