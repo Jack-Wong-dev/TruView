@@ -14,6 +14,8 @@ class CoverPhotoManagerVC: UIViewController {
     // MARK: - UI Objects
     lazy var coverPhtMngrView: CoverPhotoManagerView = {
         let view = CoverPhotoManagerView()
+        view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        view.uploadPhotoButton.addTarget(self, action: #selector(uploadPhotoButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -30,6 +32,18 @@ class CoverPhotoManagerVC: UIViewController {
         super.viewDidLoad()
         addSubViews()
         setUpVCView()
+    }
+    
+    // MARK: - Actions
+    @objc func cancelButtonPressed() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func uploadPhotoButtonPressed() {
+        let imgPicker = UIImagePickerController()
+        imgPicker.delegate = self
+        imgPicker.sourceType = .photoLibrary
+        present(imgPicker, animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
