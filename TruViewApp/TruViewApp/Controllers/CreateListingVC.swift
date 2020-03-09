@@ -23,6 +23,7 @@ class CreateListingVC: UIViewController {
         let view = CreateListingView()
         view.frame.size = svContentSize
         view.manageCoverPhotosButton.addTarget(self, action: #selector(manageCoverPhotosBtnPressed), for: .touchUpInside)
+        view.manageTourPhotosButton.addTarget(self, action: #selector(manageTourPhotosBtnPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return view
     }()
@@ -57,6 +58,13 @@ class CreateListingVC: UIViewController {
         coverPhtsVC.modalPresentationStyle = .fullScreen
         present(coverPhtsVC, animated: true, completion: nil)
     }
+    
+    @objc func manageTourPhotosBtnPressed() {
+        let tourPhtsVC = TourPhotoManagerVC()
+        tourPhtsVC.modalPresentationStyle = .fullScreen
+        present(tourPhtsVC, animated: true, completion: nil)
+    }
+    
     @objc func createTourButtonPressed() {
 //        let mediaUploadVC = MediaUploadVC()
 //        mediaUploadVC.modalPresentationStyle = .fullScreen
