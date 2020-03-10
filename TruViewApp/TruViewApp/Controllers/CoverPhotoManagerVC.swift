@@ -110,7 +110,14 @@ extension CoverPhotoManagerVC: UIImagePickerControllerDelegate, UINavigationCont
 
 extension CoverPhotoManagerVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if usersCoverPhtUploads.count == 0 {
+            self.coverPhtMngrView.coverPhotoCV.setEmptyMessage("You have 0 media uploads")
+        } else {
+            self.coverPhtMngrView.coverPhotoCV.restore()
+        }
+
         return usersCoverPhtUploads.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

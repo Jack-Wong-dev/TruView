@@ -109,6 +109,12 @@ extension TourPhotoManagerVC: UIImagePickerControllerDelegate, UINavigationContr
 
 extension TourPhotoManagerVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if usersTourPhtUploads.count == 0 {
+            self.tourPhtMngrView.tourPhotoCV.setEmptyMessage("You have 0 media uploads")
+        } else {
+            self.tourPhtMngrView.tourPhotoCV.restore()
+        }
+
         return usersTourPhtUploads.count
     }
     
