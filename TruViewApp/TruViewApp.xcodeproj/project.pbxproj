@@ -10,6 +10,13 @@
 		0A9D0636240B3FB700952930 /* FloorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D0635240B3FB700952930 /* FloorView.swift */; };
 		0A9D0638240B3FC800952930 /* FloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D0637240B3FC800952930 /* FloorCell.swift */; };
 		0A9D063A240B425200952930 /* FloorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D0639240B425200952930 /* FloorVC.swift */; };
+		0A9EBF04241828CA00E223AC /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBEFC241828C900E223AC /* FloatyWindow.swift */; };
+		0A9EBF05241828CA00E223AC /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBEFD241828C900E223AC /* FloatyItem.swift */; };
+		0A9EBF06241828CA00E223AC /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBEFE241828C900E223AC /* FloatyViewController.swift */; };
+		0A9EBF07241828CA00E223AC /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBEFF241828C900E223AC /* Floaty.swift */; };
+		0A9EBF08241828CA00E223AC /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBF01241828CA00E223AC /* Extension.swift */; };
+		0A9EBF09241828CA00E223AC /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBF02241828CA00E223AC /* FloatyDelegate.swift */; };
+		0A9EBF0A241828CA00E223AC /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBF03241828CA00E223AC /* FloatyManager.swift */; };
 		0AAC671E240EF71000448AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC671D240EF71000448AA3 /* GoogleService-Info.plist */; };
 		0AAC6720240EF9DB00448AA3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC671F240EF9DB00448AA3 /* SignUpView.swift */; };
 		0AAC6722240EF9E500448AA3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC6721240EF9E500448AA3 /* LoginView.swift */; };
@@ -83,6 +90,14 @@
 		0A9D0635240B3FB700952930 /* FloorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorView.swift; sourceTree = "<group>"; };
 		0A9D0637240B3FC800952930 /* FloorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorCell.swift; sourceTree = "<group>"; };
 		0A9D0639240B425200952930 /* FloorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorVC.swift; sourceTree = "<group>"; };
+		0A9EBEFC241828C900E223AC /* FloatyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
+		0A9EBEFD241828C900E223AC /* FloatyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyItem.swift; sourceTree = "<group>"; };
+		0A9EBEFE241828C900E223AC /* FloatyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
+		0A9EBEFF241828C900E223AC /* Floaty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floaty.swift; sourceTree = "<group>"; };
+		0A9EBF00241828C900E223AC /* Floaty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floaty.h; sourceTree = "<group>"; };
+		0A9EBF01241828CA00E223AC /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		0A9EBF02241828CA00E223AC /* FloatyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyDelegate.swift; sourceTree = "<group>"; };
+		0A9EBF03241828CA00E223AC /* FloatyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyManager.swift; sourceTree = "<group>"; };
 		0AAC671D240EF71000448AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0AAC671F240EF9DB00448AA3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0AAC6721240EF9E500448AA3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -168,6 +183,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A9EBEFB241828B700E223AC /* FAB */ = {
+			isa = PBXGroup;
+			children = (
+				0A9EBF00241828C900E223AC /* Floaty.h */,
+				0A9EBEFF241828C900E223AC /* Floaty.swift */,
+				0A9EBF02241828CA00E223AC /* FloatyDelegate.swift */,
+				0A9EBEFD241828C900E223AC /* FloatyItem.swift */,
+				0A9EBF03241828CA00E223AC /* FloatyManager.swift */,
+				0A9EBEFE241828C900E223AC /* FloatyViewController.swift */,
+				0A9EBEFC241828C900E223AC /* FloatyWindow.swift */,
+				0A9EBF01241828CA00E223AC /* Extension.swift */,
+			);
+			path = FAB;
+			sourceTree = "<group>";
+		};
 		1D1C0AB622EFDD3532CE3DBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,12 +304,9 @@
 				0A9D0639240B425200952930 /* FloorVC.swift */,
 				A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */,
 				A50A02FA240D6535003B9413 /* StartingPointVC.swift */,
-
 				A57C35DC2415973B0056C13C /* CoverPhotoManagerVC.swift */,
 				A57C35E02415979B0056C13C /* TourPhotoManagerVC.swift */,
-
 				3CC180C7241809FF00C1947D /* DetailListingVC.swift */,
-
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -319,6 +346,7 @@
 				A5603F3723F5C64C0090E90E /* UIStyleGuide.swift */,
 				A5603F3923F5C65C0090E90E /* Toast.swift */,
 				A5603F3B23F5C6690090E90E /* AppError.swift */,
+				0A9EBEFB241828B700E223AC /* FAB */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -508,6 +536,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A9EBF0A241828CA00E223AC /* FloatyManager.swift in Sources */,
+				0A9EBF04241828CA00E223AC /* FloatyWindow.swift in Sources */,
 				A53658E32405C1DF004ABDE0 /* ImageCVCell.swift in Sources */,
 				A5603F1A23F5C4070090E90E /* ProfileVC.swift in Sources */,
 				A5603F0823F5C08D0090E90E /* Graph.swift in Sources */,
@@ -519,6 +549,7 @@
 				A5603F3823F5C64C0090E90E /* UIStyleGuide.swift in Sources */,
 				0AAC6726240EFE8300448AA3 /* Hotspot.swift in Sources */,
 				A5603F1823F5C3F20090E90E /* SavedVC.swift in Sources */,
+				0A9EBF07241828CA00E223AC /* Floaty.swift in Sources */,
 				0A9D0636240B3FB700952930 /* FloorView.swift in Sources */,
 				A5603F2623F5C4E20090E90E /* SignUpVC.swift in Sources */,
 				A5603F2823F5C4F50090E90E /* LogInVC.swift in Sources */,
@@ -534,12 +565,15 @@
 				A50A02FB240D6535003B9413 /* StartingPointVC.swift in Sources */,
 				A5603F2023F5C44E0090E90E /* CreateListingVC.swift in Sources */,
 				A50A02F7240CA45F003B9413 /* MediaUploadVC.swift in Sources */,
+				0A9EBF06241828CA00E223AC /* FloatyViewController.swift in Sources */,
 				A5603F1E23F5C4370090E90E /* PanoVC.swift in Sources */,
 				A5603EE223F5BCAF0090E90E /* TruViewApp.xcdatamodeld in Sources */,
 				0A9D0638240B3FC800952930 /* FloorCell.swift in Sources */,
 				A57C35DD2415973B0056C13C /* CoverPhotoManagerVC.swift in Sources */,
 				3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */,
 				A5603F2423F5C4BF0090E90E /* TabBarController.swift in Sources */,
+				0A9EBF09241828CA00E223AC /* FloatyDelegate.swift in Sources */,
+				0A9EBF05241828CA00E223AC /* FloatyItem.swift in Sources */,
 				A5603EDA23F5BCAF0090E90E /* SceneDelegate.swift in Sources */,
 				A50A02F9240D5D02003B9413 /* StartingPointPickerView.swift in Sources */,
 				A57C35D9241596380056C13C /* CoverPhotoManagerView.swift in Sources */,
@@ -550,6 +584,7 @@
 				A5603F1223F5C2810090E90E /* PanoView.swift in Sources */,
 				A5603F3023F5C5F30090E90E /* Enums.swift in Sources */,
 				A5603F3223F5C6070090E90E /* CellIdentifiers.swift in Sources */,
+				0A9EBF08241828CA00E223AC /* Extension.swift in Sources */,
 				A50A02F5240CA43A003B9413 /* MediaUploadView.swift in Sources */,
 				A5603F2A23F5C56C0090E90E /* FBAuthService.swift in Sources */,
 				A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */,
@@ -713,15 +748,17 @@
 			baseConfigurationReference = 618322088B0DA794CFB70871 /* Pods-TruViewApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QS5639B4T5;
+				DEVELOPMENT_TEAM = 8FR9D6557V;
 				INFOPLIST_FILE = TruViewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.1Group3TruViewApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "-1Group3TruViewApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -732,15 +769,17 @@
 			baseConfigurationReference = D23291308867D0E6F36B211B /* Pods-TruViewApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QS5639B4T5;
+				DEVELOPMENT_TEAM = 8FR9D6557V;
 				INFOPLIST_FILE = TruViewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.1Group3TruViewApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "-1Group3TruViewApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
