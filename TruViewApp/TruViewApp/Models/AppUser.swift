@@ -8,7 +8,8 @@
 
 import Foundation
 
-public class User: Codable {
+public class AppUser: Codable {
+    var id: String?
     var name: String?
     var email: String?
     var phone: String?
@@ -20,6 +21,12 @@ public class User: Codable {
     var libraryPermission: Bool = false
   //let userType: UserType
     var listings: [ListingWrapper]?
+  
+  var fieldsDict: [String: Any] {
+      return [
+          "email": self.email ?? ""
+      ]
+  }
 }
 
 public class ListingWrapper: Codable {
@@ -27,3 +34,6 @@ public class ListingWrapper: Codable {
   var addresss: String?
   var price: String?
 }
+
+
+
