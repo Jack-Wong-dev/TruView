@@ -12,7 +12,7 @@
 //MARK: Variables
       let db = Firestore.firestore()
 
-      var user = User() {
+      var user = AppUser() {
         didSet{
           
         }
