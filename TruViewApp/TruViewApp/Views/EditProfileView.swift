@@ -10,7 +10,7 @@ import UIKit
 
 class EditProfileView: UIView {
   
-  var user = User()
+  var user = AppUser()
 
     lazy var cancelButton: UIButton = {
       let button = UIButton()
