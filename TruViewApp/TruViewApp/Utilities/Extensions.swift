@@ -197,3 +197,24 @@ extension SCNMaterial {
         diffuse.contents = image
     }
 }
+
+extension UICollectionView {
+
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .systemGray
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 40)
+        messageLabel.sizeToFit()
+        messageLabel.layer.borderWidth = 10
+        messageLabel.layer.borderColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+
+        self.backgroundView = messageLabel
+    }
+
+    func restore() {
+        self.backgroundView = nil
+    }
+}

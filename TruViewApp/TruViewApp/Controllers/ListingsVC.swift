@@ -18,17 +18,11 @@ class ListingsVC: UIViewController {
         return sb
     }()
     
-    lazy var filterMenuButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Filter", for: .normal)
-        btn.setTitleColor(.blue, for: .normal)
-        return btn
-    }()
-    
     lazy var mapListViewSegController: UISegmentedControl = {
         let items = ["Map View", "List View"]
         let sc = UISegmentedControl(items: items)
         sc.selectedSegmentIndex = 0
+        sc.selectedSegmentTintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         sc.addTarget(self, action: #selector(segControlValueChanged(_:)), for: .valueChanged)
         return sc
     }()
@@ -141,13 +135,12 @@ class ListingsVC: UIViewController {
     
     // MARK: - Private Methods
     private func setUpInitialVCViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         showMapView()
     }
     
     private func addSubViews() {
         view.addSubview(searchBar)
-        view.addSubview(filterMenuButton)
         view.addSubview(mapListViewSegController)
         view.addSubview(mapView)
         view.addSubview(listingView)
@@ -156,7 +149,6 @@ class ListingsVC: UIViewController {
     
     private func addConstraints() {
         constrainSearchBar()
-        constrainFilterMenuButton()
         constrainSegmentedController()
         constrainMapView()
         constrainListingView()
@@ -194,13 +186,7 @@ class ListingsVC: UIViewController {
     private func constrainSearchBar() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
-        [searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor), searchBar.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.825), searchBar.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
-    }
-    
-    private func constrainFilterMenuButton() {
-        filterMenuButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        [filterMenuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), filterMenuButton.leadingAnchor.constraint(equalTo: searchBar.trailingAnchor), filterMenuButton.trailingAnchor.constraint(equalTo: view.trailingAnchor), filterMenuButton.heightAnchor.constraint(equalTo: searchBar.heightAnchor)].forEach({$0.isActive = true})
+        [searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor), searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor), searchBar.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.15)].forEach({$0.isActive = true})
     }
     
     private func constrainSegmentedController() {
