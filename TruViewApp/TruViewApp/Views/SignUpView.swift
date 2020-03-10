@@ -9,6 +9,7 @@
 import UIKit
 
 class SignUpView: UIView {
+
   
       lazy var emailLabel: UILabel = {
           let label = UILabel()
@@ -105,5 +106,6 @@ class SignUpView: UIView {
       ])
     }
     
+
     
   }
