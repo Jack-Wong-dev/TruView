@@ -6,7 +6,7 @@ class ProfileVC: UIViewController {
     
 //MARK: Variables
 
-  var user = User()
+  var user = AppUser()
   
   
   
