@@ -15,6 +15,7 @@
 		0AAC6722240EF9E500448AA3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC6721240EF9E500448AA3 /* LoginView.swift */; };
 		0AAC6724240EFE5A00448AA3 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC6723240EFE5A00448AA3 /* Listing.swift */; };
 		0AAC6726240EFE8300448AA3 /* Hotspot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC6725240EFE8300448AA3 /* Hotspot.swift */; };
+		3CC180C8241809FF00C1947D /* DetailListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC180C7241809FF00C1947D /* DetailListingVC.swift */; };
 		3CDCF9DA2400715900CFE44B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9D92400715900CFE44B /* ProfileView.swift */; };
 		3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9DB240074B400CFE44B /* EditProfileView.swift */; };
 		A50A02F5240CA43A003B9413 /* MediaUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F4240CA43A003B9413 /* MediaUploadView.swift */; };
@@ -88,6 +89,7 @@
 		0AAC6723240EFE5A00448AA3 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 		0AAC6725240EFE8300448AA3 /* Hotspot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotspot.swift; sourceTree = "<group>"; };
 		1C933085969D27D31E540B45 /* Pods-TruViewAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TruViewAppTests.release.xcconfig"; path = "Target Support Files/Pods-TruViewAppTests/Pods-TruViewAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3CC180C7241809FF00C1947D /* DetailListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListingVC.swift; sourceTree = "<group>"; };
 		3CDCF9D92400715900CFE44B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3CDCF9DB240074B400CFE44B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		618322088B0DA794CFB70871 /* Pods-TruViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TruViewApp.debug.xcconfig"; path = "Target Support Files/Pods-TruViewApp/Pods-TruViewApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -272,8 +274,12 @@
 				0A9D0639240B425200952930 /* FloorVC.swift */,
 				A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */,
 				A50A02FA240D6535003B9413 /* StartingPointVC.swift */,
+
 				A57C35DC2415973B0056C13C /* CoverPhotoManagerVC.swift */,
 				A57C35E02415979B0056C13C /* TourPhotoManagerVC.swift */,
+
+				3CC180C7241809FF00C1947D /* DetailListingVC.swift */,
+
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 				A50A02F5240CA43A003B9413 /* MediaUploadView.swift in Sources */,
 				A5603F2A23F5C56C0090E90E /* FBAuthService.swift in Sources */,
 				A5603F1623F5C3E10090E90E /* ListingsVC.swift in Sources */,
+				3CC180C8241809FF00C1947D /* DetailListingVC.swift in Sources */,
 				A5603F1C23F5C41E0090E90E /* EditProfileVC.swift in Sources */,
 				A5603F2E23F5C5990090E90E /* FBStorageService.swift in Sources */,
 				A5603F1023F5C25D0090E90E /* EditorView.swift in Sources */,
