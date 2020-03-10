@@ -84,21 +84,31 @@ extension ProfileVC: UICollectionViewDataSource {
   }
 
 
+//extension ProfileVC: UICollectionViewDelegate {
+//   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+//         if collectionView.cellForItem(at: indexPath)?.isSelected ?? false {
+//             collectionView.deselectItem(at: indexPath, animated: true)
+//           let selectedCell:UICollectionViewCell = collectionView.cellForItem(at: indexPath)!
+//             return false
+//        }
+//    return false
+//  }
+//}
+
 extension ProfileVC: UICollectionViewDelegate {
-   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-         if collectionView.cellForItem(at: indexPath)?.isSelected ?? false {
-             collectionView.deselectItem(at: indexPath, animated: true)
-           let selectedCell:UICollectionViewCell = collectionView.cellForItem(at: indexPath)!
-             return false
-        }
-    return false
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if collectionView.cellForItem(at: indexPath)?.isSelected ?? false {
+      let createVC = CreateListingVC()
+      createVC.modalPresentationStyle = .overFullScreen
+      present(createVC, animated: true, completion: nil)
+    }
   }
 }
 
 
 extension ProfileVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let cellSize = CGSize(width: (view.frame.width) * 0.5, height: (view.frame.width) * 0.5)
+      let cellSize = CGSize(width: (view.frame.width) * 0.3, height: (view.frame.width) * 0.3)
         return cellSize
     }
 }
