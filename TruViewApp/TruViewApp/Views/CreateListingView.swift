@@ -184,6 +184,23 @@ class CreateListingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func enableConstraintsForWidth(_ horizontalSizeClass: UIUserInterfaceSizeClass) {
+      if horizontalSizeClass == .regular {
+//        NSLayoutConstraint.deactivate(compactConstraints)
+//        NSLayoutConstraint.activate(regularConstraints)
+      } else {
+//        NSLayoutConstraint.deactivate(regularConstraints)
+//        NSLayoutConstraint.activate(compactConstraints)
+      }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+      super.traitCollectionDidChange(previousTraitCollection)
+      if traitCollection.horizontalSizeClass != previousTraitCollection?.horizontalSizeClass {
+        enableConstraintsForWidth(traitCollection.horizontalSizeClass)
+      }
+    }
+    
     // MARK: - Private Methods
     private func addSubViews() {
         addSubview(cancelButton)

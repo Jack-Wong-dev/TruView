@@ -5,6 +5,7 @@ import UIKit
     case selectNode
     case createNode
     case createReverseNode
+    case none
 }
 
 class TourEditorVC: UIViewController, UIToolbarDelegate {
@@ -13,7 +14,7 @@ class TourEditorVC: UIViewController, UIToolbarDelegate {
         let tb = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
         tb.backgroundColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
         tb.isTranslucent = true
-        tb.items = [cancelButton]
+        tb.items = [cancelButton, flexibleSpace, doneButton]
         tb.isHidden = true
         return tb
     }()
@@ -29,7 +30,19 @@ class TourEditorVC: UIViewController, UIToolbarDelegate {
         button.tintColor = .systemGreen
         return button
     }()
-        
+    
+    lazy private var flexibleSpace: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        return button
+    }()
+    
+    lazy private var doneButton: UIBarButtonItem = {
+           let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+//           button.isEnabled = false
+           button.tintColor = .systemGreen
+           return button
+    }()
+    
     var fab = Floaty()
     
     private var selectedGraph = Graph()
@@ -46,14 +59,15 @@ class TourEditorVC: UIViewController, UIToolbarDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func commonInit(){
         print("common init")
         layoutFAB()
         addSubviews()
         setConstraints()
         editorView.toolbar = toolbar
-//        fab.addDragging()
+        editorView.fab = fab
+        //        fab.addDragging()
     }
     
     private func addSubviews(){
@@ -65,11 +79,11 @@ class TourEditorVC: UIViewController, UIToolbarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
 }
 
 //MARK:- Panoramic Methods
@@ -79,7 +93,21 @@ extension TourEditorVC{
         editorView.hideToast()
         editorView.hudToggle = .hide
         editorView.tapPurpose = .selectNode
+        editorView.controlMethod = .touch
         self.view.makeToast("Canceled")
+    }
+    
+    @objc private func doneButtonTapped(){
+        editorView.hideToast()
+        editorView.hudToggle = .hide
+        
+        if editorView.controlMethod == .rotate {
+            editorView.saveNewCameraPosition()
+            editorView.controlMethod = .touch
+        }
+        
+        editorView.tapPurpose = .selectNode
+        self.view.makeToast("Finished")
     }
     
     @objc func exitEditor(){
@@ -124,22 +152,42 @@ extension TourEditorVC {
 extension TourEditorVC: FloatyDelegate {
     
     func layoutFAB() {
-        fab.buttonColor = .green
-        fab.selectedColor = .yellow
+        fab.buttonColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         fab.hasShadow = true
         
-        fab.addItem(title: "Add Hotspot") { (item) in
-            self.editorView.displayRoomList()
+        let addHotSpotItem = FloatyItem()
+        addHotSpotItem.icon = UIImage(systemName: "mappin.and.ellipse")
+        addHotSpotItem.buttonColor = .systemTeal
+        addHotSpotItem.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        addHotSpotItem.title = "Add Destination"
+        addHotSpotItem.handler = { item in
+             self.editorView.displayRoomList()
         }
-        
-        fab.addItem(title: "Change Camera Position") { (item) in
+                
+        let rotateCameraItem = FloatyItem()
+        rotateCameraItem.icon = UIImage(systemName: "camera.rotate")
+        rotateCameraItem.buttonColor = .systemYellow
+        rotateCameraItem.title = "Rotate Starting Angle"
+        rotateCameraItem.handler = { item in
+            self.editorView.controlMethod = .rotate
+            self.editorView.hudToggle = .show
             
+            self.view.makeToast("Pan to where you would like the starting angle to be", point: CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/8), title: "Adjust Camera", image: UIImage(named: "funnyface"), completion: nil)
         }
         
-        fab.addItem(title: "Exit Editor") { (item) in
+        //Exit Editor Button
+        let exitItem = FloatyItem()
+        exitItem.icon = UIImage(systemName: "escape")
+        exitItem.buttonColor = .systemRed
+        exitItem.tintColor = .white
+        exitItem.title = "Exit Editor"
+        exitItem.handler = { item in
             self.dismiss(animated: true, completion: nil)
         }
         
+        fab.addItem(item: addHotSpotItem)
+        fab.addItem(item: rotateCameraItem)
+        fab.addItem(item: exitItem)
         fab.fabDelegate = self
     }
     

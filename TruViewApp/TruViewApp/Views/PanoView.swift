@@ -19,6 +19,7 @@ import ImageIO
 @objc public enum CTPanoramaControlMethod: Int {
     case motion
     case touch
+    case rotate
 }
 
 @objc public class PanoView: UIView {
@@ -59,7 +60,12 @@ import ImageIO
     var pursuitGraph = Graph()
     
     private let radius: CGFloat = 10
-    public let sceneView = SCNView()
+    
+    public lazy var sceneView : SCNView = {
+        let scnView = SCNView()
+        return scnView
+    }()
+    
     private let scene = SCNScene()
     private let motionManager = CMMotionManager()
     private var roomNode: SCNNode?
@@ -177,7 +183,6 @@ import ImageIO
         yFov = 80
         resetCameraAngles()
         sceneView.scene = scene
-        sceneView.backgroundColor = UIColor.green
         
         switchControlMethod(to: controlMethod)
         
@@ -240,6 +245,17 @@ import ImageIO
         resetCameraAngles()
     }
     
+    /// Creates An Array Of CIBloom Filters
+    ///
+    /// - Returns: [CIFilter]?
+    func addBloom() -> [CIFilter]? {
+        let bloomFilter = CIFilter(name:"CIBloom")!
+        bloomFilter.setValue(5.0, forKey: "inputIntensity")
+        bloomFilter.setValue(10.0, forKey: "inputRadius")
+
+        return [bloomFilter]
+    }
+    
     private func createHotSpotNode(name: String, position: SCNVector3){
         
         //Create invisible node to increase touch area
@@ -253,21 +269,16 @@ import ImageIO
         
         //Create the node the user will actually see to tap
         let colorSphere = SCNSphere(radius: 0.2)
-        colorSphere.firstMaterial?.diffuse.contents = UIColor.green
+
+        colorSphere.firstMaterial?.diffuse.contents = UIColor.systemGreen
         
         let colorNode = SCNNode()
         colorNode.geometry = colorSphere
         colorNode.position = position
         colorNode.name = name
-        
-        //Animate the color node to hover
-        let moveUp = SCNAction.moveBy(x: 0, y: 0.05, z: 0, duration: 1)
-        moveUp.timingMode = .easeInEaseOut;
-        let moveDown = SCNAction.moveBy(x: 0, y: -0.05, z: 0, duration: 1)
-        moveDown.timingMode = .easeInEaseOut;
-        let moveSequence = SCNAction.sequence([moveUp,moveDown])
-        let moveLoop = SCNAction.repeatForever(moveSequence)
-        colorNode.runAction(moveLoop)
+    
+        colorNode.animateUpAndDown()
+        colorNode.highlightNodeWithDurarion(5)
         
         roomNode?.addChildNode(newHotSpotNode)
         roomNode?.addChildNode(colorNode)
@@ -404,11 +415,11 @@ import ImageIO
         let zoom = Double(pinchRec.scale)
         switch pinchRec.state {
         case .began:
-            startScale = cameraNode.camera!.yFov
+            startScale = Double(cameraNode.camera!.fieldOfView)
         case .changed:
             let fov = startScale / zoom
             if fov > 20 && fov < 80 {
-                cameraNode.camera!.yFov = fov
+                cameraNode.camera!.fieldOfView = CGFloat(fov)
             }
         default:
             break
