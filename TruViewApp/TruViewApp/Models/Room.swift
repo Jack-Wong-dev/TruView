@@ -12,6 +12,7 @@ public class Room{
     var name: String?
     var imageURL: String?
     var hotspots: [String:Hotspot]
+    var startingAngle: Float?
     
     init() {
         self.hotspots = [String:Hotspot]()
