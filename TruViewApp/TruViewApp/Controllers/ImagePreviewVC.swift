@@ -13,6 +13,7 @@ class ImagePreviewVC: UIViewController {
     // MARK: - UI Objects
     lazy var previewImageView: UIImageView = {
         let img = UIImageView()
+        img.contentMode = .scaleAspectFit
         img.isUserInteractionEnabled = true
         return img
     }()
