@@ -9,11 +9,13 @@ import ImageIO
     var imageDictionary = [String: UIImage]()
 
     // MARK: Public properties
+    @objc public var fab: Floaty?
     @objc public var toolbar: UIToolbar?
     @objc public var compass: CTPanoramaCompass?
     @objc public var movementHandler: ((_ rotationAngle: CGFloat, _ fieldOfViewAngle: CGFloat) -> Void)?
     @objc public var panSpeed = CGPoint(x: 0.005, y: 0.005)
-    @objc public var startAngle: Float = 0
+    public var currentAngleY: Float = 0
+    public var previousAngleY: Float = 0
     var currentRoom = Room()
 
     @objc public var overlayView: UIView? {
@@ -23,11 +25,11 @@ import ImageIO
     }
 
     @objc public var controlMethod: CTPanoramaControlMethod = .touch {
-        didSet {
-            switchControlMethod(to: controlMethod)
-            resetCameraAngles()
-        }
-    }
+           didSet {
+               switchControlMethod(to: controlMethod)
+               resetCameraAngles()
+           }
+       }
 
     @objc public var hudToggle: HUD = .hide {
         didSet {
@@ -35,7 +37,16 @@ import ImageIO
         }
     }
 
-    @objc public var tapPurpose: TapSelection = .selectNode
+    @objc public var tapPurpose: TapSelection = .selectNode {
+        didSet {
+            switch tapPurpose {
+            case .selectNode:
+                fab?.isHidden = false
+            default:
+                fab?.isHidden = true
+            }
+        }
+    }
 
     // MARK: Private properties
     private var selectedGraph = Graph()
@@ -43,7 +54,6 @@ import ImageIO
     private var nextRoom : Room?
 
     private let radius: CGFloat = 10
-    public let sceneView = SCNView()
     private let scene = SCNScene()
     private let motionManager = CMMotionManager()
     private var geometryNode: SCNNode?
@@ -55,6 +65,11 @@ import ImageIO
         let camera = SCNCamera()
         node.camera = camera
         return node
+    }()
+    
+    public lazy var sceneView : SCNView = {
+        let scnView = SCNView()
+        return scnView
     }()
 
     private lazy var opQueue: OperationQueue = {
@@ -109,7 +124,6 @@ import ImageIO
     }
 
     private func commonInit(){
-
         add(view: sceneView)
         scene.rootNode.addChildNode(cameraNode)
         yFov = 80
@@ -194,7 +208,12 @@ import ImageIO
         sphereNode.name = room.name
 
         //Rotating the sphere 180 degrees so that the camera node will face the the center of the photosphere.
-        sphereNode.rotation = SCNVector4Make(0, 1, 0, Float(180).toRadians())
+//        sphereNode.rotation = SCNVector4Make(0, 1, 0, Float(180).toRadians())
+        print("Room angle: \(String(describing: room.startingAngle))")
+        currentAngleY = room.startingAngle ?? 180
+        print("Current Angle Y : \(currentAngleY)")
+        
+        sphereNode.rotation = SCNVector4Make(0, 1, 0,  currentAngleY.toRadians())
 
         geometryNode = sphereNode
 
@@ -215,21 +234,18 @@ import ImageIO
 
         //Create the node the user will actually see to tap
         let colorSphere = SCNSphere(radius: 0.2)
-        colorSphere.firstMaterial?.diffuse.contents = UIColor.green
+
+        colorSphere.firstMaterial?.diffuse.contents = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
 
         let colorNode = SCNNode()
         colorNode.geometry = colorSphere
         colorNode.position = position
         colorNode.name = name
-
-        //Animate the color node to hover
-        let moveUp = SCNAction.moveBy(x: 0, y: 0.05, z: 0, duration: 1)
-        moveUp.timingMode = .easeInEaseOut;
-        let moveDown = SCNAction.moveBy(x: 0, y: -0.05, z: 0, duration: 1)
-        moveDown.timingMode = .easeInEaseOut;
-        let moveSequence = SCNAction.sequence([moveUp,moveDown])
-        let moveLoop = SCNAction.repeatForever(moveSequence)
-        colorNode.runAction(moveLoop)
+        
+        colorNode.setHighlighted()
+        
+        colorNode.animateUpAndDown()
+        colorNode.highlightNodeWithDurarion(10)
 
         geometryNode?.addChildNode(newHotSpotNode)
         geometryNode?.addChildNode(colorNode)
@@ -248,21 +264,15 @@ import ImageIO
 
         //Create the node the user will actually see to tap
         let colorSphere = SCNSphere(radius: 0.2)
-        colorSphere.firstMaterial?.diffuse.contents = UIColor.green
-
+        colorSphere.firstMaterial?.diffuse.contents = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        
         let colorNode = SCNNode()
         colorNode.geometry = colorSphere
         colorNode.position = position
         colorNode.name = name
 
-        //Animate the color node to hover
-        let moveUp = SCNAction.moveBy(x: 0, y: 0.05, z: 0, duration: 1)
-        moveUp.timingMode = .easeInEaseOut;
-        let moveDown = SCNAction.moveBy(x: 0, y: -0.05, z: 0, duration: 1)
-        moveDown.timingMode = .easeInEaseOut;
-        let moveSequence = SCNAction.sequence([moveUp,moveDown])
-        let moveLoop = SCNAction.repeatForever(moveSequence)
-        colorNode.runAction(moveLoop)
+        colorNode.animateUpAndDown()
+        colorNode.highlightNodeWithDurarion(10)
 
         geometryNode?.addChildNode(newHotSpotNode)
         geometryNode?.addChildNode(colorNode)
@@ -308,61 +318,83 @@ import ImageIO
         }
     }
 
+//    private func switchControlMethod(to method: CTPanoramaControlMethod) {
+//        sceneView.gestureRecognizers?.removeAll()
+//
+//        if method == .touch {
+//            let panGestureRec = UIPanGestureRecognizer(target: self, action: #selector(handlePan(panRec:)))
+//            sceneView.addGestureRecognizer(panGestureRec)
+//
+//            let pinchRec = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(pinchRec:)))
+//            sceneView.addGestureRecognizer(pinchRec)
+//
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+//            sceneView.addGestureRecognizer(tapGesture)
+//
+//            if motionManager.isDeviceMotionActive {
+//                motionManager.stopDeviceMotionUpdates()
+//            }
+//        } else {
+//            guard motionManager.isDeviceMotionAvailable else {return}
+//
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+//            sceneView.addGestureRecognizer(tapGesture)
+//
+//            //Resetting the field of view
+//            yFov = 80
+//
+//            motionManager.deviceMotionUpdateInterval = 0.015
+//            motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: opQueue,
+//                                                   withHandler: { [weak self] (motionData, error) in
+//                                                    guard let panoramaView = self else {return}
+//                                                    guard panoramaView.controlMethod == .motion else {return}
+//
+//                                                    guard let motionData = motionData else {
+//                                                        print("\(String(describing: error?.localizedDescription))")
+//                                                        panoramaView.motionManager.stopDeviceMotionUpdates()
+//                                                        return
+//                                                    }
+//
+//                                                    let rotationMatrix = motionData.attitude.rotationMatrix
+//                                                    var userHeading = .pi - atan2(rotationMatrix.m32, rotationMatrix.m31)
+//                                                    userHeading += .pi/2
+//
+//                                                    DispatchQueue.main.async {
+//                                                        // Use quaternions when in spherical mode to prevent gimbal lock
+//                                                        panoramaView.cameraNode.orientation = motionData.orientation()
+//
+//                                                        panoramaView.reportMovement(CGFloat(userHeading), panoramaView.xFov.toRadians())
+//                                                    }
+//            })
+//        }
+//    }
+    
     private func switchControlMethod(to method: CTPanoramaControlMethod) {
         sceneView.gestureRecognizers?.removeAll()
+        
+        let pinchRec = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(pinchRec:)))
+                  sceneView.addGestureRecognizer(pinchRec)
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+                  sceneView.addGestureRecognizer(tapGesture)
+        
         if method == .touch {
             let panGestureRec = UIPanGestureRecognizer(target: self, action: #selector(handlePan(panRec:)))
             sceneView.addGestureRecognizer(panGestureRec)
-
-            let pinchRec = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(pinchRec:)))
-            sceneView.addGestureRecognizer(pinchRec)
-
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-            sceneView.addGestureRecognizer(tapGesture)
-
+            
             if motionManager.isDeviceMotionActive {
                 motionManager.stopDeviceMotionUpdates()
             }
-        } else {
-            guard motionManager.isDeviceMotionAvailable else {return}
-
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-            sceneView.addGestureRecognizer(tapGesture)
-
-            //Resetting the field of view
-            yFov = 80
-
-            motionManager.deviceMotionUpdateInterval = 0.015
-            motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: opQueue,
-                                                   withHandler: { [weak self] (motionData, error) in
-                                                    guard let panoramaView = self else {return}
-                                                    guard panoramaView.controlMethod == .motion else {return}
-
-                                                    guard let motionData = motionData else {
-                                                        print("\(String(describing: error?.localizedDescription))")
-                                                        panoramaView.motionManager.stopDeviceMotionUpdates()
-                                                        return
-                                                    }
-
-                                                    let rotationMatrix = motionData.attitude.rotationMatrix
-                                                    var userHeading = .pi - atan2(rotationMatrix.m32, rotationMatrix.m31)
-                                                    userHeading += .pi/2
-
-                                                    DispatchQueue.main.async {
-                                                        // Use quaternions when in spherical mode to prevent gimbal lock
-                                                        panoramaView.cameraNode.orientation = motionData.orientation()
-
-                                                        panoramaView.reportMovement(CGFloat(userHeading), panoramaView.xFov.toRadians())
-                                                    }
-            })
+        }else {
+            let rotateGestureRec = UIPanGestureRecognizer(target: self, action: #selector(rotateObject(_:)))
+            sceneView.addGestureRecognizer(rotateGestureRec)
         }
     }
 
 
     private func resetCameraAngles() {
-        cameraNode.eulerAngles = SCNVector3Make(0, startAngle, 0)
-        self.reportMovement(CGFloat(startAngle), xFov.toRadians(), callHandler: false)
+        cameraNode.eulerAngles = SCNVector3Make(0, 0, 0)
+        self.reportMovement(CGFloat(0), xFov.toRadians(), callHandler: false)
     }
 
     private func reportMovement(_ rotationAngle: CGFloat, _ fieldOfViewAngle: CGFloat, callHandler: Bool = true) {
@@ -375,6 +407,22 @@ import ImageIO
     // MARK: Gesture handling
 
     //MARK:-- Pan Gesture
+    
+    @objc func rotateObject(_ gesture: UIPanGestureRecognizer) {
+
+        guard let nodeToRotate = geometryNode else { return }
+
+            let translation = gesture.translation(in: gesture.view!)
+            var newAngleY = (Float)(translation.x)*(Float)(Double.pi)/180.0
+            newAngleY += currentAngleY
+
+            nodeToRotate.eulerAngles.y = newAngleY
+
+            if(gesture.state == .ended) { currentAngleY = newAngleY }
+
+            print(nodeToRotate.eulerAngles)
+    }
+    
     @objc private func handlePan(panRec: UIPanGestureRecognizer) {
         if panRec.state == .began {
             prevLocation = CGPoint.zero
@@ -488,6 +536,9 @@ import ImageIO
                     let newHotSpot = createNewHotSpotNode(name: name, position: newVector)
 
                     previewNewHotspot(selectedNode: newHotSpot)
+                    
+                case .none:
+                    print("You're not supposed to select anything")
                 }
             }
         }
@@ -758,6 +809,18 @@ extension EditorView{
 
         topController?.present(alertController, animated: true, completion: nil)
     }
+    
+    func saveNewCameraPosition(){
+        
+        print("Rotation.w \(String(describing: geometryNode?.rotation.w))")
+        
+        if var newValue = geometryNode?.rotation.w {
+            newValue = newValue.toDegrees()
+            selectedGraph.updateStaringAngle(source: currentRoom, angle: newValue)
+        }
+        
+        
+    }
 }
 
 
@@ -850,5 +913,55 @@ extension GLKQuaternion {
     }
 }
 
+extension SCNNode{
+    
+    func animateUpAndDown(){
+        //Animate the color node to hover
+        let moveUp = SCNAction.moveBy(x: 0, y: 0.05, z: 0, duration: 1)
+        moveUp.timingMode = .easeInEaseOut;
+        let moveDown = SCNAction.moveBy(x: 0, y: -0.05, z: 0, duration: 1)
+        moveDown.timingMode = .easeInEaseOut;
+        let moveSequence = SCNAction.sequence([moveUp,moveDown])
+        let moveLoop = SCNAction.repeatForever(moveSequence)
+        self.runAction(moveLoop)
+    }
 
+    /// Creates A Pulsing Animation On An Infinite Loop
+    ///
+    /// - Parameter duration: TimeInterval
+    func highlightNodeWithDurarion(_ duration: TimeInterval){
 
+        //1. Create An SCNAction Which Emmits A Red Colour Over The Passed Duration Parameter
+        let highlightAction = SCNAction.customAction(duration: duration) { (node, elapsedTime) in
+
+            let color = UIColor(red: elapsedTime/CGFloat(duration), green: 0, blue: 0, alpha: 1)
+            let currentMaterial = self.geometry?.firstMaterial
+            currentMaterial?.emission.contents = color
+
+        }
+
+        //2. Create An SCNAction Which Removes The Red Emissio Colour Over The Passed Duration Parameter
+        let unHighlightAction = SCNAction.customAction(duration: duration) { (node, elapsedTime) in
+            let color = UIColor(red: CGFloat(1) - elapsedTime/CGFloat(duration), green: 0, blue: 0, alpha: 1)
+            let currentMaterial = self.geometry?.firstMaterial
+            currentMaterial?.emission.contents = color
+
+        }
+
+        //3. Create An SCNAction Sequence Which Runs The Actions
+        let pulseSequence = SCNAction.sequence([highlightAction, unHighlightAction])
+
+        //4. Set The Loop As Infinitie
+        let infiniteLoop = SCNAction.repeatForever(pulseSequence)
+
+        //5. Run The Action
+        self.runAction(infiniteLoop)
+    }
+    
+    func setHighlighted( _ highlighted : Bool = true, _ highlightedBitMask : Int = 2 ) {
+        categoryBitMask = highlightedBitMask
+        for child in self.childNodes {
+            child.setHighlighted()
+        }
+    }
+}

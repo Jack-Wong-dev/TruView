@@ -87,6 +87,11 @@ public class Graph {
         floorPlan[sourceName]?.hotspots[destinationName]?.coordinates = newPosition
     }
     
+    func updateStaringAngle(source: Room, angle: Float){
+        print("New Angle: \(angle)")
+        source.startingAngle = angle
+    }
+    
     init() {
         self.floorPlan = [String:Room]()
     }
@@ -102,7 +107,7 @@ class GraphData{
         
         //Creating Rooms
         let flexSpace = newGraph.addRoom(name: "flexspace", imageURL: "flexspace")
-        
+                
         let classroom2 = newGraph.addRoom(name: "classroom2", imageURL: "classroom2")
         
         let television = newGraph.addRoom(name: "tv", imageURL: "bioshock")
@@ -141,11 +146,13 @@ class EditorGraphData{
         //Creating Rooms
         let flexSpace = newGraph.addRoom(name: "flexspace", imageURL: "flexspace")
         
-        let classroom2 = newGraph.addRoom(name: "classroom2", imageURL: "classroom2")
+//        flexSpace.startingAngle = 90
+
+        let _ = newGraph.addRoom(name: "classroom2", imageURL: "classroom2")
         
-        let television = newGraph.addRoom(name: "tv", imageURL: "bioshock")
+        let _ = newGraph.addRoom(name: "tv", imageURL: "bioshock")
         
-        let outside = newGraph.addRoom(name: "outside", imageURL: "PursuitOutside")
+        let _ = newGraph.addRoom(name: "outside", imageURL: "PursuitOutside")
         
 //        //Creating Hotspots
 //        newGraph.addHotspot(source: flexSpace, destination: classroom2, coordinates: (-9.892502, -0.8068286, -1.216294))
