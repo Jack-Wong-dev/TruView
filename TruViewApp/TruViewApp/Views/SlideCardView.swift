@@ -11,10 +11,10 @@ import UIKit
 class SlideCardView: UIView {
 
     // MARK: - UI Objects
-    lazy var upArrowIndicator: UIImageView = {
+    lazy var cardIndicatorImage: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(systemName: "arrowtriangle.up")
-        img.tintColor = .black
+        img.image = UIImage(systemName: "minus")
+        img.tintColor = .systemGray
         return img
     }()
     
@@ -66,7 +66,7 @@ class SlideCardView: UIView {
     
     // MARK: - Private Methods
     private func addSubViews() {
-        addSubview(upArrowIndicator)
+        addSubview(cardIndicatorImage)
         addSubview(aptThumbnail)
         addSubview(priceLabel)
         addSubview(bedAndBathLabel)
@@ -90,15 +90,15 @@ class SlideCardView: UIView {
     
     // MARK: - Constraint Methods
     private func constrainArrowImage() {
-        upArrowIndicator.translatesAutoresizingMaskIntoConstraints = false
+        cardIndicatorImage.translatesAutoresizingMaskIntoConstraints = false
         
-        [upArrowIndicator.topAnchor.constraint(equalTo: topAnchor), upArrowIndicator.centerXAnchor.constraint(equalTo: centerXAnchor), upArrowIndicator.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.031), upArrowIndicator.widthAnchor.constraint(equalTo: upArrowIndicator.heightAnchor)].forEach({$0.isActive = true})
+        [cardIndicatorImage.topAnchor.constraint(equalTo: topAnchor), cardIndicatorImage.centerXAnchor.constraint(equalTo: centerXAnchor), cardIndicatorImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.025), cardIndicatorImage.widthAnchor.constraint(equalTo: cardIndicatorImage.heightAnchor, multiplier: 3)].forEach({$0.isActive = true})
     }
     
     private func constrainAptThumbnailImage() {
         aptThumbnail.translatesAutoresizingMaskIntoConstraints = false
         
-        [aptThumbnail.topAnchor.constraint(equalTo: upArrowIndicator.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
+        [aptThumbnail.topAnchor.constraint(equalTo: cardIndicatorImage.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
     }
     
     private func constrainBedAndBathlabel() {
