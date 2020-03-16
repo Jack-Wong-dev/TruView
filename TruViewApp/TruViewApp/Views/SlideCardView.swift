@@ -21,7 +21,11 @@ class SlideCardView: UIView {
     lazy var aptThumbnail: UIImageView = {
         let img = UIImageView()
         img.image = UIImage(named: "front")
-        img.backgroundColor = .blue
+        img.backgroundColor = .systemBackground
+        img.contentMode = .scaleAspectFill
+        img.layer.masksToBounds = false
+        img.layer.cornerRadius = 15
+        img.clipsToBounds = true
         return img
     }()
     
@@ -54,7 +58,7 @@ class SlideCardView: UIView {
     
     // MARK: - Initializers
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: UIScreen.main.bounds)
         addSubViews()
         addConstraints()
         setUpViewUI()
@@ -98,7 +102,7 @@ class SlideCardView: UIView {
     private func constrainAptThumbnailImage() {
         aptThumbnail.translatesAutoresizingMaskIntoConstraints = false
         
-        [aptThumbnail.topAnchor.constraint(equalTo: cardIndicatorImage.bottomAnchor, constant: 10), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor), aptThumbnail.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
+        [aptThumbnail.topAnchor.constraint(equalTo: cardIndicatorImage.bottomAnchor), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.height * 0.0075), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(frame.height * 0.0075)), aptThumbnail.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
     }
     
     private func constrainBedAndBathlabel() {
