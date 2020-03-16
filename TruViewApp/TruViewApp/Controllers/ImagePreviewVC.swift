@@ -11,6 +11,20 @@ import UIKit
 class ImagePreviewVC: UIViewController {
     
     // MARK: - UI Objects
+    lazy var cancelButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        button.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        return button
+    }()
+    
+    lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        button.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        return button
+    }()
+    
     lazy var previewImageView: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFit
@@ -42,10 +56,14 @@ class ImagePreviewVC: UIViewController {
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(previewImageView)
+        previewImageView.addSubview(cancelButton)
+        previewImageView.addSubview(saveButton)
     }
     
     private func addConstraints() {
         constrainPreviewImageView()
+        constrainCancelButton()
+        constrainSaveButton()
     }
     
     private func setUpVCView() {
@@ -78,6 +96,18 @@ class ImagePreviewVC: UIViewController {
 
     
     // MARK: - Constraint Methods
+    private func constrainCancelButton() {
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [cancelButton.topAnchor.constraint(equalTo: previewImageView.safeAreaLayoutGuide.topAnchor), cancelButton.leadingAnchor.constraint(equalTo: previewImageView.leadingAnchor), cancelButton.widthAnchor.constraint(equalTo: previewImageView.widthAnchor, multiplier: 0.25), cancelButton.heightAnchor.constraint(equalTo: cancelButton.widthAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainSaveButton() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [saveButton.topAnchor.constraint(equalTo: previewImageView.safeAreaLayoutGuide.topAnchor), saveButton.trailingAnchor.constraint(equalTo: previewImageView.trailingAnchor), saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor), saveButton.heightAnchor.constraint(equalTo: saveButton.widthAnchor)].forEach({$0.isActive = true})
+    }
+    
     private func constrainPreviewImageView() {
         previewImageView.translatesAutoresizingMaskIntoConstraints = false
         
