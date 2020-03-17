@@ -92,9 +92,10 @@ class SlideCardView: UIView {
     private func addConstraints() {
         constrainArrowImage()
         constrainAptThumbnailImage()
+        constrainPricelabel()
         constrainBedAndBathlabel()
         constrainSqFootagelabel()
-        constrainPricelabel()
+        constrainContactAgentBtn()
         constrainAptTextView()
     }
     
@@ -132,6 +133,12 @@ class SlideCardView: UIView {
         sqFootageLabel.translatesAutoresizingMaskIntoConstraints = false
         
         [sqFootageLabel.topAnchor.constraint(equalTo: bedAndBathLabel.bottomAnchor), sqFootageLabel.leadingAnchor.constraint(equalTo: leadingAnchor), sqFootageLabel.trailingAnchor.constraint(equalTo: centerXAnchor), sqFootageLabel.heightAnchor.constraint(equalTo: priceLabel.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainContactAgentBtn() {
+        contactAgentButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [contactAgentButton.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), contactAgentButton.leadingAnchor.constraint(equalTo: centerXAnchor), contactAgentButton.trailingAnchor.constraint(equalTo: trailingAnchor), contactAgentButton.heightAnchor.constraint(equalTo: priceLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainAptTextView() {
