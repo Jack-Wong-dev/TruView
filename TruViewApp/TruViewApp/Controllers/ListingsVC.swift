@@ -236,7 +236,7 @@ class ListingsVC: UIViewController {
     
     // MARK: - Constraint Methods to change Slide Card View
     private func createSlideCardViewConstraints() {
-        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight / 2)
+        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight / 1.9)
         halfOpenSlideCardViewTopConstraint?.isActive = false
 
         collapsedSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -slideCardHeight / 30)
