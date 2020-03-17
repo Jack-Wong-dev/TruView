@@ -138,7 +138,7 @@ class SlideCardView: UIView {
     private func constrainContactAgentBtn() {
         contactAgentButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [contactAgentButton.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), contactAgentButton.leadingAnchor.constraint(equalTo: centerXAnchor), contactAgentButton.trailingAnchor.constraint(equalTo: trailingAnchor), contactAgentButton.heightAnchor.constraint(equalTo: priceLabel.heightAnchor)].forEach({$0.isActive = true})
+        [contactAgentButton.centerYAnchor.constraint(equalTo: priceLabel.bottomAnchor), contactAgentButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: frame.width * 0.009), contactAgentButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(frame.width * 0.009)), contactAgentButton.heightAnchor.constraint(equalTo: priceLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainAptTextView() {
