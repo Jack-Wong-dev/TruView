@@ -63,10 +63,6 @@ class ListingsVC: UIViewController {
         setUpInitialVCViews()
         delegation()
         loadGestures()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(thumbnailTapped))
-        slideCardView.aptThumbnail.isUserInteractionEnabled = true
-        slideCardView.aptThumbnail.addGestureRecognizer(tapGesture)
     }
     
     @objc func thumbnailTapped() {
@@ -173,6 +169,10 @@ class ListingsVC: UIViewController {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
         swipeUp.direction = .up
         self.slideCardView.addGestureRecognizer(swipeUp)
+        
+        let thumbnailTapGesture = UITapGestureRecognizer(target: self, action: #selector(thumbnailTapped))
+        slideCardView.aptThumbnail.isUserInteractionEnabled = true
+        slideCardView.aptThumbnail.addGestureRecognizer(thumbnailTapGesture)
     }
     
     private func showMapView() {
