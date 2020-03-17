@@ -15,12 +15,14 @@ class ImagePreviewVC: UIViewController {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
         button.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        button.addTarget(self, action: #selector(cancelBtnPressed), for: .touchUpInside)
         return button
     }()
     
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        button.addTarget(self, action: #selector(saveBtnPressed), for: .touchUpInside)
         button.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         return button
     }()
@@ -49,8 +51,13 @@ class ImagePreviewVC: UIViewController {
         setUpVCView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    // MARK: - Actions
+    @objc func saveBtnPressed() {
         showAlert()
+    }
+    
+    @objc func cancelBtnPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
