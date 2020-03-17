@@ -13,7 +13,8 @@ class ImageCVCell: UICollectionViewCell {
     // MARK: - UI Objects
     lazy var imageUploadImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .systemBackground
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     

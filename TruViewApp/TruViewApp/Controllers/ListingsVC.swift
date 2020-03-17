@@ -46,6 +46,11 @@ class ListingsVC: UIViewController {
     lazy var slideCardHeight: CGFloat = view.frame.height
     var slideCardState: SlideCardState = .collapsed
     
+    private let locationManager = CLLocationManager()
+    private let searchRadius: Double = 1000
+    
+    private var listings = [Listing]()
+    
     var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
     var collapsedSlideCardViewTopConstraint: NSLayoutConstraint?
     var fullScreenSlideCardTopConstraint: NSLayoutConstraint?
@@ -58,10 +63,6 @@ class ListingsVC: UIViewController {
         setUpInitialVCViews()
         delegation()
         loadGestures()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(thumbnailTapped))
-        slideCardView.aptThumbnail.isUserInteractionEnabled = true
-        slideCardView.aptThumbnail.addGestureRecognizer(tapGesture)
     }
     
     @objc func thumbnailTapped() {
@@ -168,6 +169,10 @@ class ListingsVC: UIViewController {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
         swipeUp.direction = .up
         self.slideCardView.addGestureRecognizer(swipeUp)
+        
+        let thumbnailTapGesture = UITapGestureRecognizer(target: self, action: #selector(thumbnailTapped))
+        slideCardView.aptThumbnail.isUserInteractionEnabled = true
+        slideCardView.aptThumbnail.addGestureRecognizer(thumbnailTapGesture)
     }
     
     private func showMapView() {
@@ -180,6 +185,21 @@ class ListingsVC: UIViewController {
         listingView.isHidden = false
         slideCardView.isHidden = true
         mapView.isHidden = true
+    }
+    
+    private func locationAuthorization() {
+        let status = CLLocationManager.authorizationStatus()
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            locationManager.requestLocation()
+            locationManager.startUpdatingLocation()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            let coordinateRegion = MKCoordinateRegion.init(center: locationManager.location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
+            self.mapView.setRegion(coordinateRegion, animated: true)
+        default:
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     // MARK: - Constraint Methods
@@ -216,7 +236,7 @@ class ListingsVC: UIViewController {
     
     // MARK: - Constraint Methods to change Slide Card View
     private func createSlideCardViewConstraints() {
-        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight / 2)
+        halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight / 1.9)
         halfOpenSlideCardViewTopConstraint?.isActive = false
 
         collapsedSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -slideCardHeight / 30)

@@ -11,8 +11,35 @@ import UIKit
 class ImagePreviewVC: UIViewController {
     
     // MARK: - UI Objects
+    lazy var cancelButton: UIImageView = {
+        let imgVw = UIImageView()
+        imgVw.image = UIImage(systemName: "xmark.circle.fill")
+        imgVw.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        imgVw.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        imgVw.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        imgVw.layer.shadowOpacity = 1.0
+        imgVw.layer.shadowRadius = 0.0
+        imgVw.layer.masksToBounds = false
+        imgVw.layer.cornerRadius = 4.0
+        return imgVw
+    }()
+    
+    lazy var saveButton: UIImageView = {
+        let imgVw = UIImageView()
+        imgVw.image = UIImage(systemName: "checkmark.circle.fill")
+        imgVw.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        imgVw.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        imgVw.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        imgVw.layer.shadowOpacity = 1.0
+        imgVw.layer.shadowRadius = 0.0
+        imgVw.layer.masksToBounds = false
+        imgVw.layer.cornerRadius = 4.0
+        return imgVw
+    }()
+    
     lazy var previewImageView: UIImageView = {
         let img = UIImageView()
+        img.contentMode = .scaleAspectFit
         img.isUserInteractionEnabled = true
         return img
     }()
@@ -32,23 +59,43 @@ class ImagePreviewVC: UIViewController {
         addSubViews()
         addConstraints()
         setUpVCView()
+        loadTapGestures()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    // MARK: - Actions
+    @objc func savePressed() {
         showAlert()
+    }
+    
+    @objc func cancelPressed() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(previewImageView)
+        previewImageView.addSubview(cancelButton)
+        previewImageView.addSubview(saveButton)
     }
     
     private func addConstraints() {
         constrainPreviewImageView()
+        constrainCancelButton()
+        constrainSaveButton()
     }
     
     private func setUpVCView() {
         view.backgroundColor = .white
+    }
+    
+    private func loadTapGestures() {
+        let cancelTapGesture = UITapGestureRecognizer(target: self, action: #selector(cancelPressed))
+        cancelButton.isUserInteractionEnabled = true
+        cancelButton.addGestureRecognizer(cancelTapGesture)
+        
+        let saveTapGesture = UITapGestureRecognizer(target: self, action: #selector(savePressed))
+        saveButton.isUserInteractionEnabled = true
+        saveButton.addGestureRecognizer(saveTapGesture)
     }
     
     private func showAlert() {
@@ -77,6 +124,18 @@ class ImagePreviewVC: UIViewController {
 
     
     // MARK: - Constraint Methods
+    private func constrainCancelButton() {
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [cancelButton.topAnchor.constraint(equalTo: previewImageView.safeAreaLayoutGuide.topAnchor, constant: view.frame.width * 0.04), cancelButton.leadingAnchor.constraint(equalTo: previewImageView.leadingAnchor, constant: view.frame.width * 0.04), cancelButton.widthAnchor.constraint(equalTo: previewImageView.widthAnchor, multiplier: 0.135), cancelButton.heightAnchor.constraint(equalTo: cancelButton.widthAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainSaveButton() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [saveButton.topAnchor.constraint(equalTo: previewImageView.safeAreaLayoutGuide.topAnchor, constant: view.frame.width * 0.04), saveButton.trailingAnchor.constraint(equalTo: previewImageView.trailingAnchor, constant: -(view.frame.width * 0.04)), saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor), saveButton.heightAnchor.constraint(equalTo: saveButton.widthAnchor)].forEach({$0.isActive = true})
+    }
+    
     private func constrainPreviewImageView() {
         previewImageView.translatesAutoresizingMaskIntoConstraints = false
         
