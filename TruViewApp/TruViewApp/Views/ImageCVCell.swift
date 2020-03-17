@@ -14,7 +14,7 @@ class ImageCVCell: UICollectionViewCell {
     lazy var imageUploadImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemBackground
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
