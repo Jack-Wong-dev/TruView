@@ -32,20 +32,30 @@ class SlideCardView: UIView {
     lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.text = "$2000"
-        label.textAlignment = .right
+        label.textAlignment = .left
+        label.font = UIFont(name: "BanglaSangamMN-Bold", size: 20)
         return label
     }()
     
     lazy var bedAndBathLabel: UILabel = {
         let label = UILabel()
         label.text = "Beds: 2 Baths: 1"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
     lazy var sqFootageLabel: UILabel = {
         let label = UILabel()
-        label.text = "700 Sq. Feet"
+        label.text = "700 Square Feet"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
+    }()
+    
+    lazy var contactAgentButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Contact Agent", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        return button
     }()
     
     lazy var aptDescriptionTextView: UITextView = {
@@ -72,6 +82,7 @@ class SlideCardView: UIView {
     private func addSubViews() {
         addSubview(cardIndicatorImage)
         addSubview(aptThumbnail)
+        addSubview(contactAgentButton)
         addSubview(priceLabel)
         addSubview(bedAndBathLabel)
         addSubview(sqFootageLabel)
@@ -105,22 +116,22 @@ class SlideCardView: UIView {
         [aptThumbnail.topAnchor.constraint(equalTo: cardIndicatorImage.bottomAnchor), aptThumbnail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.height * 0.0075), aptThumbnail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(frame.height * 0.0075)), aptThumbnail.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)].forEach({$0.isActive = true})
     }
     
+    private func constrainPricelabel() {
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [priceLabel.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor), priceLabel.trailingAnchor.constraint(equalTo: centerXAnchor), priceLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.03)].forEach({$0.isActive = true})
+    }
+    
     private func constrainBedAndBathlabel() {
         bedAndBathLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [bedAndBathLabel.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), bedAndBathLabel.leadingAnchor.constraint(equalTo: leadingAnchor), bedAndBathLabel.trailingAnchor.constraint(equalTo: centerXAnchor), bedAndBathLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.03)].forEach({$0.isActive = true})
+        [bedAndBathLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor), bedAndBathLabel.leadingAnchor.constraint(equalTo: leadingAnchor), bedAndBathLabel.trailingAnchor.constraint(equalTo: centerXAnchor), bedAndBathLabel.heightAnchor.constraint(equalTo: priceLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainSqFootagelabel() {
         sqFootageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [sqFootageLabel.topAnchor.constraint(equalTo: bedAndBathLabel.bottomAnchor), sqFootageLabel.leadingAnchor.constraint(equalTo: leadingAnchor), sqFootageLabel.trailingAnchor.constraint(equalTo: centerXAnchor), sqFootageLabel.heightAnchor.constraint(equalTo: bedAndBathLabel.heightAnchor)].forEach({$0.isActive = true})
-    }
-    
-    private func constrainPricelabel() {
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        [priceLabel.topAnchor.constraint(equalTo: aptThumbnail.bottomAnchor), priceLabel.leadingAnchor.constraint(equalTo: centerXAnchor), priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor), priceLabel.bottomAnchor.constraint(equalTo: bedAndBathLabel.bottomAnchor)].forEach({$0.isActive = true})
+        [sqFootageLabel.topAnchor.constraint(equalTo: bedAndBathLabel.bottomAnchor), sqFootageLabel.leadingAnchor.constraint(equalTo: leadingAnchor), sqFootageLabel.trailingAnchor.constraint(equalTo: centerXAnchor), sqFootageLabel.heightAnchor.constraint(equalTo: priceLabel.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainAptTextView() {
