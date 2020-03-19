@@ -13,6 +13,10 @@ struct Listing {
     let city: String
     let state: String
     let zipcode: Int
+    let country: String
+    
+    static let allListings = [Listing(streetAdress: "1133 Park Place", city: "Brooklyn", state: "New York", zipcode: 11213, country: "USA"), Listing(streetAdress: "760 Prospect Place", city: "Brooklyn", state: "New York", zipcode: 11216, country: "USA"), Listing(streetAdress: "1650 Bedford Avenue", city: "Brooklyn", state: "New York", zipcode: 11225, country: "USA"), Listing(streetAdress: "880 Bergen Street", city: "Brooklyn", state: "New York", zipcode: 11238, country: "USA"), Listing(streetAdress: "1350 St. Johns Place", city: "Brooklyn", state: "New York", zipcode: 11213, country: "USA")
+]
 }
 
 class AllListingData {
@@ -24,10 +28,3 @@ class AllListingData {
     }
     
 }
-
-
-let listing1 = Listing(streetAdress: "1133 Park Place", city: "Brooklyn", state: "New York", zipcode: 11213)
-let listing2 = Listing(streetAdress: "760 Prospect Place", city: "Brooklyn", state: "New York", zipcode: 11216)
-let listing3 = Listing(streetAdress: "1650 Bedford Avenue", city: "Brooklyn", state: "New York", zipcode: 11225)
-let listing4 = Listing(streetAdress: "880 Bergen Street", city: "Brooklyn", state: "New York", zipcode: 11238)
-let listing5 = Listing(streetAdress: "1350 St. Johns Place", city: "Brooklyn", state: "New York", zipcode: 11213)
