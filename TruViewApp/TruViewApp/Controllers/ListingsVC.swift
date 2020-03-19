@@ -159,6 +159,8 @@ class ListingsVC: UIViewController {
     private func delegation() {
         listingView.collectionView.delegate = self
         listingView.collectionView.dataSource = self
+        locationManager.delegate = self
+        mapView.delegate = self
     }
     
     private func loadGestures() {
@@ -265,6 +267,7 @@ class ListingsVC: UIViewController {
     }
 }
 
+// MARK: - Extensions
 extension ListingsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -288,3 +291,25 @@ extension ListingsVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension ListingsVC: UICollectionViewDelegate {}
+
+extension ListingsVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("New locations: \(locations)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("An error occured: \(error)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.requestLocation()
+        default:
+            break
+        }
+    }
+}
+
+extension ListingsVC: MKMapViewDelegate {}
