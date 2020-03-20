@@ -45,11 +45,13 @@ class ListingsVC: UIViewController {
     // MARK: - Properties
     lazy var slideCardHeight: CGFloat = view.frame.height
     var slideCardState: SlideCardState = .collapsed
+    let address = "USA, Brooklyn, 1133 Park Place"
     
     private let locationManager = CLLocationManager()
+    private let initialLocation = CLLocation(latitude: 40.742928, longitude: -73.941660)
     private let searchRadius: Double = 1000
     
-    private var listings = [Listing]()
+    private var listings = Listing.allListings
     
     var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
     var collapsedSlideCardViewTopConstraint: NSLayoutConstraint?
@@ -63,6 +65,9 @@ class ListingsVC: UIViewController {
         setUpInitialVCViews()
         delegation()
         loadGestures()
+        locationAuthorization()
+        zoomMapOn(location: initialLocation)
+        geocodeAddress()
     }
     
     @objc func thumbnailTapped() {
@@ -189,6 +194,11 @@ class ListingsVC: UIViewController {
         mapView.isHidden = true
     }
     
+    private func zoomMapOn(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: searchRadius * 2.0, longitudinalMeters: searchRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     private func locationAuthorization() {
         let status = CLLocationManager.authorizationStatus()
         switch status {
@@ -197,10 +207,27 @@ class ListingsVC: UIViewController {
             locationManager.requestLocation()
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            let coordinateRegion = MKCoordinateRegion.init(center: locationManager.location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
-            self.mapView.setRegion(coordinateRegion, animated: true)
         default:
             locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    private func geocodeAddress() {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { [weak self] placemarks, error in
+            
+            if let placemark = placemarks?.first, let location = placemark.location {
+                let mark = MKPlacemark(placemark: placemark)
+
+                if var region = self?.mapView.region {
+                    region.center = location.coordinate
+                    region.span.longitudeDelta /= 8.0
+                    region.span.latitudeDelta /= 8.0
+                    self?.mapView.setRegion(region, animated: true)
+                    self?.mapView.addAnnotation(mark)
+                    print(mark.subLocality ?? "unknown sublocality")
+                }
+            }
         }
     }
     
@@ -294,6 +321,7 @@ extension ListingsVC: UICollectionViewDelegate {}
 
 extension ListingsVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         print("New locations: \(locations)")
     }
     
@@ -310,6 +338,14 @@ extension ListingsVC: CLLocationManagerDelegate {
             break
         }
     }
+    
 }
 
-extension ListingsVC: MKMapViewDelegate {}
+extension ListingsVC: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        annotationView.pinTintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        return annotationView
+    }
+    
+}
