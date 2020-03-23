@@ -22,7 +22,6 @@ public class AppUser: Codable {
     var location: String?
     var libraryPermission: Bool = false
     var dateCreated: Date?
-  //let userType: UserType
     var listings: [ListingWrapper]?
   
   init(from user: User) {
@@ -33,19 +32,6 @@ public class AppUser: Codable {
       self.dateCreated = user.metadata.creationDate
       self.profilePic = user.photoURL?.absoluteString
   }
-  
-//  enum CodingKeys: String, CodingKey {
-//    case email
-//    case name
-//    case phone
-//    case agency
-//    case license
-//    case bio
-//    case profilePic
-//    case location
-//    case libraryPermission
-//    case listings
-//  }
   
   var fieldsDict: [String: Any] {
       return [
@@ -59,32 +45,14 @@ public class AppUser: Codable {
         "location": self.location ?? "",
         "libraryPermission": self.libraryPermission,
         "listings": self.listings ?? []
-
-
-
       ]
   }
-  
-//  required public init(from decoder: Decoder) throws {
-//    let values  = try decoder.container(keyedBy: CodingKeys.self)
-//    self.email = try values.decode(String.self, forKey: .email)
-//    self.name = try values.decode(String.self, forKey: .name)
-//    self.phone = try values.decode(String.self, forKey: .phone)
-//    self.agency = try values.decode(String.self, forKey: .agency)
-//    self.license = try values.decode(String.self, forKey: .license)
-//    self.bio = try values.decode(String.self, forKey: .bio)
-//    self.profilePic = try values.decode(String.self, forKey: .profilePic)
-//    self.location = try values.decode(String.self, forKey: .location)
-//    self.libraryPermission = try values.decode(Bool.self, forKey: .libraryPermission)
-//    self.listings = try values.decode([ListingWrapper].self, forKey: .listings)
-//  }
 }
 
 public class ListingWrapper: Codable {
   var id: String?
   var address: String?
-  var price: String?
-  
+  var price: String?  
   var fieldsDict: [String: Any] {
   return [
     "id": self.id ?? "",
@@ -92,7 +60,6 @@ public class ListingWrapper: Codable {
     "price": self.price ?? ""
     ]
   }
-  
   
 }
 
