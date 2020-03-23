@@ -45,11 +45,12 @@ class ListingsVC: UIViewController {
     // MARK: - Properties
     lazy var slideCardHeight: CGFloat = view.frame.height
     var slideCardState: SlideCardState = .collapsed
-    let listingOne = Listing(streetAddress: "715 St Marks Ave", city: "Brooklyn", state: "NY", zipcode: 11216, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 1, squareFootage: 900, price: 2200, summary: "Somebody probably loves this home?")
     
     private let locationManager = CLLocationManager()
     private let initialLocation = CLLocation(latitude: 40.742928, longitude: -73.941660)
     private let searchRadius: Double = 1000
+    var listings = Listing.allListings
+    var selectedListing: Listing?
     
     var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
     var collapsedSlideCardViewTopConstraint: NSLayoutConstraint?
@@ -64,7 +65,7 @@ class ListingsVC: UIViewController {
         delegation()
         loadGestures()
         locationAuthorization()
-        geocodeAddressFor(listing: listingOne)
+        geocodeAddressFor(listings: listings)
     }
     
     @objc func thumbnailTapped() {
@@ -94,10 +95,6 @@ class ListingsVC: UIViewController {
                 
                 self?.view.layoutIfNeeded()
                 
-                    if self?.slideCardState == .collapsed {
-                    self?.slideCardView.alpha = 0.5
-                }
-                
                 }, completion: nil)
             case .up:
                 switch slideCardState {
@@ -115,7 +112,6 @@ class ListingsVC: UIViewController {
                 
                 self?.view.layoutIfNeeded()
                 
-                self?.slideCardView.alpha = 1.0
                 }, completion: nil)
                 
             default:
@@ -204,23 +200,33 @@ class ListingsVC: UIViewController {
         }
     }
     
-    private func geocodeAddressFor(listing: Listing) {
+    private func geocodeAddressFor(listings: [Listing]) {
+        
+        for listing in listings {
             let geocoder = CLGeocoder()
             geocoder.geocodeAddressString(listing.formattedAddress) { [weak self] placemarks, error in
                 
                 if let placemark = placemarks?.first, let location = placemark.location {
-
+                    
                     let annotation: MKPointAnnotation = {
                         let annotation = MKPointAnnotation()
                         annotation.title = "$\(listing.price)"
                         annotation.coordinate = location.coordinate
+                        annotation.subtitle = "\(listing.streetAddress)"
                         return annotation
                     }()
                     
                     self?.mapView.addAnnotation(annotation)
                 }
             }
+        }
         
+    }
+    
+    private func setUpSlideCardViews() {
+        slideCardView.priceLabel.text = "$\(selectedListing?.price ?? 0)"
+        slideCardView.bedAndBathLabel.text = "Beds: \(selectedListing?.numOfBeds ?? 0.0), Baths: \(selectedListing?.numOfBaths ?? 0.0)"
+        slideCardView.aptDescriptionTextView.text = selectedListing?.summary
     }
     
     // MARK: - Constraint Methods
@@ -260,7 +266,7 @@ class ListingsVC: UIViewController {
         halfOpenSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.bottomAnchor, constant:  -slideCardHeight / 1.9)
         halfOpenSlideCardViewTopConstraint?.isActive = false
 
-        collapsedSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -slideCardHeight / 30)
+        collapsedSlideCardViewTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: slideCardHeight)
         collapsedSlideCardViewTopConstraint?.isActive = true
 
         fullScreenSlideCardTopConstraint = slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
@@ -339,10 +345,16 @@ extension ListingsVC: MKMapViewDelegate {
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         annotationView.pinTintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         annotationView.canShowCallout = true
-        let btn = UIButton(type: .detailDisclosure)
-        annotationView.rightCalloutAccessoryView = btn
         return annotationView
     }
     
-    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let selectedAnnotation = UIButton(type: .roundedRect)
+        view.detailCalloutAccessoryView = selectedAnnotation
+        let selected = self.listings.filter({$0.streetAddress == view.annotation?.subtitle})
+        selectedListing = selected.first
+        setUpSlideCardViews()
+        activateHalfOpenSliderViewConstraints()
+        slideCardState = .halfOpen
+    }
 }

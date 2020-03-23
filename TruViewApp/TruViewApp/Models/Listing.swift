@@ -43,7 +43,6 @@ struct Listing {
         return "\(country)\(city)\(streetAddress)"
     }
     
+    static let allListings = [Listing(streetAddress: "715 St Marks Ave", city: "Brooklyn", state: "NY", zipcode: 11216, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 1, squareFootage: 900, price: 2200, summary: "Somebody probably loves this home?"), Listing(streetAddress: "1293 Dean Street", city: "Brooklyn", state: "NY", zipcode: 11216, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 2, squareFootage: 500, price: 2100, summary: "Great Place!"), Listing(streetAddress: "1237 Dean Street", city: "Brooklyn", state: "NY", zipcode: 11216, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 1, squareFootage: 900, price: 2200, summary: "Somebody probably loves this home?"), Listing(streetAddress: "247 Herkimer St", city: "Brooklyn", state: "NY", zipcode: 11216, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 1, squareFootage: 900, price: 2200, summary: "Home Sweet Home")]
     
 }
-
-
