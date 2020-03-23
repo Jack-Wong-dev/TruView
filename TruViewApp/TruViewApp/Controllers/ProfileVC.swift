@@ -99,10 +99,14 @@ extension ProfileVC: UICollectionViewDataSource {
 
 extension ProfileVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if collectionView.cellForItem(at: indexPath)?.isSelected ?? false {
-      let createVC = CreateListingVC()
-      createVC.modalPresentationStyle = .overFullScreen
-      present(createVC, animated: true, completion: nil)
+    if indexPath.item == 0 {
+        let createVC = CreateListingVC()
+        createVC.modalPresentationStyle = .overFullScreen
+        present(createVC, animated: true, completion: nil)
+    } else {
+        let detailListingVC = DetailListingVC()
+        detailListingVC.modalPresentationStyle = .fullScreen
+        present(detailListingVC, animated: true, completion: nil)
     }
   }
 }
