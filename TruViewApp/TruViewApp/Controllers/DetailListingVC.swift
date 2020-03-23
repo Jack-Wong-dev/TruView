@@ -10,21 +10,31 @@ import UIKit
 
 class DetailListingVC: UIViewController {
 
+    // MARK: - UI Objects
+    lazy var slideCardView: SlideCardView = {
+        let scv = SlideCardView()
+        return scv
+    }()
+    
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        addSubViews()
+        constrainSlideCardView()
+    }
+    
+    // MARK: - Private Methods
+    private func addSubViews() {
+        view.addSubview(slideCardView)
+    }
+    
+    private func constrainSlideCardView() {
+        slideCardView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [slideCardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), slideCardView.leadingAnchor.constraint(equalTo: view.leadingAnchor), slideCardView.trailingAnchor.constraint(equalTo: view.trailingAnchor), slideCardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
