@@ -10,6 +10,7 @@ class FirebaseAuthService {
         return auth.currentUser
     }
 
+  
     func createNewUser(email: String, password: String, completion: @escaping (Result<User,Error>) -> ()) {
         auth.createUser(withEmail: email, password: password) { (result, error) in
             if let createdUser = result?.user {
@@ -19,6 +20,22 @@ class FirebaseAuthService {
             }
         }
     }
+  
+  
+    func updateUserFields(userName: String? = nil, completion: @escaping (Result<(),Error>) -> ()){
+        let changeRequest = auth.currentUser?.createProfileChangeRequest()
+        if let userName = userName {
+            changeRequest?.displayName = userName
+        }
+        changeRequest?.commitChanges(completion: { (error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+          })
+    }
+  
 
     func loginUser(email: String, password: String, completion: @escaping (Result<(), Error>) -> ()) {
         auth.signIn(withEmail: email, password: password) { (result, error) in
@@ -30,12 +47,13 @@ class FirebaseAuthService {
         }
     }
 
-  func logOutUser(completion: @escaping (Result<(), Error>) -> ()) {
-        do{ try auth.signOut()}
-        catch {
-            print(error)
-        }
-    }
-
-  private init () {}
-}
+    func logOutUser(completion: @escaping (Result<(), Error>) -> ()) {
+          do{ try auth.signOut()}
+          catch {
+              print(error)
+          }
+      }
+  
+  
+    private init () {}
+  }
