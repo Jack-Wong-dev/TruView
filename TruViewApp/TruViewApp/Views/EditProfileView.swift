@@ -10,7 +10,7 @@ import UIKit
 
 class EditProfileView: UIView {
   
-  var user = AppUser()
+  var user: AppUser?
 
     lazy var cancelButton: UIButton = {
       let button = UIButton()
@@ -45,7 +45,7 @@ class EditProfileView: UIView {
     
     lazy var nameTextField: UITextField = {
       let tf = UITextField()
-      tf.placeholder = user.name ?? "enter your name"
+      tf.placeholder = user?.name ?? "enter your name"
       return tf
     }()
     
@@ -57,7 +57,7 @@ class EditProfileView: UIView {
         
     lazy var emailTextField: UITextField = {
       let tf = UITextField()
-      tf.placeholder = user.email ?? "enter email"
+      tf.placeholder = user?.email ?? "enter email"
       return tf
     }()
     
@@ -69,7 +69,7 @@ class EditProfileView: UIView {
         
     lazy var phoneTextField: UITextField = {
       let tf = UITextField()
-      tf.placeholder = user.phone ?? "enter phone number"
+      tf.placeholder = user?.phone ?? "enter phone number"
       return tf
     }()
     
@@ -81,7 +81,7 @@ class EditProfileView: UIView {
     
     lazy var agencyTextField: UITextField = {
       let tf = UITextField()
-      tf.placeholder = user.agency ?? "enter company name"
+      tf.placeholder = user?.agency ?? "enter company name"
       return tf
     }()
     
@@ -93,7 +93,7 @@ class EditProfileView: UIView {
         
     lazy var realtorLicenseTextField: UITextField = {
       let tf = UITextField()
-      tf.placeholder = user.license ?? "enter realator license number"
+      tf.placeholder = user?.license ?? "enter realtor license number"
       return tf
     }()
     
@@ -105,7 +105,7 @@ class EditProfileView: UIView {
     
     lazy var bioTextView: UITextView = {
       let tv = UITextView()
-      tv.text = user.bio ?? "enter bio"
+      tv.text = user?.bio ?? "enter bio"
       //MARK: need to set and change background color for BioTV when editing starts (propably should be done in delegate extension in VC)
       if tv.text == "enter bio" {
         tv.textColor = #colorLiteral(red: 0.7546653731, green: 0.7546653731, blue: 0.7546653731, alpha: 1)

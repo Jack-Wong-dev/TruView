@@ -39,7 +39,13 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
       view.addSubview(signUpViews)
+      viewDidLayoutSubviews()
       setDelgates()
+    }
+  
+    override func viewDidLayoutSubviews() {
+        Utilities.styleTextField(signUpViews.emailTextField)
+        Utilities.styleTextField(signUpViews.passwordTextField)
     }
   
     func setDelgates() {
@@ -62,14 +68,14 @@ class SignUpVC: UIViewController {
             return
         }
 
-      guard Utilities.isPasswordValid(password) else {
-        showAlert(title: "Error", message: "Password must have at least 8 characters.")
-            return
-        }
+//      guard Utilities.isPasswordValid(password) else {
+//        showAlert(title: "Error", message: "Password must have at least 8 characters.")
+//            return
+//        }
 
-  //      FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { [weak self] (result) in
-  //          self?.handleCreateAccountResponse(with: result)
-  //      }
+        FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { [weak self] (result) in
+            self?.handleCreateAccountResponse(with: result)
+        }
       
       let nextVC = EditProfileVC()
       print("login button pressed")
@@ -84,6 +90,44 @@ class SignUpVC: UIViewController {
            present(loginVC, animated: true, completion: nil)
        }
     
+//MARK: Private Functions
+  
+  private func showAlert(with title: String, and message: String) {
+      let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+      present(alertVC, animated: true, completion: nil)
+  }
+  
+  private func handleCreateAccountResponse(with result: Result<User, Error>) {
+      DispatchQueue.main.async { [weak self] in
+          switch result {
+          case .success(let user):
+            FBService.manager.createAppUser(user: AppUser(from: user)) { [weak self] newResult in
+                  self?.handleCreatedUserInFirestore(result: newResult)
+              }
+          case .failure(let error):
+              self?.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
+          }
+      }
+  }
+  
+  private func handleCreatedUserInFirestore(result: Result<(), Error>) {
+      switch result {
+      case .success:
+          guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+              else {
+                  return
+          }
+
+          UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+            window.rootViewController = EditProfileVC()
+          }, completion: nil)
+      case .failure(let error):
+          self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
+      }
+  }
+  
   
   
 
