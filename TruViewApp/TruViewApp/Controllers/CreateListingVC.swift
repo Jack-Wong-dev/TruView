@@ -68,25 +68,41 @@ class CreateListingVC: UIViewController {
         present(tourPhtsVC, animated: true, completion: nil)
     }
     
-    @objc func createTourButtonPressed() {
-        let actionSheet = UIAlertController(title: "Pick the starting point of the tour", message: "", preferredStyle: .actionSheet)
+    @objc func createTourButtonPressed(_ sender: AnyObject) {
         
+        let graph = EditorGraphData.manager.populateGraph()
+        let firstRoom = graph.getRoom(name: graph.firstRoomID!)
+        let tourVC = TourEditorVC(graph: graph, room: firstRoom!)
+    
+        let actionSheet = UIAlertController(title: "Pick the starting point of the tour", message: "", preferredStyle: .actionSheet)
+
         let pickerView = UIPickerView()
         actionSheet.view.addSubview(pickerView)
         pickerView.delegate = self
         pickerView.dataSource = self
-        
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: nil)
+
+        let saveAction = UIAlertAction(title: "Save", style: .default) { (action) in
+
+            tourVC.modalPresentationStyle = .fullScreen
+            self.present(tourVC,animated: true, completion: nil)
+        }
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         if let actionSheetView = actionSheet.view {
             let height: NSLayoutConstraint = NSLayoutConstraint(item: actionSheetView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: self.view.frame.height * 0.37)
             actionSheet.view.addConstraint(height)
         }
-        
+
         actionSheet.addAction(saveAction)
         actionSheet.addAction(cancelAction)
-        
+
+        if let popoverController = actionSheet.popoverPresentationController {
+//            popoverController.sourceView = self.view
+            popoverController.sourceView = sender as? UIView
+//            popoverController.sourceRect = sender.bounds
+        }
+
         present(actionSheet, animated: false) {
             pickerView.frame.size.width = actionSheet.view.frame.size.width
         }

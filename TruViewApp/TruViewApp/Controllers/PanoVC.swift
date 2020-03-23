@@ -4,9 +4,9 @@ class PanoVC: UIViewController, UIToolbarDelegate {
     
     lazy private var toolbar: UIToolbar = {
         let tb = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
-        tb.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
-        tb.backgroundColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
-        tb.isTranslucent = true
+//        tb.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+//        tb.backgroundColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
+//        tb.isTranslucent = true
         tb.items = [closeButton, flexibleSpace, motionButton]
         tb.isHidden = true
         
@@ -17,20 +17,16 @@ class PanoVC: UIViewController, UIToolbarDelegate {
         var pV = PanoView()
         return pV
     }()
-    
-//    lazy private var compassView: CTPieSliceView = {
-//        let cV = CTPieSliceView()
-//        cV.isHidden = true
-//        return cV
-//    }()
-    
+
     lazy private var motionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(motionTypeTapped))
+        button.tintColor = .systemGreen
         return button
     }()
     
     lazy private var closeButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissVC))
+        let button = UIBarButtonItem(image: UIImage(systemName: "xmark.square.fill"), style: UIBarButtonItem.Style.done, target: self, action: #selector(dismissVC))
+        button.tintColor = .systemGreen
         return button
     }()
     
@@ -39,24 +35,12 @@ class PanoVC: UIViewController, UIToolbarDelegate {
         return button
     }()
     
-    //    lazy private var optionsButton: UIBarButtonItem = {
-    //        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: nil)
-    //           return button
-    //    }()
-    
     var selectedGraph = Graph()
     
     private func commonInit(){
-//        panoView.pursuitGraph = selectedGraph
-//               print("Populate graph")
-//        selectedGraph =  GraphData.manager.populateGraph()
-//               print("Common Init")
         addSubviews()
         setConstraints()
-//        panoView.compass = compassView
         panoView.toolbar = toolbar
-       
-//        panoView.commonInit()
     }
     
     private func addSubviews(){
