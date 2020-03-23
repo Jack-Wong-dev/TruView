@@ -31,8 +31,8 @@ struct Listing {
     let zipcode: Int
     let country: String = "USA"
     let purchaseType: PurchaseType
-    let numOfBeds: Double
-    let numOfBaths: Double
+    let numOfBeds: Int
+    let numOfBaths: Int
     let squareFootage: Int
     let price: Int
     let summary: String

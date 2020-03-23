@@ -225,7 +225,7 @@ class ListingsVC: UIViewController {
     
     private func setUpSlideCardViews() {
         slideCardView.priceLabel.text = "$\(selectedListing?.price ?? 0)"
-        slideCardView.bedAndBathLabel.text = "Beds: \(selectedListing?.numOfBeds ?? 0.0), Baths: \(selectedListing?.numOfBaths ?? 0.0)"
+        slideCardView.bedAndBathLabel.text = "Beds: \(selectedListing?.numOfBeds ?? 0), Baths: \(selectedListing?.numOfBaths ?? 0)"
         slideCardView.aptDescriptionTextView.text = selectedListing?.summary
     }
     
