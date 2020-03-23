@@ -6,7 +6,7 @@ class ProfileVC: UIViewController {
     
 //MARK: Variables
 
-  var user = AppUser()
+  var user: AppUser?
   
   
   
@@ -18,13 +18,15 @@ class ProfileVC: UIViewController {
     pv.viewAllListingsButton.addTarget(self, action: #selector(viewAllButtonPressed), for: .touchUpInside)
     pv.listingsCollectionView.dataSource = self
     pv.listingsCollectionView.delegate = self
-//MARK: vvvvv The code below will check to see if the person viewing thi profileis the realto, and will hide the edit button if they are not.
-//    if let currentUser = Auth.auth().currentUser {
-//      pv.editProfileButton.isHidden = false
-//    } else {
-//      pv.editProfileButton.isHidden = true
-//
-//    }
+    
+    if let currentUser = Auth.auth().currentUser {
+      print(currentUser)
+      pv.editProfileButton.isHidden = false
+    } else {
+      pv.editProfileButton.isHidden = true
+
+    }
+    
     return pv
   }()
   
