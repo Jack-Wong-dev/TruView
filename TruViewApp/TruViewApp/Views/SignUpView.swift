@@ -63,10 +63,10 @@ class SignUpView: UIView {
 //MARK: Setup Views
     
     private func setUpSignUpViews() {
-      
-      editStackViewSetup()
-      signUpButtonSetup()
+      self.backgroundColor = .white
       loginButtonSetup()
+      signUpButtonSetup()
+      editStackViewSetup()
     }
     
     private func editStackViewSetup() {
@@ -90,7 +90,7 @@ class SignUpView: UIView {
       NSLayoutConstraint.activate([
         signUpButton.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: -20),
         signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-        signUpButton.widthAnchor.constraint(equalToConstant: 30),
+        signUpButton.widthAnchor.constraint(equalToConstant: 100),
         signUpButton.heightAnchor.constraint(equalToConstant: 100)
       ])
     }
