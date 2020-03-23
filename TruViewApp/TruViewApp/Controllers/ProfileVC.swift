@@ -105,7 +105,6 @@ extension ProfileVC: UICollectionViewDelegate {
         present(createVC, animated: true, completion: nil)
     } else {
         let detailListingVC = DetailListingVC()
-        detailListingVC.modalPresentationStyle = .fullScreen
         present(detailListingVC, animated: true, completion: nil)
     }
   }
