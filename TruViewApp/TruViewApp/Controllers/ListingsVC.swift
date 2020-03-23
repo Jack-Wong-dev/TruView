@@ -45,13 +45,11 @@ class ListingsVC: UIViewController {
     // MARK: - Properties
     lazy var slideCardHeight: CGFloat = view.frame.height
     var slideCardState: SlideCardState = .collapsed
-    let address = "USA, Brooklyn, 1133 Park Place"
+    let listingOne = Listing(streetAddress: "715 St Marks Ave", city: "Brooklyn", state: "NY", zipcode: 11216, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 1, squareFootage: 900, price: 2200, summary: "Somebody probably loves this home?")
     
     private let locationManager = CLLocationManager()
     private let initialLocation = CLLocation(latitude: 40.742928, longitude: -73.941660)
     private let searchRadius: Double = 1000
-    
-    private var listings = Listing.allListings
     
     var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
     var collapsedSlideCardViewTopConstraint: NSLayoutConstraint?
@@ -66,8 +64,7 @@ class ListingsVC: UIViewController {
         delegation()
         loadGestures()
         locationAuthorization()
-        zoomMapOn(location: initialLocation)
-        geocodeAddress()
+        geocodeAddressFor(listing: listingOne)
     }
     
     @objc func thumbnailTapped() {
@@ -194,11 +191,6 @@ class ListingsVC: UIViewController {
         mapView.isHidden = true
     }
     
-    private func zoomMapOn(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: searchRadius * 2.0, longitudinalMeters: searchRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
     private func locationAuthorization() {
         let status = CLLocationManager.authorizationStatus()
         switch status {
@@ -212,23 +204,23 @@ class ListingsVC: UIViewController {
         }
     }
     
-    private func geocodeAddress() {
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { [weak self] placemarks, error in
-            
-            if let placemark = placemarks?.first, let location = placemark.location {
-                let mark = MKPlacemark(placemark: placemark)
+    private func geocodeAddressFor(listing: Listing) {
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(listing.formattedAddress) { [weak self] placemarks, error in
+                
+                if let placemark = placemarks?.first, let location = placemark.location {
 
-                if var region = self?.mapView.region {
-                    region.center = location.coordinate
-                    region.span.longitudeDelta /= 8.0
-                    region.span.latitudeDelta /= 8.0
-                    self?.mapView.setRegion(region, animated: true)
-                    self?.mapView.addAnnotation(mark)
-                    print(mark.subLocality ?? "unknown sublocality")
+                    let annotation: MKPointAnnotation = {
+                        let annotation = MKPointAnnotation()
+                        annotation.title = "$\(listing.price)"
+                        annotation.coordinate = location.coordinate
+                        return annotation
+                    }()
+                    
+                    self?.mapView.addAnnotation(annotation)
                 }
             }
-        }
+        
     }
     
     // MARK: - Constraint Methods
@@ -342,10 +334,15 @@ extension ListingsVC: CLLocationManagerDelegate {
 }
 
 extension ListingsVC: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         annotationView.pinTintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        annotationView.canShowCallout = true
+        let btn = UIButton(type: .detailDisclosure)
+        annotationView.rightCalloutAccessoryView = btn
         return annotationView
     }
+    
     
 }

@@ -7,24 +7,43 @@
 //
 
 import Foundation
+import MapKit
+
+struct CoverPhoto {
+    let image: UIImage
+}
+
+struct TourPhoto {
+    let image: UIImage
+    let title: String
+}
+
+enum PurchaseType {
+    case forRent
+    case forSale
+    case roomShares
+}
 
 struct Listing {
-    let streetAdress: String
+    let streetAddress: String
     let city: String
     let state: String
     let zipcode: Int
-    let country: String
-    
-    static let allListings = [Listing(streetAdress: "1133 Park Place", city: "Brooklyn", state: "New York", zipcode: 11213, country: "USA"), Listing(streetAdress: "760 Prospect Place", city: "Brooklyn", state: "New York", zipcode: 11216, country: "USA"), Listing(streetAdress: "1650 Bedford Avenue", city: "Brooklyn", state: "New York", zipcode: 11225, country: "USA"), Listing(streetAdress: "880 Bergen Street", city: "Brooklyn", state: "New York", zipcode: 11238, country: "USA"), Listing(streetAdress: "1350 St. Johns Place", city: "Brooklyn", state: "New York", zipcode: 11213, country: "USA")
-]
-}
-
-class AllListingData {
-    
-   static var listingCollection = [Listing]()
-    
-    func addListingData(data: Listing){
-     AllListingData.listingCollection.append(data)
+    let country: String = "USA"
+    let purchaseType: PurchaseType
+    let numOfBeds: Double
+    let numOfBaths: Double
+    let squareFootage: Int
+    let price: Int
+    let summary: String
+//    let coverPhotos: [CoverPhoto]
+//    let tourPhotos: [TourPhoto]
+//    let floorPlan: Graph
+    var formattedAddress: String {
+        return "\(country)\(city)\(streetAddress)"
     }
     
+    
 }
+
+
