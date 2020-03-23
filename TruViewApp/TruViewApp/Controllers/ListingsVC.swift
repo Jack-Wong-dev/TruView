@@ -51,6 +51,11 @@ class ListingsVC: UIViewController {
     private let searchRadius: Double = 1000
     var listings = Listing.allListings
     var selectedListing: Listing?
+    var searchString: String? {
+        didSet {
+            geocodeAddressFor(listings: listings)
+        }
+    }
     
     var halfOpenSlideCardViewTopConstraint: NSLayoutConstraint?
     var collapsedSlideCardViewTopConstraint: NSLayoutConstraint?
@@ -159,6 +164,7 @@ class ListingsVC: UIViewController {
         listingView.collectionView.dataSource = self
         locationManager.delegate = self
         mapView.delegate = self
+        searchBar.delegate = self
     }
     
     private func loadGestures() {
@@ -221,6 +227,11 @@ class ListingsVC: UIViewController {
             }
         }
         
+    }
+    
+    private func zoomMapOn(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: searchRadius * 2.0, longitudinalMeters: searchRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     private func setUpSlideCardViews() {
@@ -319,7 +330,10 @@ extension ListingsVC: UICollectionViewDelegate {}
 
 extension ListingsVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        if let location = locations.last {
+            self.mapView.showsUserLocation = true
+            zoomMapOn(location: location)
+        }
         print("New locations: \(locations)")
     }
     
@@ -356,5 +370,43 @@ extension ListingsVC: MKMapViewDelegate {
         setUpSlideCardViews()
         activateHalfOpenSliderViewConstraints()
         slideCardState = .halfOpen
+    }
+}
+
+extension ListingsVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.startAnimating()
+        self.view.addSubview(activityIndicator)
+        
+        searchBar.resignFirstResponder()
+        
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = searchBar.text
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        activeSearch.start { (response, error) in
+            activityIndicator.stopAnimating()
+            
+            if response == nil {
+                self.showAlert(title: "Alert", message: "We could not find any results matching you search")
+            } else {
+                //remove annotations
+                let annotations = self.mapView.annotations
+                self.mapView.removeAnnotations(annotations)
+                
+                //add new annotations
+                let latitude = response?.boundingRegion.center.latitude
+                let longitude = response?.boundingRegion.center.longitude
+                let newAnnotation = MKPointAnnotation()
+                newAnnotation.coordinate = CLLocationCoordinate2D(latitude: latitude ?? self.initialLocation.coordinate.latitude, longitude: longitude ?? self.initialLocation.coordinate.longitude)
+            
+                let coordinateRegion = MKCoordinateRegion.init(center: newAnnotation.coordinate, latitudinalMeters: self.searchRadius, longitudinalMeters: self.searchRadius)
+                self.mapView.setRegion(coordinateRegion, animated: true)
+//                self.currentLocation = .init(latitude: latitude ?? self.initialLocation.coordinate.latitude, longitude: longitude ?? self.initialLocation.coordinate.longitude)
+//                
+                
+            }
+        }
     }
 }
