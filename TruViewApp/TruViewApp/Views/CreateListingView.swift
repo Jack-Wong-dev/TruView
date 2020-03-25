@@ -16,6 +16,7 @@ class CreateListingView: UIView {
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
         button.backgroundColor = .systemBackground
+        button.titleLabel?.font = UIFont(name: "BanglaSangamMN-Bold", size: 27)
         return button
     }()
     
@@ -24,12 +25,14 @@ class CreateListingView: UIView {
         button.setTitle("Save", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
         button.backgroundColor = .systemBackground
+        button.titleLabel?.font = UIFont(name: "BanglaSangamMN-Bold", size: 27)
         return button
     }()
     
     lazy var streetAddressLabel: UILabel = {
         let label = UILabel()
         label.text = "Street Address"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -42,6 +45,7 @@ class CreateListingView: UIView {
     lazy var cityLabel: UILabel = {
         let label = UILabel()
         label.text = "City"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -54,6 +58,7 @@ class CreateListingView: UIView {
     lazy var stateLabel: UILabel = {
         let label = UILabel()
         label.text = "State"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -66,6 +71,7 @@ class CreateListingView: UIView {
     lazy var zipcodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Zipcode"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -87,6 +93,7 @@ class CreateListingView: UIView {
         let label = UILabel()
         label.text = "Number of Bedrooms"
         label.textColor = .gray
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -102,6 +109,7 @@ class CreateListingView: UIView {
         let label = UILabel()
         label.text = "Number of Bathrooms"
         label.textColor = .gray
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -116,6 +124,7 @@ class CreateListingView: UIView {
     lazy var squareFootageLabel: UILabel = {
         let label = UILabel()
         label.text = "Square footage"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -128,6 +137,7 @@ class CreateListingView: UIView {
     lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.text = "Price"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
@@ -140,11 +150,13 @@ class CreateListingView: UIView {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Description"
+        label.font = UIFont(name: "BanglaSangamMN", size: 18)
         return label
     }()
     
     lazy var descriptionTextView: UITextView = {
         let tv = UITextView()
+        tv.font = UIFont(name: "BanglaSangamMN", size: 18)
         return tv
     }()
     
