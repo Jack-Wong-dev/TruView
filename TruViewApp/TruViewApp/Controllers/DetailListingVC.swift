@@ -37,7 +37,7 @@ class DetailListingVC: UIViewController {
         slideCardView.aptDescriptionTextView.text = selectedListing.summary
         
         if selectedListing.numOfBeds == 0 {
-            slideCardView.bedAndBathLabel.text = "Studio, \(selectedListing.numOfBaths)"
+            slideCardView.bedAndBathLabel.text = "Studio, \(selectedListing.numOfBaths) Baths"
         } else {
             slideCardView.bedAndBathLabel.text = "\(selectedListing.numOfBeds) Beds \(selectedListing.numOfBaths) Baths"
         }
