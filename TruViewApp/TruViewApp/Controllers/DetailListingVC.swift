@@ -35,7 +35,13 @@ class DetailListingVC: UIViewController {
     private func setUpViews() {
         slideCardView.priceLabel.text = "$\(selectedListing.price)"
         slideCardView.aptDescriptionTextView.text = selectedListing.summary
-        slideCardView.bedAndBathLabel.text = "\(selectedListing.numOfBeds) Beds \(selectedListing.numOfBaths) Baths"
+        
+        if selectedListing.numOfBeds == 0 {
+            slideCardView.bedAndBathLabel.text = "Studio, \(selectedListing.numOfBaths)"
+        } else {
+            slideCardView.bedAndBathLabel.text = "\(selectedListing.numOfBeds) Beds \(selectedListing.numOfBaths) Baths"
+        }
+        
         slideCardView.sqFootageLabel.text = "\(selectedListing.squareFootage) Square Feet"
     }
     
