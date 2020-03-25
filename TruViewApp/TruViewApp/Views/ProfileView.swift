@@ -65,6 +65,7 @@ class ProfileView: UIView {
     Utilities.styleBarButton(button: button, title: "view all listings")
     button.setTitleColor(.systemBlue, for: .normal)
     button.backgroundColor = .clear
+    button.isHidden = true
     return button
   }()
   

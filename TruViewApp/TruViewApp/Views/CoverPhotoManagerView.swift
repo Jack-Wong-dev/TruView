@@ -14,8 +14,15 @@ class CoverPhotoManagerView: UIView {
     lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
         button.backgroundColor = .systemBackground
+        button.titleLabel?.font = UIFont(name: "BanglaSangamMN-Bold", size: 21)
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 2.0
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 4.0
         return button
     }()
     
@@ -32,8 +39,15 @@ class CoverPhotoManagerView: UIView {
     lazy var uploadPhotoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Upload Photo", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1), for: .normal)
         button.backgroundColor = .systemBackground
+        button.titleLabel?.font = UIFont(name: "BanglaSangamMN-Bold", size: 21)
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 2.0
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 4.0
         return button
     }()
     

@@ -26,6 +26,14 @@ class CreateListingVC: UIViewController {
         view.manageTourPhotosButton.addTarget(self, action: #selector(manageTourPhotosBtnPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
+        view.streetAddressTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.cityTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.stateTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.zipcodeTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.purchaseTypeSegController.addTarget(self, action: #selector(purchaseTypeSegmentControlPressed), for: .allEvents)
+        view.sqFootageTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.priceTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -33,6 +41,7 @@ class CreateListingVC: UIViewController {
     lazy var svContentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 2)
     
     let roomNamesForTour = ["classroom2", "flexspace", "bioshock", "tv"]
+    var purchaseType: PurchaseType = .forSale
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -66,6 +75,47 @@ class CreateListingVC: UIViewController {
         let tourPhtsVC = TourPhotoManagerVC()
         tourPhtsVC.modalPresentationStyle = .fullScreen
         present(tourPhtsVC, animated: true, completion: nil)
+    }
+    
+    @objc func formValidationFor(textfield: UITextField) {
+        guard textfield.hasText else {
+            Utilities.styleHighlightedTextField(textfield)
+            return
+        }
+    }
+    
+    @objc func saveButtonPressed() {
+        guard let address = createListingView.streetAddressTextField.text, let city = createListingView.cityTextField.text, let state = createListingView.stateTextField.text, let zipcode = createListingView.zipcodeTextField.text, let sqFootage = createListingView.sqFootageTextField.text, let price = createListingView.priceTextField.text, let summary = createListingView.descriptionTextView.text else {return}
+        guard address != "", city != "", state != "", zipcode != "", sqFootage != "", price != "", summary != "" else {
+            showAlert(title: "Alert", message: "All fields must be filled out")
+            return
+        }
+        print(purchaseType)
+        
+        if let numZipcode = Int(zipcode), let numSqFootage = Int(sqFootage), let numPrice = Int(price) {
+            let selectedNumOfBedrooms = createListingView.numOfBedroomsSegController.selectedSegmentIndex
+            let selectedNumOfBaths = createListingView.numOfBathsSegController.selectedSegmentIndex
+            let createdListing = Listing(streetAddress: address, city: city, state: state, zipcode: numZipcode, purchaseType: purchaseType, numOfBeds: selectedNumOfBedrooms, numOfBaths: selectedNumOfBaths, squareFootage: numSqFootage, price: numPrice, summary: summary)
+            let detailVC = DetailListingVC()
+            detailVC.selectedListing = createdListing
+            present(detailVC, animated: true, completion: nil)
+        } else {
+            showAlert(title: "Alert", message: "Please enter full numbers for zipcode, square footage and price fields.")
+        }
+    
+    }
+    
+    @objc func purchaseTypeSegmentControlPressed() {
+        switch createListingView.purchaseTypeSegController.selectedSegmentIndex {
+        case 0:
+            purchaseType = .forSale
+        case 1:
+            purchaseType = .forRent
+        case 2:
+            purchaseType = .roomShares
+        default:
+            print("There is something wrong with your purchase types")
+        }
     }
     
     @objc func createTourButtonPressed(_ sender: AnyObject) {
