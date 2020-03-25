@@ -12,9 +12,9 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.barTintColor = .white
-        tabBar.tintColor = .systemBlue
-        tabBar.unselectedItemTintColor = .orange
+        tabBar.barTintColor = .systemBackground
+        tabBar.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        tabBar.unselectedItemTintColor = .systemFill
         let listingsVC = ListingsVC()
         let savedVC = SavedVC()
         let profileVC = ProfileVC()
