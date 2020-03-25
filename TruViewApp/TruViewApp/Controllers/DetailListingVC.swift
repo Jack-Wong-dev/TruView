@@ -16,16 +16,27 @@ class DetailListingVC: UIViewController {
         return scv
     }()
     
+    // MARK: Properties
+    var selectedListing: Listing!
+    
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
         constrainSlideCardView()
+        setUpViews()
     }
     
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(slideCardView)
+    }
+    
+    private func setUpViews() {
+        slideCardView.priceLabel.text = "$\(selectedListing.price)"
+        slideCardView.aptDescriptionTextView.text = selectedListing.summary
+        slideCardView.bedAndBathLabel.text = "\(selectedListing.numOfBeds) Beds \(selectedListing.numOfBaths) Baths"
+        slideCardView.sqFootageLabel.text = "\(selectedListing.squareFootage) Square Feet"
     }
     
     private func constrainSlideCardView() {
