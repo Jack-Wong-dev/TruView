@@ -30,6 +30,7 @@ class CreateListingVC: UIViewController {
         view.cityTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
         view.stateTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
         view.zipcodeTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.purchaseTypeSegController.addTarget(self, action: #selector(purchaseTypeSegmentControlPressed), for: .allEvents)
         view.sqFootageTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
         view.priceTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
         view.saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
@@ -40,6 +41,7 @@ class CreateListingVC: UIViewController {
     lazy var svContentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 2)
     
     let roomNamesForTour = ["classroom2", "flexspace", "bioshock", "tv"]
+    var purchaseType: PurchaseType = .forSale
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -88,13 +90,32 @@ class CreateListingVC: UIViewController {
             showAlert(title: "Alert", message: "All fields must be filled out")
             return
         }
+        print(purchaseType)
         
         if let numZipcode = Int(zipcode), let numSqFootage = Int(sqFootage), let numPrice = Int(price) {
-            _ = Listing(streetAddress: address, city: city, state: state, zipcode: numZipcode, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 2, squareFootage: numSqFootage, price: numPrice, summary: summary)
+            let selectedNumOfBedrooms = createListingView.numOfBedroomsSegController.selectedSegmentIndex
+            let selectedNumOfBaths = createListingView.numOfBathsSegController.selectedSegmentIndex
+            let createdListing = Listing(streetAddress: address, city: city, state: state, zipcode: numZipcode, purchaseType: purchaseType, numOfBeds: selectedNumOfBedrooms, numOfBaths: selectedNumOfBaths, squareFootage: numSqFootage, price: numPrice, summary: summary)
+            let detailVC = DetailListingVC()
+            detailVC.selectedListing = createdListing
+            present(detailVC, animated: true, completion: nil)
         } else {
             showAlert(title: "Alert", message: "Please enter full numbers for zipcode, square footage and price fields.")
         }
     
+    }
+    
+    @objc func purchaseTypeSegmentControlPressed() {
+        switch createListingView.purchaseTypeSegController.selectedSegmentIndex {
+        case 0:
+            purchaseType = .forSale
+        case 1:
+            purchaseType = .forRent
+        case 2:
+            purchaseType = .roomShares
+        default:
+            print("There is something wrong with your purchase types")
+        }
     }
     
     @objc func createTourButtonPressed(_ sender: AnyObject) {
