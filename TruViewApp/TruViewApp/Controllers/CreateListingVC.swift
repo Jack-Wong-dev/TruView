@@ -26,6 +26,13 @@ class CreateListingVC: UIViewController {
         view.manageTourPhotosButton.addTarget(self, action: #selector(manageTourPhotosBtnPressed), for: .touchUpInside)
         view.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         view.createTourButton.addTarget(self, action: #selector(createTourButtonPressed), for: .touchUpInside)
+        view.streetAddressTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.cityTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.stateTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.zipcodeTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.sqFootageTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.priceTextField.addTarget(self, action: #selector(formValidationFor(textfield:)), for: .editingChanged)
+        view.saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         return view
     }()
     
@@ -66,6 +73,28 @@ class CreateListingVC: UIViewController {
         let tourPhtsVC = TourPhotoManagerVC()
         tourPhtsVC.modalPresentationStyle = .fullScreen
         present(tourPhtsVC, animated: true, completion: nil)
+    }
+    
+    @objc func formValidationFor(textfield: UITextField) {
+        guard textfield.hasText else {
+            Utilities.styleHighlightedTextField(textfield)
+            return
+        }
+    }
+    
+    @objc func saveButtonPressed() {
+        guard let address = createListingView.streetAddressTextField.text, let city = createListingView.cityTextField.text, let state = createListingView.stateTextField.text, let zipcode = createListingView.zipcodeTextField.text, let sqFootage = createListingView.sqFootageTextField.text, let price = createListingView.priceTextField.text, let summary = createListingView.descriptionTextView.text else {return}
+        guard address != "", city != "", state != "", zipcode != "", sqFootage != "", price != "", summary != "" else {
+            showAlert(title: "Alert", message: "All fields must be filled out")
+            return
+        }
+        
+        if let numZipcode = Int(zipcode), let numSqFootage = Int(sqFootage), let numPrice = Int(price) {
+            _ = Listing(streetAddress: address, city: city, state: state, zipcode: numZipcode, purchaseType: .forRent, numOfBeds: 2, numOfBaths: 2, squareFootage: numSqFootage, price: numPrice, summary: summary)
+        } else {
+            showAlert(title: "Alert", message: "Please enter full numbers for zipcode, square footage and price fields.")
+        }
+    
     }
     
     @objc func createTourButtonPressed(_ sender: AnyObject) {
