@@ -17,7 +17,7 @@ An app that allows a realtor/landlord user to post listings with a virtual tour 
 - Switch your branch:
   - `git checkout development`
   
-- Navigate to the correct folder with podfile:
+- Navigate to the correct directory with the podfile:
   - `cd TruViewApp`
   - **IMPORTANT** - Make sure that you see the podfile in your current directory before moving on to the next step.
   
