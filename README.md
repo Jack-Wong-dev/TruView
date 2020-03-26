@@ -13,8 +13,14 @@ An app that allows a realtor/landlord user to post listings with a virtual tour 
 
 - Clone the repo in your terminal:
   - `https://github.com/NormanLiana/TruView.git`
-- Switch your branch to:
-  - `development`
+  
+- Switch your branch:
+  - `git checkout development`
+  
+- Navigate to the correct folder with podfile:
+  - `cd TruViewApp`
+  - **IMPORTANT** - Make sure that you see the podfile in your current directory before moving on to the next step.
+  
 - Install Firebase pods in your terminal (relevant pods are already in the project Podfile):
   - `pod install`
 
