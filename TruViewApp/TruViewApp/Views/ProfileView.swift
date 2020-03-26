@@ -22,6 +22,7 @@ class ProfileView: UIView {
   
    lazy var userImage: UIImageView = {
       let image = UIImageView()
+      image.contentMode = .scaleAspectFit
       image.image = /*user.profilePic ?? */ UIImage(named: "profilePicPlaceHolder")
       return image
     }()
@@ -74,7 +75,7 @@ class ProfileView: UIView {
     layout.scrollDirection = .horizontal
 //    layout.minimumLineSpacing = 5
     let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    cv.backgroundColor = .white
+    cv.backgroundColor = .systemBackground
     cv.register(ListingCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.listViewCVCell.rawValue)
     cv.register(AddContentCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.addContentCell.rawValue)
     cv.register(ImageCVCell.self, forCellWithReuseIdentifier: CellIdentifiers.imageUploadCell.rawValue)
@@ -191,7 +192,7 @@ class ProfileView: UIView {
          NSLayoutConstraint.activate([
            listingsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
            listingsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-           listingsCollectionView.heightAnchor.constraint(equalToConstant: 150),
+           listingsCollectionView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.2),
            listingsCollectionView.bottomAnchor.constraint(equalTo: viewAllListingsButton.topAnchor, constant: -5)
          ])
        }

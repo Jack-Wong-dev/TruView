@@ -14,7 +14,7 @@ class ListingCVCell: UICollectionViewCell {
         lazy var aptThumbnail: UIImageView = {
             let imgView = UIImageView()
             imgView.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
-    //        imgView.image = UIImage(systemName: "bed.double")
+            imgView.contentMode = .scaleAspectFit
             return imgView
         }()
         

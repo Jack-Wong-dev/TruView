@@ -15,7 +15,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        var screenWidth = screenSize.width
+        var screenHeight = screenSize.height
+        
+        //If device is in landscape mode
+        if screenWidth > screenHeight {
+            let temp = screenWidth
+            screenWidth = screenHeight
+            screenHeight = temp
+        }
+                
+//        window = UIWindow(frame: UIScreen.main.bounds)
+        let updatedScreenSize = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+        
+        window = UIWindow(frame: updatedScreenSize)
         window?.windowScene = windowScene
         
         let tabBarController = TabBarController()

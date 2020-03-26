@@ -9,6 +9,18 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .pad{
+            return [.portrait, .portraitUpsideDown]
+        }
+        return .portrait
+    }
+
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
