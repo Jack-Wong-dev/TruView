@@ -37,5 +37,5 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 
 ## GIFS/Images
 
-- More to come...!
+### To be Updated!
 
