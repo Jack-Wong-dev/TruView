@@ -10,6 +10,17 @@ import UIKit
 
 class ImagePreviewVC: UIViewController {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .pad{
+            return [.portrait, .portraitUpsideDown]
+        }
+        return .portrait
+    }
+
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+    
     // MARK: - UI Objects
     lazy var cancelButton: UIImageView = {
         let imgVw = UIImageView()

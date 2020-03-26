@@ -10,6 +10,17 @@ import UIKit
 
 class CreateListingVC: UIViewController {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .pad{
+            return [.portrait, .portraitUpsideDown]
+        }
+        return .portrait
+    }
+
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+    
     // MARK: - UI Objects
     lazy var scrollView: UIScrollView = {
         let sv = UIScrollView(frame: .zero)
@@ -46,6 +57,7 @@ class CreateListingVC: UIViewController {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         addSubViews()
         setUpVCViews()
     }
