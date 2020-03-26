@@ -13,25 +13,30 @@ class ListingCVCell: UICollectionViewCell {
     // MARK: - UI Objects
         lazy var aptThumbnail: UIImageView = {
             let imgView = UIImageView()
-    //        imgView.image = UIImage(systemName: "bed.double")
+            imgView.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+            imgView.contentMode = .scaleAspectFit
             return imgView
         }()
         
         lazy var priceLabel: UILabel = {
             let lbl = UILabel()
             lbl.text = "$2000"
+            lbl.textAlignment = .right
+            lbl.font = UIFont(name: "BanglaSangamMN-Bold", size: 16)
             return lbl
         }()
         
         lazy var bedAndbathLabel: UILabel = {
             let lbl = UILabel()
             lbl.text = "2 Bed 2 Bath"
+            lbl.font = UIFont(name: "BanglaSangamMN", size: 14)
             return lbl
         }()
         
         lazy var sqFootageLabel: UILabel = {
             let lbl = UILabel()
             lbl.text = "600 sq Feet"
+            lbl.font = UIFont(name: "BanglaSangamMN", size: 14)
             return lbl
         }()
     

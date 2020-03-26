@@ -37,7 +37,7 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       view.addSubview(profileViews)
-      view.backgroundColor = .white
+      view.backgroundColor = .systemBackground
     }
   
   override func viewDidLayoutSubviews() {
@@ -48,13 +48,13 @@ class ProfileVC: UIViewController {
 //MARK: Objc FUNCTIONS
   @objc func editButtonPressed() {
     let editProfile = EditProfileVC()
-    editProfile.modalPresentationStyle = .overFullScreen
+    editProfile.modalPresentationStyle = .fullScreen
     present(editProfile, animated: true, completion: nil)
   }
 
   @objc func viewAllButtonPressed() {
     let listings = ListingsVC()
-    listings.modalPresentationStyle = .overFullScreen
+    listings.modalPresentationStyle = .fullScreen
     present(listings, animated: true, completion: nil)
   }
 
@@ -99,10 +99,13 @@ extension ProfileVC: UICollectionViewDataSource {
 
 extension ProfileVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if collectionView.cellForItem(at: indexPath)?.isSelected ?? false {
-      let createVC = CreateListingVC()
-      createVC.modalPresentationStyle = .overFullScreen
-      present(createVC, animated: true, completion: nil)
+    if indexPath.item == 0 {
+        let createVC = CreateListingVC()
+        createVC.modalPresentationStyle = .fullScreen
+        present(createVC, animated: true, completion: nil)
+    } else {
+        let detailListingVC = DetailListingVC()
+        present(detailListingVC, animated: true, completion: nil)
     }
   }
 }
@@ -110,7 +113,7 @@ extension ProfileVC: UICollectionViewDelegate {
 
 extension ProfileVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let cellSize = CGSize(width: (view.frame.width) * 0.3, height: (view.frame.width) * 0.3)
+      let cellSize = CGSize(width: (view.frame.width) * 0.25, height: (view.frame.width) * 0.25)
         return cellSize
     }
 }

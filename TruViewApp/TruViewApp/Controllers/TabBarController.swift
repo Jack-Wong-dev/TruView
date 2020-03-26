@@ -9,12 +9,24 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .pad{
+            return [.portrait, .portraitUpsideDown]
+        }
+        return .portrait
+    }
+
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.barTintColor = .white
-        tabBar.tintColor = .systemBlue
-        tabBar.unselectedItemTintColor = .orange
+        tabBar.barTintColor = .systemBackground
+        tabBar.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
+        tabBar.unselectedItemTintColor = .systemFill
         let listingsVC = ListingsVC()
         let savedVC = SavedVC()
         let profileVC = ProfileVC()
