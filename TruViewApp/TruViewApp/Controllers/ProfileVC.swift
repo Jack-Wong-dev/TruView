@@ -37,7 +37,7 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       view.addSubview(profileViews)
-      view.backgroundColor = .white
+      view.backgroundColor = .systemBackground
     }
   
   override func viewDidLayoutSubviews() {
@@ -48,13 +48,13 @@ class ProfileVC: UIViewController {
 //MARK: Objc FUNCTIONS
   @objc func editButtonPressed() {
     let editProfile = EditProfileVC()
-    editProfile.modalPresentationStyle = .overFullScreen
+    editProfile.modalPresentationStyle = .fullScreen
     present(editProfile, animated: true, completion: nil)
   }
 
   @objc func viewAllButtonPressed() {
     let listings = ListingsVC()
-    listings.modalPresentationStyle = .overFullScreen
+    listings.modalPresentationStyle = .fullScreen
     present(listings, animated: true, completion: nil)
   }
 
@@ -101,7 +101,7 @@ extension ProfileVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if indexPath.item == 0 {
         let createVC = CreateListingVC()
-        createVC.modalPresentationStyle = .overFullScreen
+        createVC.modalPresentationStyle = .fullScreen
         present(createVC, animated: true, completion: nil)
     } else {
         let detailListingVC = DetailListingVC()
