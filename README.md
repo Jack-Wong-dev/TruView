@@ -16,7 +16,7 @@ An app that allows a realtor/landlord user to post listings with a virtual tour 
 - Switch your branch to:
   - `development`
 - Install Firebase pods in your terminal (relevant pods are already in the project Podfile):
-  - `pos install`
+  - `pod install`
 
 
 
@@ -34,8 +34,8 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 
 - Firebase
 - Lottie
-- More to come...!
 
 ## GIFS/Images
 
+- More to come...!
 
