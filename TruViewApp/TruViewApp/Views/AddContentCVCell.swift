@@ -14,6 +14,7 @@ class AddContentCVCell: UICollectionViewCell {
     lazy var addContentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "plus.circle")
+        imageView.tintColor = #colorLiteral(red: 0.4256733358, green: 0.5473166108, blue: 0.3936028183, alpha: 1)
         return imageView
     }()
     

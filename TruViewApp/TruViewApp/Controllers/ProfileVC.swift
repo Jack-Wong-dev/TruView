@@ -113,7 +113,7 @@ extension ProfileVC: UICollectionViewDelegate {
 
 extension ProfileVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let cellSize = CGSize(width: (view.frame.width) * 0.3, height: (view.frame.width) * 0.3)
+      let cellSize = CGSize(width: (view.frame.width) * 0.25, height: (view.frame.width) * 0.25)
         return cellSize
     }
 }

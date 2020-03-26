@@ -64,6 +64,7 @@ class ListingsVC: UIViewController {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         addSubViews()
         addConstraints()
         setUpInitialVCViews()
