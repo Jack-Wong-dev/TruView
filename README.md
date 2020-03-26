@@ -9,6 +9,17 @@ An app that allows a realtor/landlord user to post listings with a virtual tour 
 
 - **Apartment Hunter User** - Janice is hunting for her next apartment and is frustrated that the apartments she goes to view look nothing like the photos in the listing. TruView allows Janice to search apartments by neighborhood and walk herself through a virtual tour of that listing, so she knows what it looks like before ever stepping inside. She can then add that listing to her favorites to look back at later. Janice can step into viewings with confidence knowing that she is truly interested in this listing.
 
+## Set Up
+
+- Clone the repo in your terminal:
+  - `https://github.com/NormanLiana/TruView.git`
+- Switch your branch to:
+  - `development`
+- Install Firebase pods in your terminal (relevant pods are already in the project Podfile):
+  - `pos install`
+
+
+
 ## Prototype Features
 
 The ability to take and display 360 degree spherical images. Our hope is to embed a camera so all functionality can happen within the app. However, at the moment, the user will be directed to the Street View (Google) app to capture the spherical images.
@@ -18,16 +29,13 @@ The ability to take and display 360 degree spherical images. Our hope is to embe
 ### For Prototype
 - Scene Kit
 - Core Motion
-- Firebase
-- AR Kit
 
 ### For MVP
 
+- Firebase
 - Lottie
 - More to come...!
 
 ## GIFS/Images
 
-![ListTV](images/ListViewToMapView.gif)
 
-![SavedSearches](images/saved.png)
