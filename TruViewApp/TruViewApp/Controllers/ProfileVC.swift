@@ -103,10 +103,10 @@ extension ProfileVC: UICollectionViewDelegate {
         let createVC = CreateListingVC()
         createVC.modalPresentationStyle = .fullScreen
         present(createVC, animated: true, completion: nil)
-    } else {
+    } /*else {
         let detailListingVC = DetailListingVC()
         present(detailListingVC, animated: true, completion: nil)
-    }
+    }*/
   }
 }
 
