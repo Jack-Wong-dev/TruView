@@ -34,7 +34,10 @@ class TabBarController: UITabBarController {
       listingsVC.tabBarItem = UITabBarItem(title: "Listings", image: UIImage(systemName: "house"), tag: 0)
       savedVC.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "bookmark"), tag: 1)
       profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 2)
-      self.viewControllers = [listingsVC, savedVC, profileVC]
+      self.viewControllers = [listingsVC, /*savedVC, */profileVC]
     }
+    
+    
+     
 
 }
