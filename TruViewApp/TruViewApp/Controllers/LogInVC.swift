@@ -104,6 +104,7 @@ class LogInVC: UIViewController {
               else {
                   return
           }
+          print(FirebaseAuthService.manager.currentUser)
           UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
             window.rootViewController = EditProfileVC()
           }, completion: nil)

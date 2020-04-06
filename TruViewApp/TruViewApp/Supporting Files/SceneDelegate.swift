@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: updatedScreenSize)
         window?.windowScene = windowScene
         
-        let tabBarController = TabBarController()
+        let tabBarController = SignUpVC()
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

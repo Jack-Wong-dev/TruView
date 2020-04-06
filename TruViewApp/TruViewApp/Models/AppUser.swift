@@ -19,7 +19,7 @@ struct AppUser: Codable {
     var agency: String?
     var license: String?
     var bio: String?
-    var profilePic: URL?
+    var profilePic: Data?
     var libraryPermission: Bool = false
     var dateCreated: Date?
     var listings: [ListingWrapper]?
@@ -30,7 +30,7 @@ struct AppUser: Codable {
       self.email = user.email
       self.phone = user.phoneNumber
       self.dateCreated = user.metadata.creationDate
-      self.profilePic = user.photoURL
+//      self.profilePic = user.photoData
   }
   
   var fieldsDict: [String: Any] {
@@ -54,7 +54,7 @@ struct AppUser: Codable {
       let phone = dict["phone"] as? String,
       let agency = dict["agency"] as? String,
       let license = dict["license"] as? String,
-      let photoURL = dict["profilePic"] as? URL,
+      let photoData = dict["profilePic"] as? Data,
       let dateCreated = (dict["dateCreated"] as? Timestamp)?.dateValue() else { return nil }
   
   self.id = id
@@ -64,7 +64,7 @@ struct AppUser: Codable {
   self.agency = agency
   self.license = license
   self.dateCreated = dateCreated
-  self.profilePic = photoURL
+  self.profilePic = photoData
   
   
 }

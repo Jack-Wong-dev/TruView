@@ -50,10 +50,10 @@
              }
            }
       var imageURL: URL? = nil
+      var imageData: Data?
       
       
 // MARK: UI Objects
-
       lazy var editProfileViews: EditProfileView = {
         let epv = EditProfileView()
         epv.cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
@@ -137,6 +137,7 @@
       
       
       @objc func saveButtonPressed() {
+        print("save pressed")
         guard let userName = editProfileViews.nameTextField.text else {
           showAlert(title: "Error", message: "Please enter your name")
           print("save button pressed1")
@@ -157,13 +158,17 @@
         guard let userLicense = editProfileViews.realtorLicenseTextField.text else {
           return
         }
-        guard let userProfilePic = imageURL else {
+        guard let userBio = editProfileViews.bioTextView.text else {
           return
         }
+        guard let userProfilePic = imageData else {
+          return
+        }
+        
         FirebaseAuthService.manager.updateUserFields(userName: userName) { (result) in
             switch result {
             case .success():
-              FBService.manager.updateCurrentUser(name: userName, email: userEmail, phone: userPhone, agency: userAgency, license: userLicense, profilePic: userProfilePic, bio: " ", libraryPermission: true) { [weak self] (nextResult) in
+              FBService.manager.updateCurrentUser(name: userName, email: userEmail, phone: userPhone, agency: userAgency, license: userLicense, profilePic: userProfilePic, bio: userBio, libraryPermission: true) { [weak self] (nextResult) in
                     switch nextResult {
                     case .success():
                       let profile = TabBarController()
@@ -228,6 +233,11 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
       return
     }
     self.profilePic = newImage
+    
+    guard let image = newImage.jpegData(compressionQuality: 0.1) else {
+        return
+    }
+    imageData = image
     dismiss(animated: true, completion: nil)
   }
 }

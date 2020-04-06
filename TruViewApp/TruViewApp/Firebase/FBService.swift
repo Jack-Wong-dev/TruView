@@ -43,7 +43,7 @@ func createAppUser(user: AppUser, completion: @escaping (Result<(), Error>) -> (
     }
 }
 
-  func updateCurrentUser(name: String? = nil, email: String? = nil, phone: String? = nil, agency: String? = nil, license: String? = nil, profilePic: URL?, bio: String? = nil, libraryPermission: Bool, completion: @escaping (Result<(), Error>) -> ()){
+  func updateCurrentUser(name: String? = nil, email: String? = nil, phone: String? = nil, agency: String? = nil, license: String? = nil, profilePic: Data?, bio: String? = nil, libraryPermission: Bool, completion: @escaping (Result<(), Error>) -> ()){
       guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
           return
       }
@@ -67,9 +67,9 @@ func createAppUser(user: AppUser, completion: @escaping (Result<(), Error>) -> (
       if let userBio = bio {
           updateFields["bio"] = userBio
       }
-//      if let userProfilePic = profilePic {
-//          updateFields["profilePic"] = userProfilePic
-//      }
+      if let userProfilePic = profilePic {
+          updateFields["profilePic"] = userProfilePic
+      }
   db.collection(FireStoreCollections.users.rawValue).document(userId).updateData(updateFields) { (error) in
           if let error = error {
               completion(.failure(error))
