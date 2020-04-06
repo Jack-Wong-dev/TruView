@@ -1,10 +1,3 @@
-//
-//  FBService.swift
-//  TruViewApp
-//
-//  Created by Liana Norman on 2/13/20.
-//  Copyright © 2020 Liana Norman. All rights reserved.
-//
 
 import Foundation
 import FirebaseFirestore
@@ -50,7 +43,7 @@ func createAppUser(user: AppUser, completion: @escaping (Result<(), Error>) -> (
     }
 }
 
-func updateCurrentUser(name: String? = nil, email: String? = nil, phone: String? = nil, agency: String? = nil, license: String? = nil, bio: String? = nil, location: String? = nil, libraryPermission: Bool, completion: @escaping (Result<(), Error>) -> ()){
+  func updateCurrentUser(name: String? = nil, email: String? = nil, phone: String? = nil, agency: String? = nil, license: String? = nil, profilePic: URL?, bio: String? = nil, libraryPermission: Bool, completion: @escaping (Result<(), Error>) -> ()){
       guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
           return
       }
@@ -77,9 +70,6 @@ func updateCurrentUser(name: String? = nil, email: String? = nil, phone: String?
 //      if let userProfilePic = profilePic {
 //          updateFields["profilePic"] = userProfilePic
 //      }
-      if let userLocation = location {
-          updateFields["location"] = userLocation
-      }
   db.collection(FireStoreCollections.users.rawValue).document(userId).updateData(updateFields) { (error) in
           if let error = error {
               completion(.failure(error))
@@ -89,20 +79,35 @@ func updateCurrentUser(name: String? = nil, email: String? = nil, phone: String?
       }
   }
   
-//  func getUser(userEmail: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
-//      db.collection(FireStoreCollections.users.rawValue).whereField("email", isEqualTo: userEmail).getDocuments { (snapshot, error) in
-//          if let error = error {
-//              completion(.failure(error))
-//          } else {
-//              let appUser = snapshot?.documents.compactMap({ (snapshot) -> AppUser? in
-//                  let appUserID = snapshot.documentID
-//                  let user = AppUser(from: snapshot.data(), id: appUserID)
-//                  return user
-//              })
-//              completion(.success(appUser ?? []))
-//          }
-//      }
-//  }
 
-    private init () {}
+
+  
+  func getUserInfo(userEmail: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
+    guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
+        return
+    }
+    
+
+      db.collection(FireStoreCollections.users.rawValue).whereField("email", isEqualTo: userEmail).getDocuments { (snapshot, error) in
+        let appUser = AppUser.self
+          if let error = error {
+              completion(.failure(error))
+          } else {
+            if let snapDoc = snapshot?.documents {
+              let data = snapDoc.first?.data()
+              if let name = data?["name"] as? String, let email = data?["email"] as? String, let phone = data?["phone"] as? String, let agency = data?["agency"] as? String, let license = data?["license"] as? String {
+//                appUser.name = name
+//                appUser?.email = email
+//                appUser?.phone = phone
+//                appUser?.agency = agency
+//                appUser?.license = license
+                }
+            }
+//            completion(.success(appUser))
+          }
+        }
+      }
+
+private init () {}
+
 }

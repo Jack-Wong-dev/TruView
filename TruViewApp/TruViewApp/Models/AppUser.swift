@@ -10,7 +10,8 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
-public class AppUser: Codable {
+
+struct AppUser: Codable {
     var id: String
     var name: String?
     var email: String?
@@ -18,8 +19,7 @@ public class AppUser: Codable {
     var agency: String?
     var license: String?
     var bio: String?
-    var profilePic: String? /* will we store as data or string? */
-    var location: String?
+    var profilePic: URL?
     var libraryPermission: Bool = false
     var dateCreated: Date?
     var listings: [ListingWrapper]?
@@ -30,7 +30,7 @@ public class AppUser: Codable {
       self.email = user.email
       self.phone = user.phoneNumber
       self.dateCreated = user.metadata.creationDate
-      self.profilePic = user.photoURL?.absoluteString
+      self.profilePic = user.photoURL
   }
   
   var fieldsDict: [String: Any] {
@@ -42,11 +42,31 @@ public class AppUser: Codable {
         "license": self.license ?? "",
         "bio": self.bio ?? "",
         "profilePic": self.profilePic ?? "",
-        "location": self.location ?? "",
         "libraryPermission": self.libraryPermission,
+        "dateCreated": self.dateCreated ?? "",
         "listings": self.listings ?? []
       ]
   }
+  
+  init?(from dict: [String: Any], id: String) {
+  guard let name = dict["name"] as? String,
+      let email = dict["email"] as? String,
+      let phone = dict["phone"] as? String,
+      let agency = dict["agency"] as? String,
+      let license = dict["license"] as? String,
+      let photoURL = dict["profilePic"] as? URL,
+      let dateCreated = (dict["dateCreated"] as? Timestamp)?.dateValue() else { return nil }
+  
+  self.id = id
+  self.name = name
+  self.email = email
+  self.phone = phone
+  self.agency = agency
+  self.license = license
+  self.dateCreated = dateCreated
+  self.profilePic = photoURL
+  
+  
 }
 
 public class ListingWrapper: Codable {
@@ -60,8 +80,7 @@ public class ListingWrapper: Codable {
     "price": self.price ?? ""
     ]
   }
-  
 }
 
 
-
+}

@@ -90,6 +90,7 @@ class SignUpVC: UIViewController {
            present(loginVC, animated: true, completion: nil)
        }
     
+  
 //MARK: Private Functions
   
   private func showAlert(with title: String, and message: String) {
@@ -128,10 +129,11 @@ class SignUpVC: UIViewController {
       }
   }
   
-  
-  
 
 }
+
+
+//MARK: Delegates
 
 extension SignUpVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
