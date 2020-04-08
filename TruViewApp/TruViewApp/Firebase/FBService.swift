@@ -80,33 +80,46 @@ func createAppUser(user: AppUser, completion: @escaping (Result<(), Error>) -> (
   }
   
 
+  func getUserInfo(completion: @escaping(Result<AppUser, Error>) -> ()) {
+      guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
+          return
+      }
+    db.collection(FireStoreCollections.users.rawValue).document(userId).getDocument { (document, error) in
+    if let document = document, document.exists {
+        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+        print(dataDescription)
+    } else {
+        print("Document does not exist")
+      }
+    }
+  }
 
   
-  func getUserInfo(userEmail: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
-    guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
-        return
-    }
-    
-
-      db.collection(FireStoreCollections.users.rawValue).whereField("email", isEqualTo: userEmail).getDocuments { (snapshot, error) in
-        let appUser = AppUser.self
-          if let error = error {
-              completion(.failure(error))
-          } else {
-            if let snapDoc = snapshot?.documents {
-              let data = snapDoc.first?.data()
-              if let name = data?["name"] as? String, let email = data?["email"] as? String, let phone = data?["phone"] as? String, let agency = data?["agency"] as? String, let license = data?["license"] as? String {
+//  func getUserInfo(userEmail: String, completion: @escaping (Result<AppUser, Error>) -> ()) {
+//    guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
+//        return
+//    }
+//
+//
+//      db.collection(FireStoreCollections.users.rawValue).whereField("email", isEqualTo: userEmail).getDocuments { (snapshot, error) in
+//        let appUser = AppUser.self
+//          if let error = error {
+//              completion(.failure(error))
+//          } else {
+//            if let snapDoc = snapshot?.documents {
+//              let data = snapDoc.first?.data()
+//              if let name = data?["name"] as? String, let email = data?["email"] as? String, let phone = data?["phone"] as? String, let agency = data?["agency"] as? String, let license = data?["license"] as? String {
 //                appUser.name = name
-//                appUser?.email = email
-//                appUser?.phone = phone
-//                appUser?.agency = agency
-//                appUser?.license = license
-                }
-            }
-//            completion(.success(appUser))
-          }
-        }
-      }
+////                appUser?.email = email
+////                appUser?.phone = phone
+////                appUser?.agency = agency
+////                appUser?.license = license
+//                }
+//            }
+////            completion(.success(appUser))
+//          }
+//        }
+//      }
 
 private init () {}
 

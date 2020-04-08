@@ -17,7 +17,6 @@
 		0A9EBF08241828CA00E223AC /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBF01241828CA00E223AC /* Extension.swift */; };
 		0A9EBF09241828CA00E223AC /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBF02241828CA00E223AC /* FloatyDelegate.swift */; };
 		0A9EBF0A241828CA00E223AC /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EBF03241828CA00E223AC /* FloatyManager.swift */; };
-		0AAC671E240EF71000448AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC671D240EF71000448AA3 /* GoogleService-Info.plist */; };
 		0AAC6720240EF9DB00448AA3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC671F240EF9DB00448AA3 /* SignUpView.swift */; };
 		0AAC6722240EF9E500448AA3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC6721240EF9E500448AA3 /* LoginView.swift */; };
 		0AAC6724240EFE5A00448AA3 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC6723240EFE5A00448AA3 /* Listing.swift */; };
@@ -25,6 +24,7 @@
 		3CC180C8241809FF00C1947D /* DetailListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC180C7241809FF00C1947D /* DetailListingVC.swift */; };
 		3CDCF9DA2400715900CFE44B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9D92400715900CFE44B /* ProfileView.swift */; };
 		3CDCF9DC240074B400CFE44B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCF9DB240074B400CFE44B /* EditProfileView.swift */; };
+		3CF72159243E333A00976A67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CF72158243E333A00976A67 /* GoogleService-Info.plist */; };
 		A50A02F5240CA43A003B9413 /* MediaUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F4240CA43A003B9413 /* MediaUploadView.swift */; };
 		A50A02F7240CA45F003B9413 /* MediaUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F6240CA45F003B9413 /* MediaUploadVC.swift */; };
 		A50A02F9240D5D02003B9413 /* StartingPointPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50A02F8240D5D02003B9413 /* StartingPointPickerView.swift */; };
@@ -98,7 +98,6 @@
 		0A9EBF01241828CA00E223AC /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0A9EBF02241828CA00E223AC /* FloatyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyDelegate.swift; sourceTree = "<group>"; };
 		0A9EBF03241828CA00E223AC /* FloatyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyManager.swift; sourceTree = "<group>"; };
-		0AAC671D240EF71000448AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0AAC671F240EF9DB00448AA3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0AAC6721240EF9E500448AA3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0AAC6723240EFE5A00448AA3 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		3CC180C7241809FF00C1947D /* DetailListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListingVC.swift; sourceTree = "<group>"; };
 		3CDCF9D92400715900CFE44B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3CDCF9DB240074B400CFE44B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		3CF72158243E333A00976A67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		618322088B0DA794CFB70871 /* Pods-TruViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TruViewApp.debug.xcconfig"; path = "Target Support Files/Pods-TruViewApp/Pods-TruViewApp.debug.xcconfig"; sourceTree = "<group>"; };
 		850F03443704BAA556B8367C /* Pods-TruViewAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TruViewAppTests.debug.xcconfig"; path = "Target Support Files/Pods-TruViewAppTests/Pods-TruViewAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A50A02F4240CA43A003B9413 /* MediaUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUploadView.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 				A5603F0023F5BF2A0090E90E /* Utilities */,
 				A5603EFC23F5BDC60090E90E /* Supporting Files */,
 				A5603EE823F5BCB30090E90E /* Info.plist */,
-				0AAC671D240EF71000448AA3 /* GoogleService-Info.plist */,
+				3CF72158243E333A00976A67 /* GoogleService-Info.plist */,
 				A5603EE023F5BCAF0090E90E /* TruViewApp.xcdatamodeld */,
 			);
 			path = TruViewApp;
@@ -454,7 +454,7 @@
 			files = (
 				A5603EE723F5BCB30090E90E /* LaunchScreen.storyboard in Resources */,
 				A5603EE423F5BCB30090E90E /* Assets.xcassets in Resources */,
-				0AAC671E240EF71000448AA3 /* GoogleService-Info.plist in Resources */,
+				3CF72159243E333A00976A67 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +756,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pursuit.kwiz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pursuit.truview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -777,7 +777,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pursuit.kwiz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pursuit.truview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

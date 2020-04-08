@@ -16,6 +16,7 @@
   
       var userName = String() {
         didSet {
+          print(userName)
           editProfileViews.nameTextField.text = userName
         }
       }
@@ -68,13 +69,14 @@
         super.viewDidLoad()
         checkCurrentUser()
         view.addSubview(editProfileViews)
+        loadUser()
         view.backgroundColor = .white
         setDelgates()
       }
       
       override func viewWillAppear(_ animated: Bool) {
           super.viewWillAppear(animated)
-          loadUser()
+          
       }
       
       override func viewDidLayoutSubviews() {
@@ -103,24 +105,27 @@
         }
       }
       
+      
       private func loadUser() {
-        FBService.manager.getUserInfo(userEmail: currentUser?.email ?? "") { [weak self] (result) in
+        print("loaded")
+        FBService.manager.getUserInfo() { [weak self] (result) in
              switch result {
              case .success(let currentUser):
               if let name = currentUser.name {
                 self?.userName = name
+                self?.editProfileViews.nameTextField.placeholder = name
               }
               if let email = currentUser.email {
-              self?.userEmail = email
+                self?.userEmail = email
               }
               if let phone = currentUser.phone {
-              self?.userPhone = phone
+                self?.userPhone = phone
               }
               if let agency = currentUser.agency {
-              self?.userAgency = agency
+                self?.userAgency = agency
               }
               if let license = currentUser.license {
-              self?.userLicense = license
+                self?.userLicense = license
               } 
              case .failure(let error):
                print("couldn't load \(self?.user.name ?? "") profile: \(error)")
